@@ -12,14 +12,44 @@ public class TVBox extends AttributesGeneral{
 
 	    private String Season;
         private String NumberOfDisco;
+        private String DateRented;
+        private String DateReturn;
+        
+        
           
          public TVBox(String yearOfRelease, String title, String genre, boolean rent, double Price) {
 		 super(yearOfRelease, title, genre, rent, Price);
 		 
 		 this.NumberOfDisco = NumberOfDisco;
 		 this.Season = Season;
+		 this.DateRented = DateRented;
+		 this.DateReturn = DateReturn;
 		
 	}
+
+
+
+	public String getDateRented() {
+			return DateRented;
+		}
+
+
+
+		public void setDateRented(String dateRented) {
+			DateRented = dateRented;
+		}
+
+
+
+		public String getDateReturn() {
+			return DateReturn;
+		}
+
+
+
+		public void setDateReturn(String dateReturn) {
+			DateReturn = dateReturn;
+		}
 
 
 

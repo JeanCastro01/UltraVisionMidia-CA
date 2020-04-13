@@ -8,6 +8,8 @@ public class LiveConcert extends AttributesGeneral{
    
    
 	    private String Band;   
+	    private String DateRented;
+	    private String DateReturn;
 	
 	
 	
@@ -16,7 +18,41 @@ public class LiveConcert extends AttributesGeneral{
 		
 		
 		this.Band = Band;
+		this.DateRented = DateRented;
+		this.DateReturn = DateRented;
 	}
+
+
+
+
+
+	public String getDateRented() {
+			return DateRented;
+		}
+
+
+
+
+
+		public void setDateRented(String dateRented) {
+			DateRented = dateRented;
+		}
+
+
+
+
+
+		public String getDateReturn() {
+			return DateReturn;
+		}
+
+
+
+
+
+		public void setDateReturn(String dateReturn) {
+			DateReturn = dateReturn;
+		}
 
 
 

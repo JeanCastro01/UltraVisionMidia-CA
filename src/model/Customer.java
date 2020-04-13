@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
 *
 * @author jeancastro
@@ -12,7 +14,7 @@ public class Customer {
        private String Tel;
        private String Membership;
        private String CardNumber;
-       
+       ArrayList<String> listoftitles = new ArrayList<String>(4);
    
 	
 
@@ -29,6 +31,16 @@ public class Customer {
 	}
 	
 	
+	public ArrayList<String> getListoftitles() {
+		return listoftitles;
+	}
+
+
+	public void setListoftitles(ArrayList<String> listoftitles) {
+		this.listoftitles = listoftitles;
+	}
+
+
 	public String getMembership() {
 		return Membership;
 	}
