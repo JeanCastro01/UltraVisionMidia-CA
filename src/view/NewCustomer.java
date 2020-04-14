@@ -29,6 +29,10 @@ public class NewCustomer extends JFrame {
 	private JTextField textFieldFirstName;
 	private JTextField textFieldEmail;
 	private JTextField textFieldLastName;
+	private JComboBox comboBoxMembership;
+	private JButton ButtonRegisterCustomer;
+	private JFormattedTextField FormattedTextFieldCardNumber;
+	private JFormattedTextField FormattedTextFieldTelephone;
 
 	/**
 	 * Launch the application.
@@ -96,12 +100,12 @@ public class NewCustomer extends JFrame {
 		contentPane.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"(ML) Music Live & Live Concert Videos ", "(VL) Movie", "(TV) Box Set", "(PR) Premium"}));
-		comboBox.setToolTipText("MusicLive\t\nMovie\nLiveConcert\nTVBox\nPremium");
-		comboBox.setMaximumRowCount(10);
-		comboBox.setBounds(234, 376, 334, 27);
-		contentPane.add(comboBox);
+		comboBoxMembership = new JComboBox();
+		comboBoxMembership.setModel(new DefaultComboBoxModel(new String[] {"(ML) Music Live & Live Concert Videos ", "(VL) Movie", "(TV) Box Set", "(PR) Premium"}));
+		comboBoxMembership.setToolTipText("MusicLive\t\nMovie\nLiveConcert\nTVBox\nPremium");
+		comboBoxMembership.setMaximumRowCount(10);
+		comboBoxMembership.setBounds(234, 376, 334, 27);
+		contentPane.add(comboBoxMembership);
 		
 		JLabel NewLabelFirstName = new JLabel("First Name");
 		NewLabelFirstName.setBounds(93, 125, 84, 16);
@@ -127,21 +131,86 @@ public class NewCustomer extends JFrame {
 		NewLabelMemberShipPlan.setBounds(93, 380, 116, 16);
 		contentPane.add(NewLabelMemberShipPlan);
 		
-		JButton ButtonRegisterCustomer = new JButton("Register");
+		ButtonRegisterCustomer = new JButton("Register");
 		ButtonRegisterCustomer.setBounds(238, 452, 117, 29);
 		contentPane.add(ButtonRegisterCustomer);
 		
 		MaskFormatter mascara = new MaskFormatter("####/####/####/####");
-		JFormattedTextField FormattedTextFieldCardNumber = new JFormattedTextField(mascara);
+		FormattedTextFieldCardNumber = new JFormattedTextField(mascara);
 		FormattedTextFieldCardNumber.setBounds(238, 322, 197, 26);
 		contentPane.add(FormattedTextFieldCardNumber);
 		
 		MaskFormatter mascara2 = new MaskFormatter("(+###)####/#####");
-		JFormattedTextField FormattedTextFieldTelephone = new JFormattedTextField(mascara2);
+	    FormattedTextFieldTelephone = new JFormattedTextField(mascara2);
 		FormattedTextFieldTelephone.setBounds(238, 267, 197, 26);
 		contentPane.add(FormattedTextFieldTelephone);
 		
 		newcustomer.validate();
 		newcustomer.repaint();
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTextFieldFirstName() {
+		return textFieldFirstName;
+	}
+
+	public void setTextFieldFirstName(JTextField textFieldFirstName) {
+		this.textFieldFirstName = textFieldFirstName;
+	}
+
+	public JTextField getTextFieldEmail() {
+		return textFieldEmail;
+	}
+
+	public void setTextFieldEmail(JTextField textFieldEmail) {
+		this.textFieldEmail = textFieldEmail;
+	}
+
+	public JTextField getTextFieldLastName() {
+		return textFieldLastName;
+	}
+
+	public void setTextFieldLastName(JTextField textFieldLastName) {
+		this.textFieldLastName = textFieldLastName;
+	}
+
+	public JComboBox getComboBoxMembership() {
+		return comboBoxMembership;
+	}
+
+	public void setComboBoxMembership(JComboBox comboBoxMembership) {
+		this.comboBoxMembership = comboBoxMembership;
+	}
+
+	public JButton getButtonRegisterCustomer() {
+		return ButtonRegisterCustomer;
+	}
+
+	public void setButtonRegisterCustomer(JButton buttonRegisterCustomer) {
+		ButtonRegisterCustomer = buttonRegisterCustomer;
+	}
+
+	public JFormattedTextField getFormattedTextFieldCardNumber() {
+		return FormattedTextFieldCardNumber;
+	}
+
+	public void setFormattedTextFieldCardNumber(JFormattedTextField formattedTextFieldCardNumber) {
+		FormattedTextFieldCardNumber = formattedTextFieldCardNumber;
+	}
+
+	public JFormattedTextField getFormattedTextFieldTelephone() {
+		return FormattedTextFieldTelephone;
+	}
+
+	public void setFormattedTextFieldTelephone(JFormattedTextField formattedTextFieldTelephone) {
+		FormattedTextFieldTelephone = formattedTextFieldTelephone;
+	}
+	
 }

@@ -25,6 +25,12 @@ public class NewMovie extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldSinger;
 	private JTextField textFieldTitle;
+	private JButton ButtonRegisterMusicLive;
+	private JComboBox ComboBoxGenre;
+	private JComboBox comboBoxTypeMovie;
+	private MaskFormatter mascara;
+	private JFormattedTextField FormattedTextFieldYearOfRelease;
+	private JComboBox comboBoxPriceNewMovie;
 
 	/**
 	 * Launch the application.
@@ -104,16 +110,16 @@ public class NewMovie extends JFrame {
 		NewLabelTitle.setBounds(93, 174, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		JButton ButtonRegisterMusicLive = new JButton("Register");
+		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 440, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
 		
-		JComboBox ComboBoxGenre = new JComboBox();
+		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"​Action ", "Animation ", "Comedy ", "Crime ", "Drama ", "Experimental ", "Fantasy ", "Historical ", "Horror ", "Romance ", "Science Fiction ", "Thriller ", "Western ", "Other "}));
 		ComboBoxGenre.setBounds(238, 221, 157, 27);
 		contentPane.add(ComboBoxGenre);
 		
-		JComboBox comboBoxTypeMovie = new JComboBox();
+		comboBoxTypeMovie = new JComboBox();
 		comboBoxTypeMovie.setModel(new DefaultComboBoxModel(TypeEnum.values()));
 		comboBoxTypeMovie.setBounds(238, 323, 137, 27);
 		contentPane.add(comboBoxTypeMovie);
@@ -122,12 +128,12 @@ public class NewMovie extends JFrame {
 		NewLabelTypeLiveConcert.setBounds(93, 327, 61, 16);
 		contentPane.add(NewLabelTypeLiveConcert);
 		
-		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
+		mascara = new MaskFormatter("##/##/####");
+		FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 269, 117, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);
 		
-		JComboBox comboBoxPriceNewMovie = new JComboBox();
+		comboBoxPriceNewMovie = new JComboBox();
 		comboBoxPriceNewMovie.setModel(new DefaultComboBoxModel(new String[] {"1.99", "2.99", "3.99", "4.99", "5.99", "6.99", "7.99", "8.99", "9.99", "10.99", "11.99", "12.99", "13.99", "14.99", "15.99", "16.99", "17.99", "18.99", "19.99"}));
 		comboBoxPriceNewMovie.setBounds(238, 376, 137, 27);
 		contentPane.add(comboBoxPriceNewMovie);

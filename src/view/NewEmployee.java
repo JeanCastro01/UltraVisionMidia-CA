@@ -20,6 +20,7 @@ public class NewEmployee extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldUsernameEmployee;
 	private JTextField textFieldPasswordEmployee;
+	private JButton ButtonRegisterMusicLive;
 
 	/**
 	 * Launch the application.
@@ -91,11 +92,44 @@ public class NewEmployee extends JFrame {
 		textFieldEmployeePassword.setBounds(93, 183, 98, 16);
 		contentPane.add(textFieldEmployeePassword);
 		
-		JButton ButtonRegisterMusicLive = new JButton("Register");
+	    ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 241, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
 		
 		newemployee.validate();
 		newemployee.repaint();
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTextFieldUsernameEmployee() {
+		return textFieldUsernameEmployee;
+	}
+
+	public void setTextFieldUsernameEmployee(JTextField textFieldUsernameEmployee) {
+		this.textFieldUsernameEmployee = textFieldUsernameEmployee;
+	}
+
+	public JTextField getTextFieldPasswordEmployee() {
+		return textFieldPasswordEmployee;
+	}
+
+	public void setTextFieldPasswordEmployee(JTextField textFieldPasswordEmployee) {
+		this.textFieldPasswordEmployee = textFieldPasswordEmployee;
+	}
+
+	public JButton getButtonRegisterMusicLive() {
+		return ButtonRegisterMusicLive;
+	}
+
+	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
+		ButtonRegisterMusicLive = buttonRegisterMusicLive;
+	}
+	
 }

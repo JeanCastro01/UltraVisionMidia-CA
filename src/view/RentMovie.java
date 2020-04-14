@@ -30,8 +30,18 @@ public class RentMovie extends JFrame {
 	private JTable tableCustomerMovietable ;
 	private JTable table;
 	private JTextField textFieldSearchCustomerMovie;
+	private JButton ButtonSelectMovie;
+	private JLabel NewLabelSearchIcon;
+	private JButton NewButtonSelecCustomerMovie;
+	private MaskFormatter mascara;
+	private JFormattedTextField formattedTextFieldReturnDateMovie;
+	private MaskFormatter mascara2;
+	private JFormattedTextField formattedTextFieldRentedDate;
+	private JButton NewButtonRentMovie;
+	private JFormattedTextField formattedTextFieldTotalValueMovie;
+	private JCheckBox NewCheckBoxCardMovie;
 	
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -85,7 +95,7 @@ public class RentMovie extends JFrame {
 		panel.add(NewLabelRentMovie);
 		
 		
-		JButton ButtonSelectMovie = new JButton("Select");
+		ButtonSelectMovie = new JButton("Select");
 		ButtonSelectMovie.setBounds(578, 299, 117, 29);
 		contentPane.add(ButtonSelectMovie);
 		
@@ -101,7 +111,7 @@ public class RentMovie extends JFrame {
 		contentPane.add(textFieldSearchMovie);
 		textFieldSearchMovie.setColumns(10);
 		
-		JLabel NewLabelSearchIcon = new JLabel("Select Movie");
+		NewLabelSearchIcon = new JLabel("Select Movie");
 		NewLabelSearchIcon.setIcon(new ImageIcon(NewLoyaltyCard.class.getResource("/imagens/search2.png")));
 		NewLabelSearchIcon.setBounds(646, 118, 39, 26);
 		contentPane.add(NewLabelSearchIcon);
@@ -131,17 +141,17 @@ public class RentMovie extends JFrame {
 		lblNewLabel.setBounds(646, 353, 61, 20);
 		contentPane.add(lblNewLabel);
 		
-		JButton NewButtonSelecCustomerMovie = new JButton("Select");
+		NewButtonSelecCustomerMovie = new JButton("Select");
 		NewButtonSelecCustomerMovie.setBounds(578, 536, 117, 29);
 		contentPane.add(NewButtonSelecCustomerMovie);
 		
-		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
+		mascara = new MaskFormatter("##/##/####");
+		formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
 		formattedTextFieldReturnDateMovie.setBounds(127, 606, 130, 26);
 		contentPane.add(formattedTextFieldReturnDateMovie);
 		
-		MaskFormatter mascara2 = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
+		mascara2 = new MaskFormatter("##/##/####");
+		formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
 		formattedTextFieldRentedDate.setBounds(127, 568, 130, 26);
 		contentPane.add(formattedTextFieldRentedDate);
 		
@@ -158,11 +168,11 @@ public class RentMovie extends JFrame {
 		contentPane.add(NewLabelTotalValueMovie);
 		
 		
-		JFormattedTextField formattedTextFieldTotalValueMovie = new JFormattedTextField();
+		formattedTextFieldTotalValueMovie = new JFormattedTextField();
 		formattedTextFieldTotalValueMovie.setBounds(442, 646, 120, 26);
 		contentPane.add(formattedTextFieldTotalValueMovie);
 		
-		JButton NewButtonRentMovie = new JButton("Rent");
+		NewButtonRentMovie = new JButton("Rent");
 		NewButtonRentMovie.setBackground(Color.BLACK);
 		NewButtonRentMovie.setForeground(Color.RED);
 		NewButtonRentMovie.addActionListener(new ActionListener() {
@@ -176,7 +186,7 @@ public class RentMovie extends JFrame {
 		NewLabelSelectPaymentMovie.setBounds(454, 573, 231, 16);
 		contentPane.add(NewLabelSelectPaymentMovie);
 		
-		JCheckBox NewCheckBoxCardMovie = new JCheckBox("Card");
+		NewCheckBoxCardMovie = new JCheckBox("Card");
 		NewCheckBoxCardMovie.setBounds(442, 590, 91, 23);
 		contentPane.add(NewCheckBoxCardMovie);
 		
@@ -199,4 +209,133 @@ public class RentMovie extends JFrame {
 		rentmovie.repaint();
 
 }
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTableCustomerMovie() {
+		return tableCustomerMovie;
+	}
+
+	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
+		this.tableCustomerMovie = tableCustomerMovie;
+	}
+
+	public JTextField getTextFieldSearchMovie() {
+		return textFieldSearchMovie;
+	}
+
+	public void setTextFieldSearchMovie(JTextField textFieldSearchMovie) {
+		this.textFieldSearchMovie = textFieldSearchMovie;
+	}
+
+	public JTable getTableCustomerMovietable() {
+		return tableCustomerMovietable;
+	}
+
+	public void setTableCustomerMovietable(JTable tableCustomerMovietable) {
+		this.tableCustomerMovietable = tableCustomerMovietable;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	public JTextField getTextFieldSearchCustomerMovie() {
+		return textFieldSearchCustomerMovie;
+	}
+
+	public void setTextFieldSearchCustomerMovie(JTextField textFieldSearchCustomerMovie) {
+		this.textFieldSearchCustomerMovie = textFieldSearchCustomerMovie;
+	}
+
+	public JButton getButtonSelectMovie() {
+		return ButtonSelectMovie;
+	}
+
+	public void setButtonSelectMovie(JButton buttonSelectMovie) {
+		ButtonSelectMovie = buttonSelectMovie;
+	}
+
+	public JLabel getNewLabelSearchIcon() {
+		return NewLabelSearchIcon;
+	}
+
+	public void setNewLabelSearchIcon(JLabel newLabelSearchIcon) {
+		NewLabelSearchIcon = newLabelSearchIcon;
+	}
+
+	public JButton getNewButtonSelecCustomerMovie() {
+		return NewButtonSelecCustomerMovie;
+	}
+
+	public void setNewButtonSelecCustomerMovie(JButton newButtonSelecCustomerMovie) {
+		NewButtonSelecCustomerMovie = newButtonSelecCustomerMovie;
+	}
+
+	public MaskFormatter getMascara() {
+		return mascara;
+	}
+
+	public void setMascara(MaskFormatter mascara) {
+		this.mascara = mascara;
+	}
+
+	public JFormattedTextField getFormattedTextFieldReturnDateMovie() {
+		return formattedTextFieldReturnDateMovie;
+	}
+
+	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
+		this.formattedTextFieldReturnDateMovie = formattedTextFieldReturnDateMovie;
+	}
+
+	public MaskFormatter getMascara2() {
+		return mascara2;
+	}
+
+	public void setMascara2(MaskFormatter mascara2) {
+		this.mascara2 = mascara2;
+	}
+
+	public JFormattedTextField getFormattedTextFieldRentedDate() {
+		return formattedTextFieldRentedDate;
+	}
+
+	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
+		this.formattedTextFieldRentedDate = formattedTextFieldRentedDate;
+	}
+
+	public JButton getNewButtonRentMovie() {
+		return NewButtonRentMovie;
+	}
+
+	public void setNewButtonRentMovie(JButton newButtonRentMovie) {
+		NewButtonRentMovie = newButtonRentMovie;
+	}
+
+	public JFormattedTextField getFormattedTextFieldTotalValueMovie() {
+		return formattedTextFieldTotalValueMovie;
+	}
+
+	public void setFormattedTextFieldTotalValueMovie(JFormattedTextField formattedTextFieldTotalValueMovie) {
+		this.formattedTextFieldTotalValueMovie = formattedTextFieldTotalValueMovie;
+	}
+
+	public JCheckBox getNewCheckBoxCardMovie() {
+		return NewCheckBoxCardMovie;
+	}
+
+	public void setNewCheckBoxCardMovie(JCheckBox newCheckBoxCardMovie) {
+		NewCheckBoxCardMovie = newCheckBoxCardMovie;
+	}
+	
 }

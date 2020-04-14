@@ -24,7 +24,14 @@ public class NewTVBox extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldTitle;
-
+	private JButton ButtonRegisterMusicLive;
+	private JComboBox ComboBoxGenre;
+	private JComboBox comboBoxSeasonNewTVBox;
+	private JComboBox comboBoxTypeTVBox;
+	private MaskFormatter mascara;
+	private JFormattedTextField FormattedTextFieldYearOfRelease;
+	private JComboBox comboBoxNumberOfDisco;
+	private JComboBox comboBoxPriceNewTVBox;
 	/**
 	 * Launch the application.
 	 */
@@ -98,17 +105,17 @@ public class NewTVBox extends JFrame {
 		NewLabelTitle.setBounds(93, 117, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		JButton ButtonRegisterMusicLive = new JButton("Register");
+		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 511, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
 		
-		JComboBox ComboBoxGenre = new JComboBox();
+		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"​Action ", "Animation ", "Comedy ", "Crime ", "Drama ", "Experimental ", "Fantasy ", "Historical ", "Horror ", "Romance ", "Science Fiction ", "Thriller ", "Western ", "Other "}));
 		ComboBoxGenre.setToolTipText("Select Genre");
 		ComboBoxGenre.setBounds(238, 221, 137, 27);
 		contentPane.add(ComboBoxGenre);
 		
-		JComboBox comboBoxSeasonNewTVBox = new JComboBox();
+		comboBoxSeasonNewTVBox = new JComboBox();
 		comboBoxSeasonNewTVBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"}));
 		comboBoxSeasonNewTVBox.setBounds(238, 320, 137, 27);
 		contentPane.add(comboBoxSeasonNewTVBox);
@@ -117,7 +124,7 @@ public class NewTVBox extends JFrame {
 		lblSeason.setBounds(93, 324, 61, 16);
 		contentPane.add(lblSeason);
 		
-		JComboBox comboBoxTypeTVBox = new JComboBox();
+		comboBoxTypeTVBox = new JComboBox();
 		comboBoxTypeTVBox.setModel(new DefaultComboBoxModel(TypeEnum.values()));
 		comboBoxTypeTVBox.setBounds(238, 375, 137, 27);
 		contentPane.add(comboBoxTypeTVBox);
@@ -131,12 +138,12 @@ public class NewTVBox extends JFrame {
 		FormattedTextFieldYearOfRelease.setBounds(238, 271, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);
 		
-		JComboBox comboBoxNumberOfDisco = new JComboBox();
+		comboBoxNumberOfDisco = new JComboBox();
 		comboBoxNumberOfDisco.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"}));
 		comboBoxNumberOfDisco.setBounds(238, 168, 137, 27);
 		contentPane.add(comboBoxNumberOfDisco);
 		
-		JComboBox comboBoxPriceNewTVBox = new JComboBox();
+		comboBoxPriceNewTVBox = new JComboBox();
 		comboBoxPriceNewTVBox.setModel(new DefaultComboBoxModel(new String[] {"1.99", "2.99", "3.99", "4.99", "5.99", "6.99", "7.99", "8.99", "9.99", "10.99", "11.99", "12.99", "13.99", "14.99", "15.99", "16.99", "17.99", "18.99", "19.99"}));
 		comboBoxPriceNewTVBox.setBounds(238, 429, 137, 27);
 		contentPane.add(comboBoxPriceNewTVBox);
@@ -150,4 +157,85 @@ public class NewTVBox extends JFrame {
 		newtvbox.validate();
 		newtvbox.repaint();
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTextFieldTitle() {
+		return textFieldTitle;
+	}
+
+	public void setTextFieldTitle(JTextField textFieldTitle) {
+		this.textFieldTitle = textFieldTitle;
+	}
+
+	public JButton getButtonRegisterMusicLive() {
+		return ButtonRegisterMusicLive;
+	}
+
+	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
+		ButtonRegisterMusicLive = buttonRegisterMusicLive;
+	}
+
+	public JComboBox getComboBoxGenre() {
+		return ComboBoxGenre;
+	}
+
+	public void setComboBoxGenre(JComboBox comboBoxGenre) {
+		ComboBoxGenre = comboBoxGenre;
+	}
+
+	public JComboBox getComboBoxSeasonNewTVBox() {
+		return comboBoxSeasonNewTVBox;
+	}
+
+	public void setComboBoxSeasonNewTVBox(JComboBox comboBoxSeasonNewTVBox) {
+		this.comboBoxSeasonNewTVBox = comboBoxSeasonNewTVBox;
+	}
+
+	public JComboBox getComboBoxTypeTVBox() {
+		return comboBoxTypeTVBox;
+	}
+
+	public void setComboBoxTypeTVBox(JComboBox comboBoxTypeTVBox) {
+		this.comboBoxTypeTVBox = comboBoxTypeTVBox;
+	}
+
+	public MaskFormatter getMascara() {
+		return mascara;
+	}
+
+	public void setMascara(MaskFormatter mascara) {
+		this.mascara = mascara;
+	}
+
+	public JFormattedTextField getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease;
+	}
+
+	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
+		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
+	}
+
+	public JComboBox getComboBoxNumberOfDisco() {
+		return comboBoxNumberOfDisco;
+	}
+
+	public void setComboBoxNumberOfDisco(JComboBox comboBoxNumberOfDisco) {
+		this.comboBoxNumberOfDisco = comboBoxNumberOfDisco;
+	}
+
+	public JComboBox getComboBoxPriceNewTVBox() {
+		return comboBoxPriceNewTVBox;
+	}
+
+	public void setComboBoxPriceNewTVBox(JComboBox comboBoxPriceNewTVBox) {
+		this.comboBoxPriceNewTVBox = comboBoxPriceNewTVBox;
+	}
+	
 }

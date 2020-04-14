@@ -26,6 +26,12 @@ public class NewMusicLive extends JFrame {
 	
 	private JTextField textFieldSinger;
 	private JTextField textFieldTitle;
+	private JButton ButtonRegisterMusicLive;
+	private JComboBox ComboBoxGenre;
+	private JComboBox comboBoxTypeMusicLive;
+	private MaskFormatter mascara;
+	private JFormattedTextField FormattedTextFieldYearOfRelease;
+	private JComboBox comboBoxPriceNewMusicLive;
 
 	/**
 	 * Launch the application.
@@ -106,16 +112,16 @@ public class NewMusicLive extends JFrame {
 		NewLabelTitle.setBounds(93, 181, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		JButton ButtonRegisterMusicLive = new JButton("Register");
+		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 450, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
 		
-		JComboBox ComboBoxGenre = new JComboBox();
+		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"Rock", "Blues", "Jazz", "Reggae", "Country", "Rap", "Heavy Metal", "Electronic", "Pop", "Latin", "Folk", "Classical", "Opera"}));
 		ComboBoxGenre.setBounds(238, 225, 137, 27);
 		contentPane.add(ComboBoxGenre);
 		
-		JComboBox comboBoxTypeMusicLive = new JComboBox();
+		comboBoxTypeMusicLive = new JComboBox();
 		comboBoxTypeMusicLive.setModel(new DefaultComboBoxModel(TypeEnum.values()));
 		comboBoxTypeMusicLive.setBounds(238, 327, 137, 27);
 		contentPane.add(comboBoxTypeMusicLive);
@@ -129,7 +135,7 @@ public class NewMusicLive extends JFrame {
 		FormattedTextFieldYearOfRelease.setBounds(238, 275, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);
 		
-		JComboBox comboBoxPriceNewMusicLive = new JComboBox();
+		comboBoxPriceNewMusicLive = new JComboBox();
 		comboBoxPriceNewMusicLive.setModel(new DefaultComboBoxModel(new String[] {"1.99", "2.99", "3.99", "4.99", "5.99", "6.99", "7.99", "8.99", "9.99", "10.99", "11.99", "12.99", "13.99", "14.99", "15.99", "16.99", "17.99", "18.99", "19.99"}));
 		comboBoxPriceNewMusicLive.setBounds(241, 391, 134, 27);
 		contentPane.add(comboBoxPriceNewMusicLive);
@@ -141,5 +147,78 @@ public class NewMusicLive extends JFrame {
 		newmusiclive.validate();
 		newmusiclive.repaint();
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTextFieldSinger() {
+		return textFieldSinger;
+	}
+
+	public void setTextFieldSinger(JTextField textFieldSinger) {
+		this.textFieldSinger = textFieldSinger;
+	}
+
+	public JTextField getTextFieldTitle() {
+		return textFieldTitle;
+	}
+
+	public void setTextFieldTitle(JTextField textFieldTitle) {
+		this.textFieldTitle = textFieldTitle;
+	}
+
+	public JButton getButtonRegisterMusicLive() {
+		return ButtonRegisterMusicLive;
+	}
+
+	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
+		ButtonRegisterMusicLive = buttonRegisterMusicLive;
+	}
+
+	public JComboBox getComboBoxGenre() {
+		return ComboBoxGenre;
+	}
+
+	public void setComboBoxGenre(JComboBox comboBoxGenre) {
+		ComboBoxGenre = comboBoxGenre;
+	}
+
+	public JComboBox getComboBoxTypeMusicLive() {
+		return comboBoxTypeMusicLive;
+	}
+
+	public void setComboBoxTypeMusicLive(JComboBox comboBoxTypeMusicLive) {
+		this.comboBoxTypeMusicLive = comboBoxTypeMusicLive;
+	}
+
+	public MaskFormatter getMascara() {
+		return mascara;
+	}
+
+	public void setMascara(MaskFormatter mascara) {
+		this.mascara = mascara;
+	}
+
+	public JFormattedTextField getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease;
+	}
+
+	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
+		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
+	}
+
+	public JComboBox getComboBoxPriceNewMusicLive() {
+		return comboBoxPriceNewMusicLive;
+	}
+
+	public void setComboBoxPriceNewMusicLive(JComboBox comboBoxPriceNewMusicLive) {
+		this.comboBoxPriceNewMusicLive = comboBoxPriceNewMusicLive;
+	}
+	
 
 }

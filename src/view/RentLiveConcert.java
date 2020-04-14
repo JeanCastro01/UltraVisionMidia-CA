@@ -30,7 +30,13 @@ public class RentLiveConcert extends JFrame {
 	private JTable tableRentLiveConcert ;
 	private JTable tableRentCustomerLiveConcert;
 	private JTextField textFieldSearchCustomerRentLiveConcert;
-	
+	private JButton ButtonSelectRentLiveConcert;
+	private JButton NewButtonSelectCustomerRentLiveConcert ;
+	private JFormattedTextField formattedTextFieldReturnDateMovie;
+	private JFormattedTextField formattedTextFieldRentedDate;
+	private JFormattedTextField formattedTextFieldTotalValueLiveConcert;
+	private JButton NewButtonRentLiveConcert;
+	private JCheckBox NewCheckBoxCardLiveConcert ;
 
 	/**
 	 * Launch the application.
@@ -85,7 +91,7 @@ public class RentLiveConcert extends JFrame {
 		panel.add(NewLabelRentLiveConcert);
 		
 		
-		JButton ButtonSelectRentLiveConcert = new JButton("Select");
+		ButtonSelectRentLiveConcert = new JButton("Select");
 		ButtonSelectRentLiveConcert.setBounds(578, 299, 117, 29);
 		contentPane.add(ButtonSelectRentLiveConcert);
 		
@@ -131,17 +137,17 @@ public class RentLiveConcert extends JFrame {
 		NewLabelSearchIconRentCostumer.setBounds(646, 353, 61, 20);
 		contentPane.add(NewLabelSearchIconRentCostumer);
 		
-		JButton NewButtonSelectCustomerRentLiveConcert = new JButton("Select");
+		NewButtonSelectCustomerRentLiveConcert = new JButton("Select");
 		NewButtonSelectCustomerRentLiveConcert.setBounds(578, 536, 117, 29);
 		contentPane.add(NewButtonSelectCustomerRentLiveConcert);
 		
 		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
+		formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
 		formattedTextFieldReturnDateMovie.setBounds(127, 606, 130, 26);
 		contentPane.add(formattedTextFieldReturnDateMovie);
 		
 		MaskFormatter mascara2 = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
+		formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
 		formattedTextFieldRentedDate.setBounds(127, 568, 130, 26);
 		contentPane.add(formattedTextFieldRentedDate);
 		
@@ -158,11 +164,11 @@ public class RentLiveConcert extends JFrame {
 		contentPane.add(NewLabelTotalValueLiveConcert);
 		
 		
-		JFormattedTextField formattedTextFieldTotalValueLiveConcert = new JFormattedTextField();
+		formattedTextFieldTotalValueLiveConcert = new JFormattedTextField();
 		formattedTextFieldTotalValueLiveConcert.setBounds(442, 646, 120, 26);
 		contentPane.add(formattedTextFieldTotalValueLiveConcert);
 		
-		JButton NewButtonRentLiveConcert = new JButton("Rent");
+		NewButtonRentLiveConcert = new JButton("Rent");
 		NewButtonRentLiveConcert.setBackground(Color.BLACK);
 		NewButtonRentLiveConcert.setForeground(Color.RED);
 		NewButtonRentLiveConcert.addActionListener(new ActionListener() {
@@ -176,7 +182,7 @@ public class RentLiveConcert extends JFrame {
 		NewLabelSelectPaymentMovie.setBounds(454, 573, 231, 16);
 		contentPane.add(NewLabelSelectPaymentMovie);
 		
-		JCheckBox NewCheckBoxCardLiveConcert = new JCheckBox("Card");
+		NewCheckBoxCardLiveConcert = new JCheckBox("Card");
 		NewCheckBoxCardLiveConcert.setBounds(442, 590, 91, 23);
 		contentPane.add(NewCheckBoxCardLiveConcert);
 		
@@ -199,5 +205,111 @@ public class RentLiveConcert extends JFrame {
 		rentliveconcert.repaint();
 
 }
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTableCustomerMovie() {
+		return tableCustomerMovie;
+	}
+
+	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
+		this.tableCustomerMovie = tableCustomerMovie;
+	}
+
+	public JTextField getTextFieldSearchRentLiveConcert() {
+		return textFieldSearchRentLiveConcert;
+	}
+
+	public void setTextFieldSearchRentLiveConcert(JTextField textFieldSearchRentLiveConcert) {
+		this.textFieldSearchRentLiveConcert = textFieldSearchRentLiveConcert;
+	}
+
+	public JTable getTableRentLiveConcert() {
+		return tableRentLiveConcert;
+	}
+
+	public void setTableRentLiveConcert(JTable tableRentLiveConcert) {
+		this.tableRentLiveConcert = tableRentLiveConcert;
+	}
+
+	public JTable getTableRentCustomerLiveConcert() {
+		return tableRentCustomerLiveConcert;
+	}
+
+	public void setTableRentCustomerLiveConcert(JTable tableRentCustomerLiveConcert) {
+		this.tableRentCustomerLiveConcert = tableRentCustomerLiveConcert;
+	}
+
+	public JTextField getTextFieldSearchCustomerRentLiveConcert() {
+		return textFieldSearchCustomerRentLiveConcert;
+	}
+
+	public void setTextFieldSearchCustomerRentLiveConcert(JTextField textFieldSearchCustomerRentLiveConcert) {
+		this.textFieldSearchCustomerRentLiveConcert = textFieldSearchCustomerRentLiveConcert;
+	}
+
+	public JButton getButtonSelectRentLiveConcert() {
+		return ButtonSelectRentLiveConcert;
+	}
+
+	public void setButtonSelectRentLiveConcert(JButton buttonSelectRentLiveConcert) {
+		ButtonSelectRentLiveConcert = buttonSelectRentLiveConcert;
+	}
+
+	public JButton getNewButtonSelectCustomerRentLiveConcert() {
+		return NewButtonSelectCustomerRentLiveConcert;
+	}
+
+	public void setNewButtonSelectCustomerRentLiveConcert(JButton newButtonSelectCustomerRentLiveConcert) {
+		NewButtonSelectCustomerRentLiveConcert = newButtonSelectCustomerRentLiveConcert;
+	}
+
+	public JFormattedTextField getFormattedTextFieldReturnDateMovie() {
+		return formattedTextFieldReturnDateMovie;
+	}
+
+	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
+		this.formattedTextFieldReturnDateMovie = formattedTextFieldReturnDateMovie;
+	}
+
+	public JFormattedTextField getFormattedTextFieldRentedDate() {
+		return formattedTextFieldRentedDate;
+	}
+
+	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
+		this.formattedTextFieldRentedDate = formattedTextFieldRentedDate;
+	}
+
+	public JFormattedTextField getFormattedTextFieldTotalValueLiveConcert() {
+		return formattedTextFieldTotalValueLiveConcert;
+	}
+
+	public void setFormattedTextFieldTotalValueLiveConcert(JFormattedTextField formattedTextFieldTotalValueLiveConcert) {
+		this.formattedTextFieldTotalValueLiveConcert = formattedTextFieldTotalValueLiveConcert;
+	}
+
+	public JButton getNewButtonRentLiveConcert() {
+		return NewButtonRentLiveConcert;
+	}
+
+	public void setNewButtonRentLiveConcert(JButton newButtonRentLiveConcert) {
+		NewButtonRentLiveConcert = newButtonRentLiveConcert;
+	}
+
+	public JCheckBox getNewCheckBoxCardLiveConcert() {
+		return NewCheckBoxCardLiveConcert;
+	}
+
+	public void setNewCheckBoxCardLiveConcert(JCheckBox newCheckBoxCardLiveConcert) {
+		NewCheckBoxCardLiveConcert = newCheckBoxCardLiveConcert;
+	}
+	
+	
 }
 

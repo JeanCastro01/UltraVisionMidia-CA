@@ -21,6 +21,8 @@ public class NewLoyaltyCard extends JFrame {
 	private JPanel contentPane;
 	private JTable tableCustomerLoyaltyCard;
 	private JTextField textField;
+	private JButton ButtonCreateLoyaltyCard;
+	private JLabel NewLabelSearchIcon;
 
 	/**
 	 * Launch the application.
@@ -103,4 +105,45 @@ public class NewLoyaltyCard extends JFrame {
 		loyaltyCard.validate();
 		loyaltyCard.repaint();
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTable getTableCustomerLoyaltyCard() {
+		return tableCustomerLoyaltyCard;
+	}
+
+	public void setTableCustomerLoyaltyCard(JTable tableCustomerLoyaltyCard) {
+		this.tableCustomerLoyaltyCard = tableCustomerLoyaltyCard;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JButton getButtonCreateLoyaltyCard() {
+		return ButtonCreateLoyaltyCard;
+	}
+
+	public void setButtonCreateLoyaltyCard(JButton buttonCreateLoyaltyCard) {
+		ButtonCreateLoyaltyCard = buttonCreateLoyaltyCard;
+	}
+
+	public JLabel getNewLabelSearchIcon() {
+		return NewLabelSearchIcon;
+	}
+
+	public void setNewLabelSearchIcon(JLabel newLabelSearchIcon) {
+		NewLabelSearchIcon = newLabelSearchIcon;
+	}
+	
 }
