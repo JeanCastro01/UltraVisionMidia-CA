@@ -9,15 +9,14 @@ import view.RentMovie;
 
 public class Main {
 
-	public static void main(String[] args) throws ParseException  {
+	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
-		
-		
+
 		new Dashboard();
-		//new NewMovie();
-		//new NewLoyaltyCard();
-		//new NewCustomer();
-		//new NewMusicLive();
+		// new NewMovie();
+		// new NewLoyaltyCard();
+		// new NewCustomer();
+		// new NewMusicLive();
 	}
 
 }

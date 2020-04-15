@@ -30,7 +30,16 @@ public class RentTVBox extends JFrame {
 	private JTable tableRentTVBox ;
 	private JTable tableRentCustomerTVBox;
 	private JTextField textFieldSearchCustomerRentTVBox;
-	
+	private JButton ButtonSelectRentTVbox;
+	private JLabel NewLabelSearchIconRentTVBox;
+	private JButton NewButtonSelecCustomerRentTVBox;
+	private MaskFormatter mascara;
+	private JFormattedTextField formattedTextFieldReturnDateMovie;
+	private MaskFormatter mascara2;
+	private JFormattedTextField formattedTextFieldRentedDate;
+	private JFormattedTextField formattedTextFieldTotalValueTVBox;
+	private JButton NewButtonRentTVBox;
+	private JCheckBox NewCheckBoxCardTVbox;
 
 	/**
 	 * Launch the application.
@@ -85,7 +94,7 @@ public class RentTVBox extends JFrame {
 		panel.add(NewLabelRentTVBox);
 		
 		
-		JButton ButtonSelectRentTVbox = new JButton("Select");
+		ButtonSelectRentTVbox = new JButton("Select");
 		ButtonSelectRentTVbox.setBounds(578, 299, 117, 29);
 		contentPane.add(ButtonSelectRentTVbox);
 		
@@ -131,17 +140,17 @@ public class RentTVBox extends JFrame {
 		NewLabeliconRentTVBox.setBounds(646, 353, 61, 20);
 		contentPane.add(NewLabeliconRentTVBox);
 		
-		JButton NewButtonSelecCustomerRentTVBox = new JButton("Select");
+		NewButtonSelecCustomerRentTVBox = new JButton("Select");
 		NewButtonSelecCustomerRentTVBox.setBounds(578, 536, 117, 29);
 		contentPane.add(NewButtonSelecCustomerRentTVBox);
 		
-		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
+		mascara = new MaskFormatter("##/##/####");
+		formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
 		formattedTextFieldReturnDateMovie.setBounds(127, 606, 130, 26);
 		contentPane.add(formattedTextFieldReturnDateMovie);
 		
-		MaskFormatter mascara2 = new MaskFormatter("##/##/####");
-		JFormattedTextField formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
+		mascara2 = new MaskFormatter("##/##/####");
+		formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
 		formattedTextFieldRentedDate.setBounds(127, 568, 130, 26);
 		contentPane.add(formattedTextFieldRentedDate);
 		
@@ -158,11 +167,11 @@ public class RentTVBox extends JFrame {
 		contentPane.add(NewLabelTotalValueTVBox);
 		
 		
-		JFormattedTextField formattedTextFieldTotalValueTVBox = new JFormattedTextField();
+		formattedTextFieldTotalValueTVBox = new JFormattedTextField();
 		formattedTextFieldTotalValueTVBox.setBounds(442, 646, 120, 26);
 		contentPane.add(formattedTextFieldTotalValueTVBox);
 		
-		JButton NewButtonRentTVBox = new JButton("Rent");
+		NewButtonRentTVBox = new JButton("Rent");
 		NewButtonRentTVBox.setBackground(Color.BLACK);
 		NewButtonRentTVBox.setForeground(Color.RED);
 		NewButtonRentTVBox.addActionListener(new ActionListener() {
@@ -176,7 +185,7 @@ public class RentTVBox extends JFrame {
 		NewLabelSelectPaymentMovie.setBounds(454, 573, 231, 16);
 		contentPane.add(NewLabelSelectPaymentMovie);
 		
-		JCheckBox NewCheckBoxCardTVbox = new JCheckBox("Card");
+		NewCheckBoxCardTVbox = new JCheckBox("Card");
 		NewCheckBoxCardTVbox.setBounds(442, 590, 91, 23);
 		contentPane.add(NewCheckBoxCardTVbox);
 		
@@ -199,4 +208,134 @@ public class RentTVBox extends JFrame {
 		rentTVbox.repaint();
 
 }
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTableCustomerMovie() {
+		return tableCustomerMovie;
+	}
+
+	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
+		this.tableCustomerMovie = tableCustomerMovie;
+	}
+
+	public JTextField getTextFieldSearchRentTVBox() {
+		return textFieldSearchRentTVBox;
+	}
+
+	public void setTextFieldSearchRentTVBox(JTextField textFieldSearchRentTVBox) {
+		this.textFieldSearchRentTVBox = textFieldSearchRentTVBox;
+	}
+
+	public JTable getTableRentTVBox() {
+		return tableRentTVBox;
+	}
+
+	public void setTableRentTVBox(JTable tableRentTVBox) {
+		this.tableRentTVBox = tableRentTVBox;
+	}
+
+	public JTable getTableRentCustomerTVBox() {
+		return tableRentCustomerTVBox;
+	}
+
+	public void setTableRentCustomerTVBox(JTable tableRentCustomerTVBox) {
+		this.tableRentCustomerTVBox = tableRentCustomerTVBox;
+	}
+
+	public JTextField getTextFieldSearchCustomerRentTVBox() {
+		return textFieldSearchCustomerRentTVBox;
+	}
+
+	public void setTextFieldSearchCustomerRentTVBox(JTextField textFieldSearchCustomerRentTVBox) {
+		this.textFieldSearchCustomerRentTVBox = textFieldSearchCustomerRentTVBox;
+	}
+
+	public JButton getButtonSelectRentTVbox() {
+		return ButtonSelectRentTVbox;
+	}
+
+	public void setButtonSelectRentTVbox(JButton buttonSelectRentTVbox) {
+		ButtonSelectRentTVbox = buttonSelectRentTVbox;
+	}
+
+	public JLabel getNewLabelSearchIconRentTVBox() {
+		return NewLabelSearchIconRentTVBox;
+	}
+
+	public void setNewLabelSearchIconRentTVBox(JLabel newLabelSearchIconRentTVBox) {
+		NewLabelSearchIconRentTVBox = newLabelSearchIconRentTVBox;
+	}
+
+	public JButton getNewButtonSelecCustomerRentTVBox() {
+		return NewButtonSelecCustomerRentTVBox;
+	}
+
+	public void setNewButtonSelecCustomerRentTVBox(JButton newButtonSelecCustomerRentTVBox) {
+		NewButtonSelecCustomerRentTVBox = newButtonSelecCustomerRentTVBox;
+	}
+
+	public MaskFormatter getMascara() {
+		return mascara;
+	}
+
+	public void setMascara(MaskFormatter mascara) {
+		this.mascara = mascara;
+	}
+
+	public JFormattedTextField getFormattedTextFieldReturnDateMovie() {
+		return formattedTextFieldReturnDateMovie;
+	}
+
+	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
+		this.formattedTextFieldReturnDateMovie = formattedTextFieldReturnDateMovie;
+	}
+
+	public MaskFormatter getMascara2() {
+		return mascara2;
+	}
+
+	public void setMascara2(MaskFormatter mascara2) {
+		this.mascara2 = mascara2;
+	}
+
+	public JFormattedTextField getFormattedTextFieldRentedDate() {
+		return formattedTextFieldRentedDate;
+	}
+
+	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
+		this.formattedTextFieldRentedDate = formattedTextFieldRentedDate;
+	}
+
+	public JFormattedTextField getFormattedTextFieldTotalValueTVBox() {
+		return formattedTextFieldTotalValueTVBox;
+	}
+
+	public void setFormattedTextFieldTotalValueTVBox(JFormattedTextField formattedTextFieldTotalValueTVBox) {
+		this.formattedTextFieldTotalValueTVBox = formattedTextFieldTotalValueTVBox;
+	}
+
+	public JButton getNewButtonRentTVBox() {
+		return NewButtonRentTVBox;
+	}
+
+	public void setNewButtonRentTVBox(JButton newButtonRentTVBox) {
+		NewButtonRentTVBox = newButtonRentTVBox;
+	}
+
+	public JCheckBox getNewCheckBoxCardTVbox() {
+		return NewCheckBoxCardTVbox;
+	}
+
+	public void setNewCheckBoxCardTVbox(JCheckBox newCheckBoxCardTVbox) {
+		NewCheckBoxCardTVbox = newCheckBoxCardTVbox;
+	}
+	
+	
 }

@@ -2,12 +2,16 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.CustomerController;
 
 import java.awt.Dimension;
 import javax.swing.JLabel;
@@ -23,7 +27,7 @@ import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 
-public class NewCustomer extends JFrame {
+public class NewCustomer extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textFieldFirstName;
@@ -33,6 +37,19 @@ public class NewCustomer extends JFrame {
 	private JButton ButtonRegisterCustomer;
 	private JFormattedTextField FormattedTextFieldCardNumber;
 	private JFormattedTextField FormattedTextFieldTelephone;
+	
+	  // This window needs to know who the controller is
+    private CustomerController controllerInternalRef;
+    
+    public NewCustomer (CustomerController controller){
+        
+        // Putting the reference of the controller in the local reference
+        this.controllerInternalRef = controller;
+        
+        // encapsulated the building process of the window
+     
+    }
+
 
 	/**
 	 * Launch the application.
@@ -101,7 +118,7 @@ public class NewCustomer extends JFrame {
 		textFieldEmail.setColumns(10);
 		
 		comboBoxMembership = new JComboBox();
-		comboBoxMembership.setModel(new DefaultComboBoxModel(new String[] {"(ML) Music Live & Live Concert Videos ", "(VL) Movie", "(TV) Box Set", "(PR) Premium"}));
+		comboBoxMembership.setModel(new DefaultComboBoxModel<>(new String[] {"(ML) Music Live & Live Concert Videos ", "(VL) Movie", "(TV) Box Set", "(PR) Premium"}));
 		comboBoxMembership.setToolTipText("MusicLive\t\nMovie\nLiveConcert\nTVBox\nPremium");
 		comboBoxMembership.setMaximumRowCount(10);
 		comboBoxMembership.setBounds(234, 376, 334, 27);
@@ -134,6 +151,9 @@ public class NewCustomer extends JFrame {
 		ButtonRegisterCustomer = new JButton("Register");
 		ButtonRegisterCustomer.setBounds(238, 452, 117, 29);
 		contentPane.add(ButtonRegisterCustomer);
+		ButtonRegisterCustomer.addActionListener(this);
+        ButtonRegisterCustomer.setActionCommand("Register");
+	      
 		
 		MaskFormatter mascara = new MaskFormatter("####/####/####/####");
 		FormattedTextFieldCardNumber = new JFormattedTextField(mascara);
@@ -157,32 +177,32 @@ public class NewCustomer extends JFrame {
 		this.contentPane = contentPane;
 	}
 
-	public JTextField getTextFieldFirstName() {
-		return textFieldFirstName;
+	public String getTextFieldFirstName() {
+		return textFieldFirstName.getText();
 	}
 
 	public void setTextFieldFirstName(JTextField textFieldFirstName) {
 		this.textFieldFirstName = textFieldFirstName;
 	}
 
-	public JTextField getTextFieldEmail() {
-		return textFieldEmail;
+	public String getTextFieldEmail() {
+		return textFieldEmail.getText();
 	}
 
 	public void setTextFieldEmail(JTextField textFieldEmail) {
 		this.textFieldEmail = textFieldEmail;
 	}
 
-	public JTextField getTextFieldLastName() {
-		return textFieldLastName;
+	public String getTextFieldLastName() {
+		return textFieldLastName.getText();
 	}
 
 	public void setTextFieldLastName(JTextField textFieldLastName) {
 		this.textFieldLastName = textFieldLastName;
 	}
 
-	public JComboBox getComboBoxMembership() {
-		return comboBoxMembership;
+	public Object getComboBoxMembership() {
+		return comboBoxMembership.getSelectedItem();
 	}
 
 	public void setComboBoxMembership(JComboBox comboBoxMembership) {
@@ -197,20 +217,30 @@ public class NewCustomer extends JFrame {
 		ButtonRegisterCustomer = buttonRegisterCustomer;
 	}
 
-	public JFormattedTextField getFormattedTextFieldCardNumber() {
-		return FormattedTextFieldCardNumber;
+	public String getFormattedTextFieldCardNumber() {
+		return FormattedTextFieldCardNumber.getText();
 	}
 
 	public void setFormattedTextFieldCardNumber(JFormattedTextField formattedTextFieldCardNumber) {
 		FormattedTextFieldCardNumber = formattedTextFieldCardNumber;
 	}
 
-	public JFormattedTextField getFormattedTextFieldTelephone() {
-		return FormattedTextFieldTelephone;
+	public String getFormattedTextFieldTelephone() {
+		return FormattedTextFieldTelephone.getText();
 	}
 
 	public void setFormattedTextFieldTelephone(JFormattedTextField formattedTextFieldTelephone) {
 		FormattedTextFieldTelephone = formattedTextFieldTelephone;
 	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 	
-}
+	            
+	            
+	        }
+	}
+	
+

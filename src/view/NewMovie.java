@@ -23,7 +23,7 @@ import javax.swing.JFormattedTextField;
 public class NewMovie extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldSinger;
+	private JTextField textFieldDirector;
 	private JTextField textFieldTitle;
 	private JButton ButtonRegisterMusicLive;
 	private JComboBox ComboBoxGenre;
@@ -84,10 +84,10 @@ public class NewMovie extends JFrame {
 		NewLabelMusicLive.setIcon(new ImageIcon(NewMovie.class.getResource("/imagens/movie2.png")));
 		panel.add(NewLabelMusicLive);
 		
-		textFieldSinger = new JTextField();
-		textFieldSinger.setBounds(238, 120, 450, 26);
-		contentPane.add(textFieldSinger);
-		textFieldSinger.setColumns(10);
+		textFieldDirector = new JTextField();
+		textFieldDirector.setBounds(238, 120, 450, 26);
+		contentPane.add(textFieldDirector);
+		textFieldDirector.setColumns(10);
 		
 		textFieldTitle = new JTextField();
 		textFieldTitle.setBounds(238, 169, 450, 26);

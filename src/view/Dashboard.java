@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +13,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.UIManager;
+
+import controller.CustomerController;
+import controller.EmployeeController;
+import controller.LoyaltyCardController;
+import controller.MovieController;
+import controller.MusicLiveController;
+import controller.TVBoxController;
+
 import javax.swing.JMenuItem;
 
 public class Dashboard extends JFrame implements ActionListener {
@@ -19,23 +28,6 @@ public class Dashboard extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	
 	
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Dashboard frame = new Dashboard();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//		
-//	}
 
 	/**
 	 * Create the frame.
@@ -88,6 +80,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		
 		JMenuItem MenuItemMusicLive = new JMenuItem("Music Live");
 		JMenuRent.add(MenuItemMusicLive);
+		
 		//contentPane.add(MenuItemMusicLive);
 		
 		JMenuItem MenuItemMovie = new JMenuItem("Movie");
@@ -108,25 +101,31 @@ public class Dashboard extends JFrame implements ActionListener {
 		
 		JMenuItem JMenuItemNewCustomer = new JMenuItem("New Customer");
 		JMenuRegister.add(JMenuItemNewCustomer);
-		//contentPane.add(JMenuItemNewCustomer);
 		JMenuItemNewCustomer.setActionCommand("New Customer");
         JMenuItemNewCustomer.addActionListener((ActionListener) this);
 
 		
 		JMenuItem JMenuItemNewMusicLive = new JMenuItem("New MusicLive");
 		JMenuRegister.add(JMenuItemNewMusicLive);
-		//contentPane.add(JMenuItemNewMusicLive);
+		JMenuItemNewMusicLive.setActionCommand("New MusicLive");
+		JMenuItemNewMusicLive.addActionListener((ActionListener) this);
 		
 		JMenuItem JMenuItemNewMovie = new JMenuItem("New Movie");
 		JMenuRegister.add(JMenuItemNewMovie);
+		JMenuItemNewMovie.setActionCommand("New Movie");
+		JMenuItemNewMovie.addActionListener((ActionListener) this);
 		//contentPane.add(JMenuItemNewMovie);
 		
 		JMenuItem JMenuItemTVBox = new JMenuItem("New TVBox");
 		JMenuRegister.add(JMenuItemTVBox);
+		JMenuItemTVBox.setActionCommand("New TVBox");
+		JMenuItemTVBox.addActionListener((ActionListener) this);
 		//contentPane.add(JMenuItemTVBox);
 		
 		JMenuItem JMenuItemNewEmployee = new JMenuItem("New Employee");
 		JMenuRegister.add(JMenuItemNewEmployee);
+		JMenuItemNewEmployee.setActionCommand("New Employee");
+		JMenuItemNewEmployee.addActionListener((ActionListener) this);
 		//contentPane.add(JMenuItemNewEmployee);
 		
 		JMenu JMenuLoyaltyCard = new JMenu("Loyalty Card");
@@ -135,6 +134,8 @@ public class Dashboard extends JFrame implements ActionListener {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("New Loyalty Card");
 		JMenuLoyaltyCard.add(mntmNewMenuItem);
+		mntmNewMenuItem.setActionCommand("New Loyalty Card");
+		mntmNewMenuItem.addActionListener((ActionListener) this);
 		//contentPane.add(mntmNewMenuItem);
 	
 		
@@ -149,6 +150,31 @@ public class Dashboard extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+        String ac = e.getActionCommand();
+        if (ac.equals("New Customer")) {
+            
+            new CustomerController();
+        }
+        else if (e.getActionCommand().equals("New MusicLive")) {
+            new MusicLiveController();
+        }
+         else if (e.getActionCommand().equals("New Movie")) {
+             new MovieController();
+        }
+           else if (e.getActionCommand().equals("New TVBox")) {
+             new TVBoxController();
+        }
+        
+             else if (e.getActionCommand().equals("New Employee")) {
+             new EmployeeController();
+        }
+             else if (e.getActionCommand().equals("New Loyalty Card")) {
+             new LoyaltyCardController();
+        }
+             else if (e.getActionCommand().equals("logout")) {
+           this.dispose();
+          // new LoginController();
+           //new index();
+        }
 	}
 }

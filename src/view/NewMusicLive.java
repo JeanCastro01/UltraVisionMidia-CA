@@ -33,21 +33,6 @@ public class NewMusicLive extends JFrame {
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxPriceNewMusicLive;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewMusicLive frame = new NewMusicLive();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
