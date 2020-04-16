@@ -45,18 +45,16 @@ public class NewEmployee extends JFrame {
 		
 		JFrame newemployee = new JFrame ();
 		
-		
-	    
+	
 		newemployee.setTitle("Ultra Vision Midia");
+		newemployee.setVisible(true);
+	
 		
-		
-		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newemployee.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
-		
-		
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
+			
 		
 		contentPane = new JPanel();
 		contentPane.setSize(new Dimension(800, 600));
@@ -73,6 +71,7 @@ public class NewEmployee extends JFrame {
 		JLabel NewLabelEmployee = new JLabel("New Employee");
 		NewLabelEmployee.setIcon(new ImageIcon(NewEmployee.class.getResource("/imagens/employee.png")));
 		panel.add(NewLabelEmployee);
+	
 		
 		textFieldUsernameEmployee = new JTextField();
 		textFieldUsernameEmployee.setBounds(238, 120, 450, 26);

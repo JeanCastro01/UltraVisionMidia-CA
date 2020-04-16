@@ -53,7 +53,7 @@ public boolean newcustomer (Customer newcustomerRegistered){
     boolean newcustomer = false;
     try{
         // Building the query
-        String query = "INSERT INTO Customer (cust_id, First_name, Last_name, cust_email, Tel, Membership, Card_number  ) VALUES ('" + newcustomerRegistered.gettextFieldFirstName() + "','" + newcustomerRegistered.gettextFieldLastName() + "','" + newcustomerRegistered.gettextFieldEmail() +"','" + newcustomerRegistered.getFormattedTextFieldTelephone() +"','" + newcustomerRegistered.getcomboBoxMembership() +"','" + newcustomerRegistered.getFormattedTextFieldCardNumber() +"');";
+        String query = "INSERT INTO Customer (cust_id, First_name, Last_name, cust_email, Tel, Membership, Card_number  ) VALUES ('" + newcustomerRegistered.getFirstname() + "','" + newcustomerRegistered.getLastname() + "','" + newcustomerRegistered.getEmail() +"','" + newcustomerRegistered.getTel() +"','" + newcustomerRegistered.getMembership() +"','" + newcustomerRegistered.getCardNumber() +"');";
 
         // Sending the query to the database
         ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query) ;
@@ -114,7 +114,7 @@ public boolean newliveconcert (LiveConcert newliveconcertRegistered){
     boolean newliveconcert = false;
     try{
         // Building the query
-        String query = "INSERT INTO LiveConcert (LiveConcert_id, Title, Genre, YearOfRelease, Band, Rent, Type, Price, DataRented, DataReturn ) VALUES ('" + newliveconcertRegistered.gettextFieldTitle() + "','" + newliveconcertRegistered.getComboBoxGenre() + "','" + newliveconcertRegistered.getFormattedTextFieldYearOfRelease() +"','" + newliveconcertRegistered.gettextFieldBand() +"','" + newliveconcertRegistered.getcomboBoxTypeLiveConcert() +"','" + newliveconcertRegistered.getcomboBoxLiveConcertPrice() +"');";
+        String query = "INSERT INTO LiveConcert (LiveConcert_id, Title, Genre, YearOfRelease, Band, Rent, Type, Price, DataRented, DataReturn ) VALUES ('" + newliveconcertRegistered.getTitle() + "','" + newliveconcertRegistered.getGenre() + "','" + newliveconcertRegistered.getYearOfRelease() +"','" + newliveconcertRegistered.getBand() +"','" + newliveconcertRegistered.getType() +"','" + newliveconcertRegistered.getPrice() +"');";
 
         // Sending the query to the database
         ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query) ;
@@ -173,7 +173,7 @@ public boolean newmovie (Movie newmovieRegistered){
     boolean newmovie = false;
     try{
         // Building the query
-        String query = "INSERT INTO Movie (Movie_id, Title, Genre, YearOfRelease, Director, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newmovieRegistered.gettextFieldTitle() + "','" + newmovieRegistered.getComboBoxGenre() + "','" + newmovieRegistered.getFormattedTextFieldYearOfRelease() +"','" + newmovieRegistered.gettextFieldDirector() +"','" + newmovieRegistered.getcomboBoxTypeMovie() +"','" + newmovieRegistered.getcomboBoxPriceNewMovie() +"');";
+        String query = "INSERT INTO Movie (Movie_id, Title, Genre, YearOfRelease, Director, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newmovieRegistered.getTitle() + "','" + newmovieRegistered.getGenre() + "','" + newmovieRegistered.getYearOfRelease() +"','" + newmovieRegistered.getDirector() +"','" + newmovieRegistered.getType()+ "','" + newmovieRegistered.getPrice() +"');";
 
         // Sending the query to the database
         ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query) ;
@@ -232,7 +232,7 @@ public boolean newmusiclive (MusicLive newmusicliveRegistered){
     boolean newmusiclive = false;
     try{
         // Building the query
-        String query = "INSERT INTO MusicLive (Music_id, Title, Genre, YearOfRelease, Singer, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newmusicliveRegistered.gettextFieldTitle() + "','" + newmusicliveRegistered.getComboBoxGenre() + "','" + newmusicliveRegistered.getFormattedTextFieldYearOfRelease() +"','" + newmusicliveRegistered.gettextFieldSinger() +"','" + newmusicliveRegistered.getcomboBoxTypeMusicLive() +"','" + newmusicliveRegistered.getcomboBoxPriceNewMusicLive() +"');";
+        String query = "INSERT INTO MusicLive (Music_id, Title, Genre, YearOfRelease, Singer, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newmusicliveRegistered.getTitle() + "','" + newmusicliveRegistered.getGenre() + "','" + newmusicliveRegistered.getYearOfRelease() +"','" + newmusicliveRegistered.getSinger() +"','" + newmusicliveRegistered.getType() +"','" + newmusicliveRegistered.getPrice() +"');";
 
         // Sending the query to the database
         ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query) ;
@@ -285,13 +285,13 @@ private void closings4(){
 }
 
 
-public boolean newtvbox (MusicLive newtvboxRegistered){
+public boolean newtvbox (TVBox newtvboxRegistered){
     
     // Variable to define if the login is successful
     boolean newtvbox = false;
     try{
         // Building the query
-        String query = "INSERT INTO MusicLive (TVBox_id, Title, Genre, YearOfRelease, Season, NumberOfDisco, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newtvboxRegistered.gettextFieldTitle() + "','" + newtvboxRegistered.getComboBoxGenre() + "','" + newtvboxRegistered.getFormattedTextFieldYearOfRelease() +"','" + newtvboxRegistered.getcomboBoxSeasonNewTVBox() +"','" + newtvboxRegistered.getcomboBoxNumberOfDisco() +"','" + newtvboxRegistered.getcomboBoxTypeTVBox() +"','" + newtvboxRegistered.getcomboBoxPriceNewTVBox() +"');";
+        String query = "INSERT INTO MusicLive (TVBox_id, Title, Genre, YearOfRelease, Season, NumberOfDisco, Rent, Type, Price, DateRented, DateReturn  ) VALUES ('" + newtvboxRegistered.getTitle() + "','" + newtvboxRegistered.getGenre() + "','" + newtvboxRegistered.getYearOfRelease() +"','" + newtvboxRegistered.getSeason() +"','" + newtvboxRegistered.getNumberOfDisco() +"','" + newtvboxRegistered.getType() +"','" + newtvboxRegistered.getPrice() +"');";
 
         // Sending the query to the database
         ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query) ;

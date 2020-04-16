@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.ImageIcon;
@@ -16,6 +17,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.MovieController;
+import controller.TVBoxController;
+
 import javax.swing.DefaultComboBoxModel;
 import model.TypeEnum;
 import javax.swing.JFormattedTextField;
@@ -24,7 +29,7 @@ public class NewTVBox extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldTitle;
-	private JButton ButtonRegisterMusicLive;
+	private JButton ButtonRegisterTVBox;
 	private JComboBox ComboBoxGenre;
 	private JComboBox comboBoxSeasonNewTVBox;
 	private JComboBox comboBoxTypeTVBox;
@@ -32,39 +37,31 @@ public class NewTVBox extends JFrame {
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxNumberOfDisco;
 	private JComboBox comboBoxPriceNewTVBox;
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewTVBox frame = new NewTVBox();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	private JFrame newtvbox;
+	
+	
+	private TVBoxController controllerInternalRef;
+	
+	
+
 
 	/**
 	 * Create the frame.
 	 * @throws ParseException 
 	 */
-	public NewTVBox() throws ParseException {
+	public NewTVBox(TVBoxController controllerInternalRef) throws ParseException {
 		
-		JFrame newtvbox = new JFrame();
+		newtvbox = new JFrame();
 	    
 		newtvbox.setTitle("Ultra Vision Midia");
 		newtvbox.setVisible(true);
 		
 		
 		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newtvbox.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
 		
 		
 		
@@ -105,9 +102,11 @@ public class NewTVBox extends JFrame {
 		NewLabelTitle.setBounds(93, 117, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		ButtonRegisterMusicLive = new JButton("Register");
-		ButtonRegisterMusicLive.setBounds(238, 511, 117, 29);
-		contentPane.add(ButtonRegisterMusicLive);
+		ButtonRegisterTVBox = new JButton("Register");
+		ButtonRegisterTVBox.setBounds(238, 511, 117, 29);
+		contentPane.add(ButtonRegisterTVBox);
+		ButtonRegisterTVBox.addActionListener((ActionListener) controllerInternalRef);
+        ButtonRegisterTVBox.setActionCommand("Register");
 		
 		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"​Action ", "Animation ", "Comedy ", "Crime ", "Drama ", "Experimental ", "Fantasy ", "Historical ", "Horror ", "Romance ", "Science Fiction ", "Thriller ", "Western ", "Other "}));
@@ -166,40 +165,44 @@ public class NewTVBox extends JFrame {
 		this.contentPane = contentPane;
 	}
 
-	public JTextField getTextFieldTitle() {
-		return textFieldTitle;
+	public String getTextFieldTitle() {
+		return textFieldTitle.getText();
 	}
 
 	public void setTextFieldTitle(JTextField textFieldTitle) {
 		this.textFieldTitle = textFieldTitle;
 	}
 
-	public JButton getButtonRegisterMusicLive() {
-		return ButtonRegisterMusicLive;
+	public JButton getButtonRegisterTVbox() {
+		return ButtonRegisterTVBox;
 	}
 
-	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
-		ButtonRegisterMusicLive = buttonRegisterMusicLive;
+	public void setButtonRegisterTVBox(JButton buttonRegisterMusicLive) {
+		ButtonRegisterTVBox = buttonRegisterMusicLive;
 	}
 
-	public JComboBox getComboBoxGenre() {
-		return ComboBoxGenre;
+	public String getComboBoxGenre() {
+		String Genre = ComboBoxGenre.getSelectedItem().toString();
+		return Genre;
 	}
 
 	public void setComboBoxGenre(JComboBox comboBoxGenre) {
 		ComboBoxGenre = comboBoxGenre;
 	}
 
-	public JComboBox getComboBoxSeasonNewTVBox() {
-		return comboBoxSeasonNewTVBox;
+	public String getComboBoxSeasonNewTVBox() {
+		String season = comboBoxSeasonNewTVBox.getSelectedItem().toString();
+		return season;
 	}
 
 	public void setComboBoxSeasonNewTVBox(JComboBox comboBoxSeasonNewTVBox) {
 		this.comboBoxSeasonNewTVBox = comboBoxSeasonNewTVBox;
 	}
 
-	public JComboBox getComboBoxTypeTVBox() {
-		return comboBoxTypeTVBox;
+	public String getComboBoxTypeTVBox() {
+		
+		String type = comboBoxTypeTVBox.getSelectedItem().toString();
+		return type;
 	}
 
 	public void setComboBoxTypeTVBox(JComboBox comboBoxTypeTVBox) {
@@ -214,24 +217,31 @@ public class NewTVBox extends JFrame {
 		this.mascara = mascara;
 	}
 
-	public JFormattedTextField getFormattedTextFieldYearOfRelease() {
-		return FormattedTextFieldYearOfRelease;
+	public String getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease.getText();
 	}
 
 	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
 		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
 	}
 
-	public JComboBox getComboBoxNumberOfDisco() {
-		return comboBoxNumberOfDisco;
+	public String getComboBoxNumberOfDisco() {
+		
+		String number = comboBoxNumberOfDisco.getSelectedItem().toString();
+		return number;
 	}
 
 	public void setComboBoxNumberOfDisco(JComboBox comboBoxNumberOfDisco) {
 		this.comboBoxNumberOfDisco = comboBoxNumberOfDisco;
 	}
 
-	public JComboBox getComboBoxPriceNewTVBox() {
-		return comboBoxPriceNewTVBox;
+	public double getComboBoxPriceNewTVBox() {
+		
+        String price = comboBoxPriceNewTVBox.getSelectedItem().toString();
+		
+		double doublePrice = Double.parseDouble(price);
+		
+		return doublePrice;
 	}
 
 	public void setComboBoxPriceNewTVBox(JComboBox comboBoxPriceNewTVBox) {

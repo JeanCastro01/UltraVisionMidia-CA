@@ -6,25 +6,25 @@ package model;
 */
 public class LiveConcert extends AttributesGeneral{
    
-   
-	    private String Band;   
-	    private String DateRented;
-	    private String DateReturn;
-	    private String Type;
-	    
-	
-	
-	
-	    public LiveConcert(String yearOfRelease, String title, String genre, boolean rent, double Price) {
-		super(yearOfRelease, title, genre, rent, Price);
-		
-		
-		this.Band = Band;
-		this.DateRented = DateRented;
-		this.DateReturn = DateRented;
-		this.Type = Type;
-	}
+	private String Band;   
+    private String DateRented;
+    private String DateReturn;
 
+	 
+	  
+	
+	
+	    public LiveConcert(String yearOfRelease, String title, String genre, double Price, String Type, String Band) {
+		super(yearOfRelease, title, genre, Price, Type);
+		
+
+		this.Band = Band;
+	    this.DateRented = DateRented;
+	    this.DateReturn = DateReturn;
+	    
+		
+		
+	}
 
 
 

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.ImageIcon;
@@ -16,6 +17,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.CustomerController;
+import controller.MovieController;
+
 import javax.swing.DefaultComboBoxModel;
 import model.TypeEnum;
 import javax.swing.JFormattedTextField;
@@ -25,46 +30,35 @@ public class NewMovie extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldDirector;
 	private JTextField textFieldTitle;
-	private JButton ButtonRegisterMusicLive;
+	private JButton ButtonRegisterMovie;
 	private JComboBox ComboBoxGenre;
 	private JComboBox comboBoxTypeMovie;
 	private MaskFormatter mascara;
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxPriceNewMovie;
+    private	JFrame newmovie;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewMovie frame = new NewMovie();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	 private MovieController controllerInternalRef;
+
+
 
 	/**
 	 * Create the frame.
 	 * @throws ParseException 
 	 */
-	public NewMovie() throws ParseException {
+	public NewMovie(MovieController controllerInternalRef) throws ParseException {
 		
 		
-		JFrame newmovie = new JFrame();
+		newmovie = new JFrame();
         
 		newmovie.setTitle("Ultra Vision Midia");
-		
-		
 		newmovie.setVisible(true);
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		
+		
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newmovie.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
 		
 		
 		
@@ -110,9 +104,11 @@ public class NewMovie extends JFrame {
 		NewLabelTitle.setBounds(93, 174, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		ButtonRegisterMusicLive = new JButton("Register");
-		ButtonRegisterMusicLive.setBounds(238, 440, 117, 29);
-		contentPane.add(ButtonRegisterMusicLive);
+		ButtonRegisterMovie = new JButton("Register");
+		ButtonRegisterMovie.setBounds(238, 440, 117, 29);
+		contentPane.add(ButtonRegisterMovie);
+		ButtonRegisterMovie.addActionListener((ActionListener) controllerInternalRef);
+        ButtonRegisterMovie.setActionCommand("Register");
 		
 		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"​Action ", "Animation ", "Comedy ", "Crime ", "Drama ", "Experimental ", "Fantasy ", "Historical ", "Horror ", "Romance ", "Science Fiction ", "Thriller ", "Western ", "Other "}));
@@ -144,5 +140,87 @@ public class NewMovie extends JFrame {
 		
 		newmovie.validate();
 		newmovie.repaint();
+	}
+	
+	
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public String getTextFieldDirector() {
+		return textFieldDirector.getText();
+	}
+
+	public void setTextFieldDirector(JTextField textFieldDirector) {
+		this.textFieldDirector = textFieldDirector;
+	}
+
+	public String getTextFieldTitle() {
+		return textFieldTitle.getText();
+	}
+
+	public void setTextFieldTitle(JTextField textFieldTitle) {
+		this.textFieldTitle = textFieldTitle;
+	}
+
+	public JButton getButtonRegisterMovie() {
+		return ButtonRegisterMovie;
+	}
+
+	public void setButtonRegisterMovie(JButton buttonRegisterMovie) {
+		ButtonRegisterMovie = buttonRegisterMovie;
+	}
+
+	public String getComboBoxGenre() {
+		
+		String Genre = ComboBoxGenre.getSelectedItem().toString();
+		return Genre;
+	}
+
+	public void setComboBoxGenre(JComboBox comboBoxGenre) {
+		ComboBoxGenre = comboBoxGenre;
+	}
+
+	public String getComboBoxTypeMovie() {
+		
+		String type = comboBoxTypeMovie.getSelectedItem().toString();
+		return type;
+	}
+
+	public void setComboBoxTypeMovie(JComboBox comboBoxTypeMovie) {
+		this.comboBoxTypeMovie = comboBoxTypeMovie;
+	}
+
+	public MaskFormatter getMascara() {
+		return mascara;
+	}
+
+	public void setMascara(MaskFormatter mascara) {
+		this.mascara = mascara;
+	}
+
+	public String getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease.getText();
+	}
+
+	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
+		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
+	}
+
+	public double getComboBoxPriceNewMovie() {
+		
+		String price = comboBoxPriceNewMovie.getSelectedItem().toString();
+		
+		double doublePrice = Double.parseDouble(price);
+		
+		return doublePrice;
+	}
+
+	public void setComboBoxPriceNewMovie(JComboBox comboBoxPriceNewMovie) {
+		this.comboBoxPriceNewMovie = comboBoxPriceNewMovie;
 	}
 }

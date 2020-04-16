@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 
 import controller.CustomerController;
 import controller.EmployeeController;
+import controller.LiveConcertController;
 import controller.LoyaltyCardController;
 import controller.MovieController;
 import controller.MusicLiveController;
@@ -26,7 +27,7 @@ import javax.swing.JMenuItem;
 public class Dashboard extends JFrame implements ActionListener {
 	
 	private JPanel contentPane;
-	
+	private JFrame dashboard;
 	
 
 	/**
@@ -36,11 +37,12 @@ public class Dashboard extends JFrame implements ActionListener {
 		
 		
 		
-		JFrame dashboard = new JFrame();
+		dashboard = new JFrame();
 		
 
 		dashboard.setTitle("Ulta Vision Midia");
 		dashboard.setVisible(true);
+		
 		
 		contentPane = new JPanel();
 		dashboard.setContentPane(contentPane);
@@ -102,30 +104,35 @@ public class Dashboard extends JFrame implements ActionListener {
 		JMenuItem JMenuItemNewCustomer = new JMenuItem("New Customer");
 		JMenuRegister.add(JMenuItemNewCustomer);
 		JMenuItemNewCustomer.setActionCommand("New Customer");
-        JMenuItemNewCustomer.addActionListener((ActionListener) this);
+        JMenuItemNewCustomer.addActionListener(this);
 
 		
 		JMenuItem JMenuItemNewMusicLive = new JMenuItem("New MusicLive");
 		JMenuRegister.add(JMenuItemNewMusicLive);
+		JMenuItemNewMusicLive.addActionListener(this);
 		JMenuItemNewMusicLive.setActionCommand("New MusicLive");
-		JMenuItemNewMusicLive.addActionListener((ActionListener) this);
 		
 		JMenuItem JMenuItemNewMovie = new JMenuItem("New Movie");
 		JMenuRegister.add(JMenuItemNewMovie);
+		JMenuItemNewMovie.addActionListener(this);
 		JMenuItemNewMovie.setActionCommand("New Movie");
-		JMenuItemNewMovie.addActionListener((ActionListener) this);
 		//contentPane.add(JMenuItemNewMovie);
+		
+		JMenuItem JMenuItemLiveConcert1 = new JMenuItem("New LiveConcert");
+		JMenuRegister.add(JMenuItemLiveConcert1);
+		JMenuItemLiveConcert1.addActionListener(this);
+		JMenuItemLiveConcert1.setActionCommand("New LiveConcert");
 		
 		JMenuItem JMenuItemTVBox = new JMenuItem("New TVBox");
 		JMenuRegister.add(JMenuItemTVBox);
 		JMenuItemTVBox.setActionCommand("New TVBox");
-		JMenuItemTVBox.addActionListener((ActionListener) this);
+		JMenuItemTVBox.addActionListener( this);
 		//contentPane.add(JMenuItemTVBox);
 		
 		JMenuItem JMenuItemNewEmployee = new JMenuItem("New Employee");
 		JMenuRegister.add(JMenuItemNewEmployee);
 		JMenuItemNewEmployee.setActionCommand("New Employee");
-		JMenuItemNewEmployee.addActionListener((ActionListener) this);
+		JMenuItemNewEmployee.addActionListener(this);
 		//contentPane.add(JMenuItemNewEmployee);
 		
 		JMenu JMenuLoyaltyCard = new JMenu("Loyalty Card");
@@ -135,7 +142,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		JMenuItem mntmNewMenuItem = new JMenuItem("New Loyalty Card");
 		JMenuLoyaltyCard.add(mntmNewMenuItem);
 		mntmNewMenuItem.setActionCommand("New Loyalty Card");
-		mntmNewMenuItem.addActionListener((ActionListener) this);
+		mntmNewMenuItem.addActionListener(this);
 		//contentPane.add(mntmNewMenuItem);
 	
 		
@@ -153,7 +160,12 @@ public class Dashboard extends JFrame implements ActionListener {
         String ac = e.getActionCommand();
         if (ac.equals("New Customer")) {
             
-            new CustomerController();
+            try {
+				new CustomerController();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         }
         else if (e.getActionCommand().equals("New MusicLive")) {
             new MusicLiveController();
@@ -166,13 +178,21 @@ public class Dashboard extends JFrame implements ActionListener {
         }
         
              else if (e.getActionCommand().equals("New Employee")) {
-             new EmployeeController();
+             new NewEmployee();
         }
              else if (e.getActionCommand().equals("New Loyalty Card")) {
              new LoyaltyCardController();
         }
-             else if (e.getActionCommand().equals("logout")) {
-           this.dispose();
+             else if (e.getActionCommand().equals("New LiveConcert")) {
+            	 
+            	try {
+					new LiveConcertController();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            	 
+         
           // new LoginController();
            //new index();
         }

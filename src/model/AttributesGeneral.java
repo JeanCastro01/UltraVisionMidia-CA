@@ -12,15 +12,17 @@ public abstract class AttributesGeneral {
         private String Genre;
         private boolean Rent;
         private double Price;
+        private String Type;
    
    
-	public AttributesGeneral(String yearOfRelease, String title, String genre, boolean rent, double Price) {
+	public AttributesGeneral(String yearOfRelease, String title, String genre, double Price, String Type) {
 		super();
 		this.YearOfRelease = yearOfRelease;
 		this.Title = title;
 		this.Genre = genre;
-		this.Rent = rent =false;
+		this.Rent = false;
 		this.Price = Price;
+		this.Type = Type;
 	}
 
 
@@ -72,6 +74,17 @@ public abstract class AttributesGeneral {
 	public void setRent(boolean rent) {
 		Rent = rent;
 	}
+
+
+	public String getType() {
+		return Type;
+	}
+
+
+	public void setType(String type) {
+		Type = type;
+	}
+	
 
 }
 

@@ -6,21 +6,23 @@ package model;
  * @author jeancastro
  */
 public class MusicLive extends AttributesGeneral {
-    
+	
+	
 	   private String Singer;
 	   private String DataRented;
 	   private String DataReturn;
-	
-	
-       public MusicLive(String yearOfRelease, String title, String genre, boolean rent, double Price) {
-		super(yearOfRelease, title, genre, rent, Price);
+    
+	   public MusicLive(String yearOfRelease, String title, String genre, double Price, String Type, String Singer) {
+		super(yearOfRelease, title, genre, Price, Type);
+		
+		
 		
 		this.Singer = Singer;
 		this.DataRented = DataRented;
 		this.DataReturn = DataReturn;
-		
-		
-	}    
+		// TODO Auto-generated constructor stub
+	}
+ 
 
     
     	public String getDataRented() {

@@ -27,7 +27,7 @@ import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 
-public class NewCustomer extends JFrame implements ActionListener {
+public class NewCustomer extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldFirstName;
@@ -37,56 +37,37 @@ public class NewCustomer extends JFrame implements ActionListener {
 	private JButton ButtonRegisterCustomer;
 	private JFormattedTextField FormattedTextFieldCardNumber;
 	private JFormattedTextField FormattedTextFieldTelephone;
+	private MaskFormatter mascara;
+	private MaskFormatter mascara2;
+	
 	
 	  // This window needs to know who the controller is
     private CustomerController controllerInternalRef;
     
-    public NewCustomer (CustomerController controller){
+    public NewCustomer (CustomerController controller) throws ParseException{
         
         // Putting the reference of the controller in the local reference
         this.controllerInternalRef = controller;
         
-        // encapsulated the building process of the window
+        // We encapsulated the building process of the window
+        attributesSetter();
+      
      
     }
-
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void newcustomer() {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewCustomer frame = new NewCustomer();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 * @throws ParseException 
-	 */
-	public NewCustomer() throws ParseException {
+    private void attributesSetter() throws ParseException{
+    	
+	    JFrame newcustomer = new JFrame ();
 		
-		
-		JFrame newcustomer = new JFrame ();
-		
-		newcustomer.setTitle("Ulta Vision Midia");
+	    newcustomer.setTitle("Ulta Vision Midia");
 	    newcustomer.setVisible(true);		
 		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
-		newcustomer.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
-		
-		
-		
-		contentPane = new JPanel();
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+	    newcustomer.setSize(new Dimension(800, 600));
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
+    	
+	
+	    contentPane = new JPanel();
 		contentPane.setSize(new Dimension(800, 600));
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,6 +82,7 @@ public class NewCustomer extends JFrame implements ActionListener {
 		JLabel lblNewLabel = new JLabel("New Customer");
 		lblNewLabel.setIcon(new ImageIcon(NewCustomer.class.getResource("/imagens/employee.png")));
 		panel.add(lblNewLabel);
+		
 		
 		textFieldFirstName = new JTextField();
 		textFieldFirstName.setBounds(238, 120, 450, 26);
@@ -151,23 +133,29 @@ public class NewCustomer extends JFrame implements ActionListener {
 		ButtonRegisterCustomer = new JButton("Register");
 		ButtonRegisterCustomer.setBounds(238, 452, 117, 29);
 		contentPane.add(ButtonRegisterCustomer);
-		ButtonRegisterCustomer.addActionListener(this);
+		ButtonRegisterCustomer.addActionListener((ActionListener)controllerInternalRef);
         ButtonRegisterCustomer.setActionCommand("Register");
-	      
-		
-		MaskFormatter mascara = new MaskFormatter("####/####/####/####");
+	     
+        mascara = new MaskFormatter("####/####/####/####");
+
 		FormattedTextFieldCardNumber = new JFormattedTextField(mascara);
 		FormattedTextFieldCardNumber.setBounds(238, 322, 197, 26);
 		contentPane.add(FormattedTextFieldCardNumber);
 		
-		MaskFormatter mascara2 = new MaskFormatter("(+###)####/#####");
+
+		mascara2 = new MaskFormatter("(+###)####/#####");
+
 	    FormattedTextFieldTelephone = new JFormattedTextField(mascara2);
 		FormattedTextFieldTelephone.setBounds(238, 267, 197, 26);
-		contentPane.add(FormattedTextFieldTelephone);
+		contentPane.add(FormattedTextFieldTelephone);	
 		
-		newcustomer.validate();
-		newcustomer.repaint();
+		
+		 newcustomer.validate();
+		 newcustomer.repaint();
 	}
+  
+ 
+	
 
 	public JPanel getContentPane() {
 		return contentPane;
@@ -201,8 +189,9 @@ public class NewCustomer extends JFrame implements ActionListener {
 		this.textFieldLastName = textFieldLastName;
 	}
 
-	public Object getComboBoxMembership() {
-		return comboBoxMembership.getSelectedItem();
+	public String getComboBoxMembership() {
+		String membership = comboBoxMembership.getSelectedItem().toString();
+		return membership;
 	}
 
 	public void setComboBoxMembership(JComboBox comboBoxMembership) {
@@ -234,13 +223,7 @@ public class NewCustomer extends JFrame implements ActionListener {
 	}
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	
-	            
-	            
-	        }
+
 	}
 	
 

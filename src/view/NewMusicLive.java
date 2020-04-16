@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.ImageIcon;
@@ -16,6 +17,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.MovieController;
+import controller.MusicLiveController;
+
 import javax.swing.DefaultComboBoxModel;
 import model.TypeEnum;
 import javax.swing.JFormattedTextField;
@@ -32,15 +37,18 @@ public class NewMusicLive extends JFrame {
 	private MaskFormatter mascara;
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxPriceNewMusicLive;
+	private JFrame newmusiclive;
 
+	
+	 private MusicLiveController controllerInternalRef;
 
 	/**
 	 * Create the frame.
 	 * @throws ParseException 
 	 */
-	public NewMusicLive() throws ParseException {
+	public NewMusicLive(MusicLiveController controllerInternalRef) throws ParseException {
 		
-		JFrame newmusiclive = new JFrame();
+		newmusiclive = new JFrame();
 		
         
 		newmusiclive.setTitle("Ultra Vision Midia");
@@ -48,10 +56,10 @@ public class NewMusicLive extends JFrame {
 		
 		
 		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newmusiclive.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
 		
 		
 		
@@ -100,6 +108,8 @@ public class NewMusicLive extends JFrame {
 		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 450, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
+		ButtonRegisterMusicLive.addActionListener((ActionListener) controllerInternalRef);
+        ButtonRegisterMusicLive.setActionCommand("Register");
 		
 		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"Rock", "Blues", "Jazz", "Reggae", "Country", "Rap", "Heavy Metal", "Electronic", "Pop", "Latin", "Folk", "Classical", "Opera"}));
@@ -141,16 +151,16 @@ public class NewMusicLive extends JFrame {
 		this.contentPane = contentPane;
 	}
 
-	public JTextField getTextFieldSinger() {
-		return textFieldSinger;
+	public String getTextFieldSinger() {
+		return textFieldSinger.getText();
 	}
 
 	public void setTextFieldSinger(JTextField textFieldSinger) {
 		this.textFieldSinger = textFieldSinger;
 	}
 
-	public JTextField getTextFieldTitle() {
-		return textFieldTitle;
+	public String getTextFieldTitle() {
+		return textFieldTitle.getText();
 	}
 
 	public void setTextFieldTitle(JTextField textFieldTitle) {
@@ -165,16 +175,20 @@ public class NewMusicLive extends JFrame {
 		ButtonRegisterMusicLive = buttonRegisterMusicLive;
 	}
 
-	public JComboBox getComboBoxGenre() {
-		return ComboBoxGenre;
+	public String getComboBoxGenre() {
+		
+		String Genre = ComboBoxGenre.getSelectedItem().toString();
+		return Genre;
 	}
 
 	public void setComboBoxGenre(JComboBox comboBoxGenre) {
 		ComboBoxGenre = comboBoxGenre;
 	}
 
-	public JComboBox getComboBoxTypeMusicLive() {
-		return comboBoxTypeMusicLive;
+	public String getComboBoxTypeMusicLive() {
+		
+		String Type = comboBoxTypeMusicLive.getSelectedItem().toString();
+		return Type;
 	}
 
 	public void setComboBoxTypeMusicLive(JComboBox comboBoxTypeMusicLive) {
@@ -189,16 +203,19 @@ public class NewMusicLive extends JFrame {
 		this.mascara = mascara;
 	}
 
-	public JFormattedTextField getFormattedTextFieldYearOfRelease() {
-		return FormattedTextFieldYearOfRelease;
+	public String getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease.getText();
 	}
 
 	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
 		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
 	}
 
-	public JComboBox getComboBoxPriceNewMusicLive() {
-		return comboBoxPriceNewMusicLive;
+	public double getComboBoxPriceNewMusicLive() {
+		
+		String pricenewmusiclive = comboBoxPriceNewMusicLive.getSelectedItem().toString();
+		double doubleprice = Double.parseDouble(pricenewmusiclive);
+		return doubleprice;
 	}
 
 	public void setComboBoxPriceNewMusicLive(JComboBox comboBoxPriceNewMusicLive) {

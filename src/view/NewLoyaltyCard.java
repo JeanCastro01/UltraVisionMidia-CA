@@ -24,21 +24,7 @@ public class NewLoyaltyCard extends JFrame {
 	private JButton ButtonCreateLoyaltyCard;
 	private JLabel NewLabelSearchIcon;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewLoyaltyCard frame = new NewLoyaltyCard();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+
 
 	/**
 	 * Create the frame.
@@ -52,11 +38,10 @@ public class NewLoyaltyCard extends JFrame {
 		
 		
 		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		loyaltyCard.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
-		
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
 		
 		
 		contentPane = new JPanel();
@@ -74,6 +59,7 @@ public class NewLoyaltyCard extends JFrame {
 		JLabel NewLabelEmployee = new JLabel("New Loyalty Card");
 		NewLabelEmployee.setIcon(new ImageIcon(NewLoyaltyCard.class.getResource("/imagens/card2.png")));
 		panel.add(NewLabelEmployee);
+		contentPane.add(panel);
 		
 	
 		

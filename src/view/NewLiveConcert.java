@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.CustomerController;
+import controller.LiveConcertController;
+
 import javax.swing.DefaultComboBoxModel;
 import model.TypeEnum;
 import java.awt.List;
@@ -36,8 +40,9 @@ public class NewLiveConcert extends JFrame {
     private JFormattedTextField FormattedTextFieldYearOfRelease;
     private JComboBox comboBoxLiveConcertPrice;
     private JButton ButtonRegisterMusicLive;
+    private JFrame newliveconcert;
 	
-	
+    private LiveConcertController controllerInternalRef;
 	
 	/**
 	 * Launch the application.
@@ -61,20 +66,23 @@ public class NewLiveConcert extends JFrame {
 	 * Create the frame.
 	 * @throws ParseException 
 	 */
-	public NewLiveConcert() throws ParseException {
+	public NewLiveConcert(LiveConcertController controllerInternalRef) throws ParseException {
       
 		
+		this.controllerInternalRef = controllerInternalRef;
 		
-		JFrame newliveconcert = new JFrame();
+		
+		
+		newliveconcert = new JFrame();
 		
 		newliveconcert.setTitle("Ultra Vision Midia");
+		newliveconcert.setVisible(true);	
 		
 		
-		
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
+		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newliveconcert.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
+		//getContentPane().setSize(new Dimension(800, 660));
+		//getContentPane().setLayout(null);
 		
 		
 		
@@ -93,6 +101,7 @@ public class NewLiveConcert extends JFrame {
 		JLabel NewLabelLiveConcert = new JLabel("New Live Concert");
 		NewLabelLiveConcert.setIcon(new ImageIcon(NewLiveConcert.class.getResource("/imagens/Music Live2.png")));
 		panel.add(NewLabelLiveConcert);
+		
 		
 		textFieldBand = new JTextField();
 		textFieldBand.setBounds(238, 120, 450, 26);
@@ -121,15 +130,10 @@ public class NewLiveConcert extends JFrame {
 		contentPane.add(NewLabelTitle);
 		
 		JButton ButtonRegisterMusicLive = new JButton("Register");
-		ButtonRegisterMusicLive.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				 
-				
-			}
-		});
 		ButtonRegisterMusicLive.setBounds(238, 436, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
+		ButtonRegisterMusicLive.addActionListener((ActionListener)controllerInternalRef);
+		ButtonRegisterMusicLive.setActionCommand("Register");
 		
 		ComboBoxGenre = new JComboBox();
 		ComboBoxGenre.setModel(new DefaultComboBoxModel(new String[] {"Rock", "Blues", "Jazz", "Reggae", "Country", "Rap", "Heavy Metal", "Electronic", "Pop", "Latin", "Folk", "Classical", "Opera"}));
@@ -174,8 +178,8 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JTextField getTextFieldBand() {
-		return textFieldBand;
+	public String getTextFieldBand() {
+		return textFieldBand.getText();
 	}
 
 
@@ -186,8 +190,8 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JTextField getTextFieldTitle() {
-		return textFieldTitle;
+	public String getTextFieldTitle() {
+		return textFieldTitle.getText();
 	}
 
 
@@ -198,8 +202,10 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JComboBox getComboBoxGenre() {
-		return ComboBoxGenre;
+	public String getComboBoxGenre() {
+		
+		String Genre = ComboBoxGenre.getSelectedItem().toString();
+		return Genre;
 	}
 
 
@@ -210,14 +216,16 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JComboBox getComboBoxTypeLiveConcert() {
-		return comboBoxTypeLiveConcert;
+	public String getComboBoxTypeLiveConcert() {
+		String type = comboBoxTypeLiveConcert.getSelectedItem().toString();
+		return type;
 	}
 
 
 
 	public void setComboBoxTypeLiveConcert(JComboBox comboBoxTypeLiveConcert) {
-		this.comboBoxTypeLiveConcert = comboBoxTypeLiveConcert;
+		
+		comboBoxTypeLiveConcert = comboBoxTypeLiveConcert;
 	}
 
 
@@ -246,8 +254,8 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JFormattedTextField getFormattedTextFieldYearOfRelease() {
-		return FormattedTextFieldYearOfRelease;
+	public String getFormattedTextFieldYearOfRelease() {
+		return FormattedTextFieldYearOfRelease.getText();
 	}
 
 
@@ -258,8 +266,13 @@ public class NewLiveConcert extends JFrame {
 
 
 
-	public JComboBox getComboBoxLiveConcertPrice() {
-		return comboBoxLiveConcertPrice;
+	public double  getComboBoxLiveConcertPrice() {
+		
+        String price = comboBoxLiveConcertPrice.getSelectedItem().toString();
+		
+		double doublePrice = Double.parseDouble(price);
+		
+		return doublePrice;
 	}
 
 
