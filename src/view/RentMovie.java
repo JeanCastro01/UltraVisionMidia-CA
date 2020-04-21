@@ -45,18 +45,6 @@ public class RentMovie extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewMovie frame = new NewMovie();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -68,6 +56,8 @@ public class RentMovie extends JFrame {
 		JFrame rentmovie = new JFrame();
         
 		rentmovie.setTitle("Ultra Vision Midia");
+		rentmovie.setLocationRelativeTo(null);
+		rentmovie.setResizable(false);
 		
 		
 		rentmovie.setVisible(true);
@@ -75,6 +65,7 @@ public class RentMovie extends JFrame {
 	    rentmovie.setSize(new Dimension(800, 700));
 		getContentPane().setSize(new Dimension(800, 660));
 		getContentPane().setLayout(null);
+		
 		
 		
 		

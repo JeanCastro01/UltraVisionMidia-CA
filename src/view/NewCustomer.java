@@ -60,12 +60,10 @@ public class NewCustomer extends JFrame {
 		
 	    newcustomer.setTitle("Ulta Vision Midia");
 	    newcustomer.setVisible(true);		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 	    newcustomer.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
-    	
+		newcustomer.setLocationRelativeTo(null);
+		newcustomer.setResizable(false);
+	
 	
 	    contentPane = new JPanel();
 		contentPane.setSize(new Dimension(800, 600));

@@ -43,14 +43,15 @@ public class CustomerController implements ActionListener  {
              
             boolean newcustomerRegistered =  db.newcustomer(model);
             
-              if(newcustomerRegistered = true){
+              if(newcustomerRegistered ){
             	
             	JOptionPane.showMessageDialog(null, "Submited");
+            	
                  
                        view.dispose();
             }
 
-               db.newcustomer(model);
+              
          
             }
   

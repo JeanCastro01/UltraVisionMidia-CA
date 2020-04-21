@@ -21,15 +21,11 @@ public class TVBoxController implements ActionListener {
     
     
     // When the  controller starts, we need a new model and a new view
-    public TVBoxController(){
+    public TVBoxController() throws ParseException{
         
-			 try {
-				view = new NewTVBox(this);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+			
+	   view = new NewTVBox(this);
+	
     }
     
     @Override
@@ -56,7 +52,7 @@ public class TVBoxController implements ActionListener {
              
             boolean newtvboxRegistered =  db.newtvbox(tvbox);
             
-            if(newtvboxRegistered == true){
+            if(newtvboxRegistered){
             		
             JOptionPane.showMessageDialog(null, "Submited");
              view.dispose();

@@ -19,15 +19,11 @@ public class MusicLiveController implements ActionListener {
     
     
     // When the  controller starts, we need a new model and a new view
-    public MusicLiveController(){
+    public MusicLiveController() throws ParseException{
         
-			 try {
-				view = new NewMusicLive(this);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		
+				view = new NewMusicLive(this);
+	
     }
     
     @Override
@@ -53,16 +49,14 @@ public class MusicLiveController implements ActionListener {
              
             boolean newmusicliveRegistered =  db.newmusiclive(musiclive);
             
-            if(newmusicliveRegistered == true){
+            if(newmusicliveRegistered){
             		
             JOptionPane.showMessageDialog(null, "Submited");
              view.dispose();
              
             }
-
-              db.newmusiclive(musiclive);
-         
-            }
+            
+        }
  
     }
 }

@@ -21,32 +21,29 @@ public class MovieController implements ActionListener {
     
     
     // When the  controller starts, we need a new model and a new view
-    public MovieController(){
+    public MovieController() throws ParseException{
         
-			 try {
+			
 				view = new NewMovie(this);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
+	
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         
      
-    	String yearOfRelease = view.getFormattedTextFieldYearOfRelease();
+    	
     	String title = view.getTextFieldTitle();
     	String genre = view.getComboBoxGenre();
-    	double Price = view.getComboBoxPriceNewMovie();
-    	String Type = view.getComboBoxTypeMovie();
+    	String yearOfRelease = view.getFormattedTextFieldYearOfRelease();
     	String Director = view.getTextFieldDirector();
-    	
+    	String Type = view.getComboBoxTypeMovie();
+    	double Price = view.getComboBoxPriceNewMovie();
+    	    	
     
         
-        Movie movie = new Movie (yearOfRelease, title,  genre, Price,  Type,  Director);
-        
+        Movie movie = new Movie ( yearOfRelease,  title, genre, Price,  Type,  Director);
+              
       
         if(e.getActionCommand().equals("Register")){
         	
@@ -54,14 +51,14 @@ public class MovieController implements ActionListener {
              
             boolean newmovieRegistered =  db.newmovie(movie);
             
-            if(newmovieRegistered == true){
+            if(newmovieRegistered){
             		
             JOptionPane.showMessageDialog(null, "Submited");
              view.dispose();
              
             }
 
-              db.newmovie(movie);
+              
          
             }
  

@@ -18,6 +18,7 @@ import javax.swing.text.MaskFormatter;
 
 import controller.CustomerController;
 import controller.LiveConcertController;
+import controller.TVBoxController;
 
 import javax.swing.DefaultComboBoxModel;
 import model.TypeEnum;
@@ -40,50 +41,35 @@ public class NewLiveConcert extends JFrame {
     private JFormattedTextField FormattedTextFieldYearOfRelease;
     private JComboBox comboBoxLiveConcertPrice;
     private JButton ButtonRegisterMusicLive;
-    private JFrame newliveconcert;
+    
 	
     private LiveConcertController controllerInternalRef;
 	
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewLiveConcert frame = new NewLiveConcert();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	
-
-	/**
-	 * Create the frame.
-	 * @throws ParseException 
-	 */
-	public NewLiveConcert(LiveConcertController controllerInternalRef) throws ParseException {
-      
-		
-		this.controllerInternalRef = controllerInternalRef;
+    
+    public NewLiveConcert (LiveConcertController controller) throws ParseException{
+   	        
+   	        // Putting the reference of the controller in the local reference
+   	        this.controllerInternalRef = controller;
+   	        
+   	        // We encapsulated the building process of the window
+   	        attributesSetter();
+   	      
+   	     
+   	    }
+   	   
+   private void attributesSetter() throws ParseException{
+   		
+      	
 		
 		
-		
-		newliveconcert = new JFrame();
+		JFrame newliveconcert = new JFrame();
 		
 		newliveconcert.setTitle("Ultra Vision Midia");
 		newliveconcert.setVisible(true);	
-		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newliveconcert.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
-		
+		newliveconcert.setLocationRelativeTo(null);
+		newliveconcert.setResizable(false);
+	
 		
 		
 		contentPane = new JPanel();

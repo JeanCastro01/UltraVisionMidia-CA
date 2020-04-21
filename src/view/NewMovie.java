@@ -36,30 +36,34 @@ public class NewMovie extends JFrame {
 	private MaskFormatter mascara;
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxPriceNewMovie;
-    private	JFrame newmovie;
+   
 
-	 private MovieController controllerInternalRef;
+   private MovieController controllerInternalRef;
+    
+    public NewMovie (MovieController controller) throws ParseException{
+        
+        // Putting the reference of the controller in the local reference
+        this.controllerInternalRef = controller;
+        
+        // We encapsulated the building process of the window
+        attributesSetter();
+      
+     
+    }
+    
 
-
-
-	/**
-	 * Create the frame.
-	 * @throws ParseException 
-	 */
-	public NewMovie(MovieController controllerInternalRef) throws ParseException {
+	private void attributesSetter() throws ParseException  {
 		
 		
-		newmovie = new JFrame();
+		JFrame newmovie = new JFrame();
         
 		newmovie.setTitle("Ultra Vision Midia");
 		newmovie.setVisible(true);
-		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newmovie.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
+		newmovie.setLocationRelativeTo(null);
+		newmovie.setResizable(false);
 		
+	
 		
 		
 		contentPane = new JPanel();
@@ -124,7 +128,7 @@ public class NewMovie extends JFrame {
 		NewLabelTypeLiveConcert.setBounds(93, 327, 61, 16);
 		contentPane.add(NewLabelTypeLiveConcert);
 		
-		mascara = new MaskFormatter("##/##/####");
+		mascara = new MaskFormatter("####");
 		FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 269, 117, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);

@@ -35,13 +35,10 @@ public class NewLoyaltyCard extends JFrame {
         
 		loyaltyCard.setTitle("Ultra Vision Midia");
 		loyaltyCard.setVisible(true);
-		
-		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		loyaltyCard.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
+		loyaltyCard.setLocationRelativeTo(null);
+		loyaltyCard.setResizable(false);
+	
 		
 		
 		contentPane = new JPanel();

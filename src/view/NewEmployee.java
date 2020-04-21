@@ -25,18 +25,6 @@ public class NewEmployee extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewEmployee frame = new NewEmployee();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -48,12 +36,11 @@ public class NewEmployee extends JFrame {
 	
 		newemployee.setTitle("Ultra Vision Midia");
 		newemployee.setVisible(true);
+		newemployee.setLocationRelativeTo(null);
+		newemployee.setResizable(false);
 	
 		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newemployee.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
 			
 		
 		contentPane = new JPanel();

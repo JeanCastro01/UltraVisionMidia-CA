@@ -7,6 +7,7 @@ import view.NewLoyaltyCard;
 import view.NewMovie;
 import view.NewMusicLive;
 import view.RentMovie;
+import view.TitlesAvailable;
 
 public class Main {
 
@@ -19,6 +20,7 @@ public class Main {
 		//new NewLoyaltyCard();
 	     //new NewCustomer();
 		// new NewMusicLive();
+		//new TitlesAvailable ();
 	}
 
 }

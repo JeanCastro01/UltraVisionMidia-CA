@@ -43,18 +43,6 @@ public class RentMusicLive extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewMovie frame = new NewMovie();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -66,7 +54,8 @@ public class RentMusicLive extends JFrame {
 		JFrame rentmusiclive = new JFrame();
         
 		rentmusiclive.setTitle("Ultra Vision Midia");
-		
+		rentmusiclive.setLocationRelativeTo(null);
+		rentmusiclive.setResizable(false);
 		
 		rentmusiclive.setVisible(true);
 		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));

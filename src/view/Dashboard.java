@@ -42,15 +42,14 @@ public class Dashboard extends JFrame implements ActionListener {
 
 		dashboard.setTitle("Ulta Vision Midia");
 		dashboard.setVisible(true);
+	   // dashboard.setLocationRelativeTo(contentPane);
+		dashboard.setResizable(false);
 		
 		
 		contentPane = new JPanel();
 		dashboard.setContentPane(contentPane);
 		contentPane.setBackground(Color.BLACK);
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		dashboard.setSize(new Dimension(800, 600));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
@@ -144,6 +143,19 @@ public class Dashboard extends JFrame implements ActionListener {
 		mntmNewMenuItem.setActionCommand("New Loyalty Card");
 		mntmNewMenuItem.addActionListener(this);
 		//contentPane.add(mntmNewMenuItem);
+		
+		JMenu SearchTitles = new JMenu("Search Titles");
+		menuBar.add(SearchTitles);
+		
+		JMenuItem JNewMenuItemSearchTitlesAvailable = new JMenuItem("Available");
+		SearchTitles.add(JNewMenuItemSearchTitlesAvailable);
+		JNewMenuItemSearchTitlesAvailable.setActionCommand("Available");
+		JNewMenuItemSearchTitlesAvailable.addActionListener(this);
+		
+		JMenuItem JNewMenuItemSearchTitlesRented = new JMenuItem("Rented");
+		SearchTitles.add(JNewMenuItemSearchTitlesRented);
+		JNewMenuItemSearchTitlesRented.setActionCommand("Rented");
+		JNewMenuItemSearchTitlesRented.addActionListener(this);
 	
 		
          
@@ -168,14 +180,31 @@ public class Dashboard extends JFrame implements ActionListener {
 			}
         }
         else if (e.getActionCommand().equals("New MusicLive")) {
-            new MusicLiveController();
+            
+				try {
+					new MusicLiveController();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		
         }
          else if (e.getActionCommand().equals("New Movie")) {
-             new MovieController();
+             try {
+				new MovieController();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         }
            else if (e.getActionCommand().equals("New TVBox")) {
-             new TVBoxController();
-        }
+        	   try {
+				new TVBoxController();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+           }
         
              else if (e.getActionCommand().equals("New Employee")) {
              new NewEmployee();
@@ -183,6 +212,9 @@ public class Dashboard extends JFrame implements ActionListener {
              else if (e.getActionCommand().equals("New Loyalty Card")) {
              new LoyaltyCardController();
         }
+             else if (e.getActionCommand().equals("Available")) {
+                 new TitlesAvailable();
+            }
              else if (e.getActionCommand().equals("New LiveConcert")) {
             	 
             	try {
@@ -193,8 +225,7 @@ public class Dashboard extends JFrame implements ActionListener {
 				}
             	 
          
-          // new LoginController();
-           //new index();
+          
         }
 	}
 }

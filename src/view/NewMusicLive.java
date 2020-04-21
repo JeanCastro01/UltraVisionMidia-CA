@@ -37,29 +37,33 @@ public class NewMusicLive extends JFrame {
 	private MaskFormatter mascara;
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxPriceNewMusicLive;
-	private JFrame newmusiclive;
-
 	
 	 private MusicLiveController controllerInternalRef;
+	    
+	    public NewMusicLive (MusicLiveController controller) throws ParseException{
+	        
+	        // Putting the reference of the controller in the local reference
+	        this.controllerInternalRef = controller;
+	        
+	        // We encapsulated the building process of the window
+	        attributesSetter();
+	      
+	     
+	    }
+	    
 
-	/**
-	 * Create the frame.
-	 * @throws ParseException 
-	 */
-	public NewMusicLive(MusicLiveController controllerInternalRef) throws ParseException {
+private void attributesSetter() throws ParseException  {
+			
 		
-		newmusiclive = new JFrame();
+	 JFrame newmusiclive = new JFrame();
 		
         
 		newmusiclive.setTitle("Ultra Vision Midia");
 		newmusiclive.setVisible(true);
-		
-		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newmusiclive.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
+		newmusiclive.setLocationRelativeTo(null);
+		newmusiclive.setResizable(false);
+		
 		
 		
 		
@@ -125,8 +129,8 @@ public class NewMusicLive extends JFrame {
 		NewLabelTypeMusicLive.setBounds(93, 331, 61, 16);
 		contentPane.add(NewLabelTypeMusicLive);
 		
-		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
+		MaskFormatter mascara = new MaskFormatter("####");
+		FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 275, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);
 		
@@ -204,7 +208,8 @@ public class NewMusicLive extends JFrame {
 	}
 
 	public String getFormattedTextFieldYearOfRelease() {
-		return FormattedTextFieldYearOfRelease.getText();
+		String yearOfRelease = FormattedTextFieldYearOfRelease.getText();
+		return yearOfRelease;
 	}
 
 	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {

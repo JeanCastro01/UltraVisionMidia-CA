@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import controller.CustomerController;
 import controller.MovieController;
 import controller.TVBoxController;
 
@@ -37,31 +38,32 @@ public class NewTVBox extends JFrame {
 	private JFormattedTextField FormattedTextFieldYearOfRelease;
 	private JComboBox comboBoxNumberOfDisco;
 	private JComboBox comboBoxPriceNewTVBox;
-	private JFrame newtvbox;
+	
 	
 	
 	private TVBoxController controllerInternalRef;
 	
-	
-
-
-	/**
-	 * Create the frame.
-	 * @throws ParseException 
-	 */
-	public NewTVBox(TVBoxController controllerInternalRef) throws ParseException {
+	    
+ public NewTVBox (TVBoxController controller) throws ParseException{
+	        
+	        // Putting the reference of the controller in the local reference
+	        this.controllerInternalRef = controller;
+	        
+	        // We encapsulated the building process of the window
+	        attributesSetter();
+	      
+	     
+	    }
+	   
+private void attributesSetter() throws ParseException{
 		
-		newtvbox = new JFrame();
+	    JFrame newtvbox = new JFrame();
 	    
 		newtvbox.setTitle("Ultra Vision Midia");
 		newtvbox.setVisible(true);
-		
-		
-		
-		//getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 		newtvbox.setSize(new Dimension(800, 600));
-		//getContentPane().setSize(new Dimension(800, 660));
-		//getContentPane().setLayout(null);
+		newtvbox.setLocationRelativeTo(null);
+		newtvbox.setResizable(false);
 		
 		
 		
@@ -133,7 +135,7 @@ public class NewTVBox extends JFrame {
 		contentPane.add(NewLabelTypeTVBox);
 		
 		MaskFormatter mascara = new MaskFormatter("##/##/####");
-		JFormattedTextField FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
+	    FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 271, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);
 		

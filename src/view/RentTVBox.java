@@ -44,18 +44,6 @@ public class RentTVBox extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NewMovie frame = new NewMovie();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -67,7 +55,8 @@ public class RentTVBox extends JFrame {
 		JFrame rentTVbox = new JFrame();
         
 		rentTVbox.setTitle("Ultra Vision Midia");
-		
+		rentTVbox.setLocationRelativeTo(null);
+		rentTVbox.setResizable(false);
 		
 		rentTVbox.setVisible(true);
 		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));

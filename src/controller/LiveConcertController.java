@@ -16,8 +16,7 @@ public class LiveConcertController implements ActionListener{
 	
 	
 	NewLiveConcert view;
-	LiveConcert liveconcert;
-   
+	   
     
     
     // When the  controller starts, we need a new model and a new view
@@ -42,7 +41,7 @@ public class LiveConcertController implements ActionListener{
     	
     
         
-        liveconcert = new LiveConcert (yearOfRelease, title, genre, Price, Type, Band);
+    	LiveConcert  liveconcert = new LiveConcert (yearOfRelease, title, genre, Price, Type, Band);
         
       
         if(e.getActionCommand().equals("Register")){
@@ -51,14 +50,14 @@ public class LiveConcertController implements ActionListener{
              
             boolean liveconcertRegistered =  db.newliveconcert(liveconcert);
             
-            if(liveconcertRegistered == true){
+            if(liveconcertRegistered ){
             		
             JOptionPane.showMessageDialog(null, "Submited");
              view.dispose();
              
             }
 
-              db.newliveconcert(liveconcert);
+             
          
             }
  
