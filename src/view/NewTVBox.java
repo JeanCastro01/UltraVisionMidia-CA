@@ -134,7 +134,7 @@ private void attributesSetter() throws ParseException{
 		NewLabelTypeTVBox.setBounds(93, 379, 61, 16);
 		contentPane.add(NewLabelTypeTVBox);
 		
-		MaskFormatter mascara = new MaskFormatter("##/##/####");
+		MaskFormatter mascara = new MaskFormatter("####");
 	    FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 271, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);

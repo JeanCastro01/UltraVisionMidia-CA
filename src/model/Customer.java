@@ -14,7 +14,8 @@ public class Customer {
        private String Tel;
        private String Membership;
        private String CardNumber;
-       ArrayList<String> listoftitles = new ArrayList<String>(4);
+       ArrayList<String> listoftitles = new ArrayList<String>(3);
+       private String customerID;
    
 	
 
@@ -26,18 +27,39 @@ public class Customer {
         this.Tel = Tel;
 		this.Membership = Membership;
 		this.CardNumber = CardNumber;
+		this.listoftitles = listoftitles;
+		
 	
 
 	}
 	
+	public Customer(String firstname, String lastname, String email, String Membership, String Tel, String CardNumber, String customerID) {
+		super();
+		this.Firstname = firstname;
+		this.Lastname = lastname;
+		this.Email = email;
+        this.Tel = Tel;
+		this.Membership = Membership;
+		this.CardNumber = CardNumber;
+		this.listoftitles = listoftitles;
+		this.customerID = customerID;
+	}
 	
+	public String getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
+	}
+
 	public ArrayList<String> getListoftitles() {
 		return listoftitles;
 	}
 
 
-	public void setListoftitles(ArrayList<String> listoftitles) {
-		this.listoftitles = listoftitles;
+	public void setListoftitles(ArrayList<String> selectedID) {
+		this.listoftitles = selectedID;
 	}
 
 

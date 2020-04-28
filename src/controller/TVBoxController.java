@@ -59,8 +59,7 @@ public class TVBoxController implements ActionListener {
              
             }
 
-              db.newtvbox(tvbox);
-         
+            
             }
  
     }

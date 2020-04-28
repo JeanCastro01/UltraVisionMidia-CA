@@ -33,6 +33,7 @@ public class CustomerController implements ActionListener  {
         String tel = view.getFormattedTextFieldTelephone();
         String membership = view.getComboBoxMembership();
         String cardnumber = view.getFormattedTextFieldCardNumber();
+   
         
         model = new Customer(firstname, lastname, email, membership, tel,  cardnumber);
         

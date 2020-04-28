@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,23 +16,25 @@ import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-public class RentMusicLive extends JFrame {
+import model.Database;
+
+public class RentMusicLive extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField tableCustomerMovie;
 	private JTextField textFieldSearchMusicLive;
-	private JTable tableRentMusicLive ;
-	private JTable tableRentCustomerMusicLive;
 	private JTextField textFieldSearchCustomerMusicLive;
 	private JButton ButtonSelectMusicLive;
-	private JLabel NewLabelSearchIconRentMusicLive;
+	private JButton NewLabelSearchIconRentMusicLive;
 	private JButton NewButtonSelecCustomerMusicLive;
 	private MaskFormatter mascara;
 	private JFormattedTextField formattedTextFieldReturnDateMusicLive;
@@ -39,6 +43,20 @@ public class RentMusicLive extends JFrame {
 	private JFormattedTextField formattedTextFieldTotalValueMusicLive;
 	private JButton NewButtonRentMusicLive;
 	private JCheckBox NewCheckBoxCardMusicLive;
+	private JTable tableRentMusicLive;
+	private JTable tableRentCustomerMusicLive;
+	private int selectedLiveConcertID;
+	private String selectedID;
+	private int selectedPriceLiveConcert;
+	private int current;
+	List<String> list = new ArrayList<String>();
+	private Database jbdc = new Database();
+	boolean allSelected1 = false;
+	boolean allSelected2 = false;
+    private int selectedCustomerID;
+    private String customerChoosed;
+    private JLabel  NewLabelSearchCustomerMovie;
+    private JButton NewLabelSearchIconCustomerMusicLive;
 
 	/**
 	 * Launch the application.
@@ -54,14 +72,10 @@ public class RentMusicLive extends JFrame {
 		JFrame rentmusiclive = new JFrame();
         
 		rentmusiclive.setTitle("Ultra Vision Midia");
-		rentmusiclive.setLocationRelativeTo(null);
-		rentmusiclive.setResizable(false);
-		
 		rentmusiclive.setVisible(true);
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
 	    rentmusiclive.setSize(new Dimension(800, 700));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
+	    rentmusiclive.setLocationRelativeTo(null);
+		rentmusiclive.setResizable(false);
 		
 		
 		
@@ -83,54 +97,49 @@ public class RentMusicLive extends JFrame {
 		
 		
 		ButtonSelectMusicLive = new JButton("Select");
-		ButtonSelectMusicLive.setBounds(578, 299, 117, 29);
+		ButtonSelectMusicLive.setBounds(578, 302, 117, 29);
 		contentPane.add(ButtonSelectMusicLive);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(127, 156, 566, 131);
-		contentPane.add(panel_1);
-		
-		tableRentMusicLive = new JTable();
-		panel_1.add(tableRentMusicLive);
+		ButtonSelectMusicLive.setActionCommand("Select1");
+		ButtonSelectMusicLive.addActionListener(this);
 		
 		textFieldSearchMusicLive = new JTextField();
 		textFieldSearchMusicLive.setBounds(470, 118, 179, 26);
 		contentPane.add(textFieldSearchMusicLive);
 		textFieldSearchMusicLive.setColumns(10);
 		
-		NewLabelSearchIconRentMusicLive = new JLabel("Select Movie");
+		NewLabelSearchIconRentMusicLive = new JButton("");
 		NewLabelSearchIconRentMusicLive.setIcon(new ImageIcon(NewLoyaltyCard.class.getResource("/imagens/search2.png")));
 		NewLabelSearchIconRentMusicLive.setBounds(646, 118, 39, 26);
 		contentPane.add(NewLabelSearchIconRentMusicLive);
+		NewLabelSearchIconRentMusicLive.setActionCommand("Search1");
+		NewLabelSearchIconRentMusicLive.addActionListener(this);
 		
 		JLabel NewLabelSearchMovie = new JLabel("Search Music Live");
 		NewLabelSearchMovie.setBounds(332, 123, 111, 16);
 		contentPane.add(NewLabelSearchMovie);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(127, 385, 566, 139);
-		contentPane.add(panel_2);
-		
-		tableRentCustomerMusicLive = new JTable();
-		panel_2.add(tableRentCustomerMusicLive);
 		
 		textFieldSearchCustomerMusicLive = new JTextField();
 		textFieldSearchCustomerMusicLive.setBounds(470, 348, 179, 26);
 		contentPane.add(textFieldSearchCustomerMusicLive);
 		textFieldSearchCustomerMusicLive.setColumns(10);
 		
-		JLabel NewLabelSearchCustomerMovie = new JLabel("Search Customer");
+		NewLabelSearchCustomerMovie = new JLabel ("Search Customer");
 		NewLabelSearchCustomerMovie.setBounds(332, 353, 117, 16);
 		contentPane.add(NewLabelSearchCustomerMovie);
 		
-		JLabel NewLabelSearchIconCustomerMusicLive = new JLabel("");
+		
+		NewLabelSearchIconCustomerMusicLive = new JButton ("");
 		NewLabelSearchIconCustomerMusicLive.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/search2.png")));
 		NewLabelSearchIconCustomerMusicLive.setBounds(646, 353, 61, 20);
 		contentPane.add(NewLabelSearchIconCustomerMusicLive);
+		NewLabelSearchIconCustomerMusicLive.setActionCommand("Search2");
+		NewLabelSearchIconCustomerMusicLive.addActionListener(this);
 		
 		NewButtonSelecCustomerMusicLive = new JButton("Select");
-		NewButtonSelecCustomerMusicLive.setBounds(578, 536, 117, 29);
+		NewButtonSelecCustomerMusicLive.setBounds(578, 540, 117, 29);
 		contentPane.add(NewButtonSelecCustomerMusicLive);
+		NewButtonSelecCustomerMusicLive.setActionCommand("Select2");
+		NewButtonSelecCustomerMusicLive.addActionListener(this);
 		
 		mascara = new MaskFormatter("##/##/####");
 		formattedTextFieldReturnDateMusicLive = new JFormattedTextField(mascara);
@@ -162,20 +171,11 @@ public class RentMusicLive extends JFrame {
 		NewButtonRentMusicLive = new JButton("Rent");
 		NewButtonRentMusicLive.setBackground(Color.BLACK);
 		NewButtonRentMusicLive.setForeground(Color.RED);
-		NewButtonRentMusicLive.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		NewButtonRentMusicLive.setBounds(578, 646, 117, 29);
 		contentPane.add(NewButtonRentMusicLive);
+		NewButtonRentMusicLive.setActionCommand("Rent");
+		NewButtonRentMusicLive.addActionListener(this);
 		
-		JLabel NewLabelSelectPaymentMovie = new JLabel("Select Payment method");
-		NewLabelSelectPaymentMovie.setBounds(454, 573, 231, 16);
-		contentPane.add(NewLabelSelectPaymentMovie);
-		
-		NewCheckBoxCardMusicLive = new JCheckBox("Card");
-		NewCheckBoxCardMusicLive.setBounds(442, 590, 91, 23);
-		contentPane.add(NewCheckBoxCardMusicLive);
 		
 		JLabel NewLabelCustomerIcon = new JLabel("");
 		NewLabelCustomerIcon.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/employee-removebg-preview.png")));
@@ -192,10 +192,66 @@ public class RentMusicLive extends JFrame {
 		lblNewLabel_2.setBounds(6, 603, 109, 67);
 		contentPane.add(lblNewLabel_2);
 		
+
+
+		
 		rentmusiclive.validate();
 		rentmusiclive.repaint();
 
 }
+	
+	public void tabaleMusicliveSelected(String[][]outsideData){
+		
+
+		// ________LIVE CONCERT AVAILABLE TABlE___________	
+		
+		 // Using the Database connection class
+		     //Database jdbc = new Database();
+
+		   // String[][] data = outsideData;
+		    String[] columnNames = {"ID","Title","Singer","Type", "Price"};
+		
+			// Gathering the data
+	       
+	       
+			// Using a scroll pane
+			JScrollPane myPane = new JScrollPane();
+			myPane.setBounds(127, 143, 550, 161);
+	        contentPane.add(myPane);
+	        
+	        tableRentMusicLive = new JTable(outsideData,columnNames);
+		   // table.setBounds(226, 169, 470, 389);
+		    contentPane.add( tableRentMusicLive);
+			myPane.setViewportView( tableRentMusicLive);	
+		
+	}
+
+	public void tablecustomerMusiclive(String[][]outsideData2){
+		
+		
+		// ________ CUSTOMER LIVE CONCERT TABLE ___________		
+		
+		//Database jdbc = new Database();
+	  
+	    
+	    String[] columnNames2 = {"ID","FirstName","LastName","Email","Tel","Membership"};
+
+//		// Gathering the data
+	    //data2 = jdbc.rentLiveConcertCustomer();
+	   
+		// Using a scroll pane
+		JScrollPane myPane2 = new JScrollPane();
+		myPane2.setBounds(127, 372, 549, 161);
+	    contentPane.add(myPane2);
+	    
+	    tableRentCustomerMusicLive = new JTable(outsideData2,columnNames2);
+	   // table.setBounds(226, 169, 470, 389);
+	    contentPane.add(tableRentCustomerMusicLive);
+		myPane2.setViewportView(tableRentCustomerMusicLive);	
+
+		
+	}
+		
 
 	public JPanel getContentPane() {
 		return contentPane;
@@ -253,11 +309,11 @@ public class RentMusicLive extends JFrame {
 		ButtonSelectMusicLive = buttonSelectMusicLive;
 	}
 
-	public JLabel getNewLabelSearchIconRentMusicLive() {
+	public JButton getNewLabelSearchIconRentMusicLive() {
 		return NewLabelSearchIconRentMusicLive;
 	}
 
-	public void setNewLabelSearchIconRentMusicLive(JLabel newLabelSearchIconRentMusicLive) {
+	public void setNewLabelSearchIconRentMusicLive(JButton newLabelSearchIconRentMusicLive) {
 		NewLabelSearchIconRentMusicLive = newLabelSearchIconRentMusicLive;
 	}
 
@@ -277,8 +333,8 @@ public class RentMusicLive extends JFrame {
 		this.mascara = mascara;
 	}
 
-	public JFormattedTextField getFormattedTextFieldReturnDateMusicLive() {
-		return formattedTextFieldReturnDateMusicLive;
+	public String getFormattedTextFieldReturnDateMusicLive() {
+		return formattedTextFieldReturnDateMusicLive.getText();
 	}
 
 	public void setFormattedTextFieldReturnDateMusicLive(JFormattedTextField formattedTextFieldReturnDateMusicLive) {
@@ -293,8 +349,8 @@ public class RentMusicLive extends JFrame {
 		this.mascara2 = mascara2;
 	}
 
-	public JFormattedTextField getFormattedTextFieldRentedDateMusicLive() {
-		return formattedTextFieldRentedDateMusicLive;
+	public String getFormattedTextFieldRentedDateMusicLive() {
+		return formattedTextFieldRentedDateMusicLive.getText();
 	}
 
 	public void setFormattedTextFieldRentedDateMusicLive(JFormattedTextField formattedTextFieldRentedDateMusicLive) {
@@ -324,5 +380,101 @@ public class RentMusicLive extends JFrame {
 	public void setNewCheckBoxCardMusicLive(JCheckBox newCheckBoxCardMusicLive) {
 		NewCheckBoxCardMusicLive = newCheckBoxCardMusicLive;
 	}
+
 	
+	
+	 int initial = 0;
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getActionCommand().equals("Select1")) {
+			
+			if(list.size() > 4)
+			{
+				
+			return;
+			}
+			
+			
+			selectedLiveConcertID =   tableRentMusicLive.getSelectedRow();
+			selectedID =   tableRentMusicLive.getValueAt(selectedLiveConcertID, 0).toString();
+			
+			selectedPriceLiveConcert =  tableRentMusicLive.getSelectedRow();
+			String selectedPrice = tableRentMusicLive.getValueAt(selectedPriceLiveConcert, 4).toString();
+            
+				
+			current = Integer.parseInt((String)tableRentMusicLive.getValueAt(selectedPriceLiveConcert, 4)) ;
+			initial += current;
+		
+			allSelected1 = true;
+			list.add(selectedID);
+			
+
+			
+			
+			formattedTextFieldTotalValueMusicLive.setText(String.valueOf(initial));
+
+		}
+	
+		 if (e.getActionCommand().equals("Select2")) {
+			
+			selectedCustomerID =  tableRentCustomerMusicLive.getSelectedRow();
+		    customerChoosed=  tableRentCustomerMusicLive.getValueAt(selectedCustomerID, 0).toString();
+		    
+		    allSelected2 = true;
+		   
+		}
+		
+		
+		if(e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true))
+		{
+	
+			JOptionPane.showMessageDialog(null, "Rented");
+			
+			for(int i = 0; i < list.size(); i++) {
+				
+				
+				
+			    jbdc.selectedMusicliveCustomer(list.get(i), customerChoosed, this.getFormattedTextFieldRentedDateMusicLive(), this.getFormattedTextFieldReturnDateMusicLive() );
+			    list.remove(i);
+			}
+			
+			allSelected1 = false;
+			allSelected2 = false;
+			
+		}
+		
+
+	   if(e.getActionCommand().equals("Search1")) {
+	
+		   
+		   
+		    String st = textFieldSearchMusicLive.getText();
+		    
+		  
+		    System.out.println(st);
+		
+		    Database jdbc = new Database();	       
+	        String [][] data = jdbc.searchMusicLive(st);
+	        tabaleMusicliveSelected(data);
+		
+	}
+	   if(e.getActionCommand().equals("Search2")) {
+			
+		   
+		   
+		    String st2 = textFieldSearchCustomerMusicLive.getText();
+		    
+		  
+		    System.out.println(st2);
+		
+		    Database jdbc = new Database();	       
+	        String [][] data = jdbc.searchMusicliveCustomer(st2);
+	        tablecustomerMusiclive(data);
+		
+	}
+
+
+	}
 }

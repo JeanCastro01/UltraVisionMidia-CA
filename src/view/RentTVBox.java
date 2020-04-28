@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,24 +16,26 @@ import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-public class RentTVBox extends JFrame {
+import model.Database;
+
+public class RentTVBox extends JFrame implements ActionListener {
 
 
 	private JPanel contentPane;
 	private JTextField tableCustomerMovie;
 	private JTextField textFieldSearchRentTVBox;
-	private JTable tableRentTVBox ;
-	private JTable tableRentCustomerTVBox;
 	private JTextField textFieldSearchCustomerRentTVBox;
 	private JButton ButtonSelectRentTVbox;
-	private JLabel NewLabelSearchIconRentTVBox;
+	private JButton NewLabelSearchIconRentTVBox;
 	private JButton NewButtonSelecCustomerRentTVBox;
 	private MaskFormatter mascara;
 	private JFormattedTextField formattedTextFieldReturnDateMovie;
@@ -39,7 +43,22 @@ public class RentTVBox extends JFrame {
 	private JFormattedTextField formattedTextFieldRentedDate;
 	private JFormattedTextField formattedTextFieldTotalValueTVBox;
 	private JButton NewButtonRentTVBox;
-	private JCheckBox NewCheckBoxCardTVbox;
+	private JTable tableRentTVBox;
+	private JTable tableRentCustomerTVBox;
+	List<String> list = new ArrayList<String>();
+	private Database jbdc = new Database();
+	private String selectedID;
+	private String customerChoosed;
+	private  int current;
+	boolean allSelected1 = false;
+    boolean allSelected2 = false;
+	private int selectedCustomerID;
+	private int selectedTVBoxID;
+	private int selectedTVBoxPrice;
+	private JButton NewLabeliconRentTVBox;
+
+	
+	
 
 	/**
 	 * Launch the application.
@@ -54,15 +73,11 @@ public class RentTVBox extends JFrame {
 		
 		JFrame rentTVbox = new JFrame();
         
-		rentTVbox.setTitle("Ultra Vision Midia");
+		rentTVbox.setTitle("Ultra Vision Midia");	
+		rentTVbox.setVisible(true);
+	    rentTVbox.setSize(new Dimension(800, 700));
 		rentTVbox.setLocationRelativeTo(null);
 		rentTVbox.setResizable(false);
-		
-		rentTVbox.setVisible(true);
-		getContentPane().setBackground(UIManager.getColor("ProgressBar.selectionForeground"));
-	    rentTVbox.setSize(new Dimension(800, 700));
-		getContentPane().setSize(new Dimension(800, 660));
-		getContentPane().setLayout(null);
 		
 		
 		
@@ -84,36 +99,26 @@ public class RentTVBox extends JFrame {
 		
 		
 		ButtonSelectRentTVbox = new JButton("Select");
-		ButtonSelectRentTVbox.setBounds(578, 299, 117, 29);
+		ButtonSelectRentTVbox.setBounds(578, 307, 117, 29);
 		contentPane.add(ButtonSelectRentTVbox);
-		
-		JPanel panelRentTVBox = new JPanel();
-		panelRentTVBox.setBounds(127, 156, 566, 131);
-		contentPane.add(panelRentTVBox);
-		
-		tableRentTVBox = new JTable();
-		panelRentTVBox.add(tableRentTVBox);
+		ButtonSelectRentTVbox.setActionCommand("Select1");
+		ButtonSelectRentTVbox.addActionListener(this);
 		
 		textFieldSearchRentTVBox = new JTextField();
 		textFieldSearchRentTVBox.setBounds(470, 118, 179, 26);
 		contentPane.add(textFieldSearchRentTVBox);
 		textFieldSearchRentTVBox.setColumns(10);
 		
-		JLabel NewLabelSearchIconRentTVBox = new JLabel("Select Movie");
+		NewLabelSearchIconRentTVBox = new JButton("");
 		NewLabelSearchIconRentTVBox.setIcon(new ImageIcon(NewLoyaltyCard.class.getResource("/imagens/search2.png")));
 		NewLabelSearchIconRentTVBox.setBounds(646, 118, 39, 26);
 		contentPane.add(NewLabelSearchIconRentTVBox);
+		NewLabelSearchIconRentTVBox.setActionCommand("Search1");
+		NewLabelSearchIconRentTVBox.addActionListener(this);
 		
 		JLabel NewLabelSearchRentTVBox = new JLabel("Search TVBox");
 		NewLabelSearchRentTVBox.setBounds(352, 123, 91, 16);
 		contentPane.add(NewLabelSearchRentTVBox);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(127, 385, 566, 139);
-		contentPane.add(panel_2);
-		
-		tableRentCustomerTVBox = new JTable();
-		panel_2.add(tableRentCustomerTVBox);
 		
 		textFieldSearchCustomerRentTVBox = new JTextField();
 		textFieldSearchCustomerRentTVBox.setBounds(470, 348, 179, 26);
@@ -124,14 +129,18 @@ public class RentTVBox extends JFrame {
 		NewLabelSearchCustomerMovie.setBounds(332, 353, 117, 16);
 		contentPane.add(NewLabelSearchCustomerMovie);
 		
-		JLabel NewLabeliconRentTVBox = new JLabel("");
+		NewLabeliconRentTVBox = new JButton("");
 		NewLabeliconRentTVBox.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/search2.png")));
 		NewLabeliconRentTVBox.setBounds(646, 353, 61, 20);
 		contentPane.add(NewLabeliconRentTVBox);
+		NewLabeliconRentTVBox .setActionCommand("Search2");
+		NewLabeliconRentTVBox .addActionListener(this);
 		
 		NewButtonSelecCustomerRentTVBox = new JButton("Select");
 		NewButtonSelecCustomerRentTVBox.setBounds(578, 536, 117, 29);
 		contentPane.add(NewButtonSelecCustomerRentTVBox);
+		NewButtonSelecCustomerRentTVBox.setActionCommand("Select2");
+		NewButtonSelecCustomerRentTVBox.addActionListener(this);
 		
 		mascara = new MaskFormatter("##/##/####");
 		formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
@@ -163,20 +172,11 @@ public class RentTVBox extends JFrame {
 		NewButtonRentTVBox = new JButton("Rent");
 		NewButtonRentTVBox.setBackground(Color.BLACK);
 		NewButtonRentTVBox.setForeground(Color.RED);
-		NewButtonRentTVBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		NewButtonRentTVBox.setBounds(578, 646, 117, 29);
 		contentPane.add(NewButtonRentTVBox);
+		NewButtonRentTVBox.setActionCommand("Rent");
+		NewButtonRentTVBox.addActionListener(this);
 		
-		JLabel NewLabelSelectPaymentMovie = new JLabel("Select Payment method");
-		NewLabelSelectPaymentMovie.setBounds(454, 573, 231, 16);
-		contentPane.add(NewLabelSelectPaymentMovie);
-		
-		NewCheckBoxCardTVbox = new JCheckBox("Card");
-		NewCheckBoxCardTVbox.setBounds(442, 590, 91, 23);
-		contentPane.add(NewCheckBoxCardTVbox);
 		
 		JLabel NewLabelCustomerIcon = new JLabel("");
 		NewLabelCustomerIcon.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/employee-removebg-preview.png")));
@@ -193,10 +193,65 @@ public class RentTVBox extends JFrame {
 		lblNewLabel_2.setBounds(6, 603, 109, 67);
 		contentPane.add(lblNewLabel_2);
 		
+		
+		
 		rentTVbox.validate();
 		rentTVbox.repaint();
 
 }
+	public void tabaleTVboxSelected(String[][]outsideData){
+		
+
+		// ________LIVE CONCERT AVAILABLE TABlE___________	
+		
+		 // Using the Database connection class
+		     //Database jdbc = new Database();
+
+		   // String[][] data = outsideData;
+		    String[] columnNames = {"ID","Title","Discos","Season", "Type", "Price"};
+		   
+		
+			// Gathering the data
+	       
+	       
+			// Using a scroll pane
+			JScrollPane myPane = new JScrollPane();
+			myPane.setBounds(127, 143, 550, 161);
+	        contentPane.add(myPane);
+	        
+	        tableRentTVBox = new JTable(outsideData,columnNames);
+		   // table.setBounds(226, 169, 470, 389);
+		    contentPane.add(tableRentTVBox);
+			myPane.setViewportView( tableRentTVBox);	
+		
+	}
+
+	public void tablecustomertvbox(String[][]outsideData2){
+		
+		
+		// ________ CUSTOMER LIVE CONCERT TABLE ___________		
+		
+		//Database jdbc = new Database();
+	  
+	    
+	    String[] columnNames2 = {"ID","FirstName","LastName","Email","Tel","Membership"};
+
+//		// Gathering the data
+	    //data2 = jdbc.rentLiveConcertCustomer();
+	   
+		// Using a scroll pane
+		JScrollPane myPane2 = new JScrollPane();
+		myPane2.setBounds(127, 372, 549, 161);
+	    contentPane.add(myPane2);
+	    
+	    tableRentCustomerTVBox = new JTable(outsideData2,columnNames2);
+	   // table.setBounds(226, 169, 470, 389);
+	    contentPane.add(tableRentCustomerTVBox);
+		myPane2.setViewportView(tableRentCustomerTVBox);	
+
+		
+	}
+		
 
 	public JPanel getContentPane() {
 		return contentPane;
@@ -254,11 +309,11 @@ public class RentTVBox extends JFrame {
 		ButtonSelectRentTVbox = buttonSelectRentTVbox;
 	}
 
-	public JLabel getNewLabelSearchIconRentTVBox() {
+	public JButton getNewLabelSearchIconRentTVBox() {
 		return NewLabelSearchIconRentTVBox;
 	}
 
-	public void setNewLabelSearchIconRentTVBox(JLabel newLabelSearchIconRentTVBox) {
+	public void setNewLabelSearchIconRentTVBox(JButton newLabelSearchIconRentTVBox) {
 		NewLabelSearchIconRentTVBox = newLabelSearchIconRentTVBox;
 	}
 
@@ -278,8 +333,8 @@ public class RentTVBox extends JFrame {
 		this.mascara = mascara;
 	}
 
-	public JFormattedTextField getFormattedTextFieldReturnDateMovie() {
-		return formattedTextFieldReturnDateMovie;
+	public String getFormattedTextFieldReturnDateMovie() {
+		return formattedTextFieldReturnDateMovie.getText();
 	}
 
 	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
@@ -294,8 +349,8 @@ public class RentTVBox extends JFrame {
 		this.mascara2 = mascara2;
 	}
 
-	public JFormattedTextField getFormattedTextFieldRentedDate() {
-		return formattedTextFieldRentedDate;
+	public String getFormattedTextFieldRentedDate() {
+		return formattedTextFieldRentedDate.getText();
 	}
 
 	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
@@ -318,13 +373,97 @@ public class RentTVBox extends JFrame {
 		NewButtonRentTVBox = newButtonRentTVBox;
 	}
 
-	public JCheckBox getNewCheckBoxCardTVbox() {
-		return NewCheckBoxCardTVbox;
+
+
+	 int initial =0;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("Select1")) {
+			
+			if(list.size() > 4)
+			{
+				
+			return;
+			}
+			
+			
+			selectedTVBoxID =  tableRentTVBox.getSelectedRow();
+			selectedID = tableRentTVBox.getValueAt(selectedTVBoxID, 0).toString();
+			
+			selectedTVBoxPrice =  tableRentTVBox.getSelectedRow();
+			String selectedPrice = tableRentTVBox.getValueAt(selectedTVBoxPrice , 5).toString();
+            
+				
+			current = Integer.parseInt((String)tableRentTVBox.getValueAt(selectedTVBoxPrice, 5)) ;
+			initial += current;
+		
+			allSelected1 = true;
+			list.add(selectedID);
+			
+			
+			formattedTextFieldTotalValueTVBox.setText(String.valueOf(initial));
+
+		}
+	
+		 if (e.getActionCommand().equals("Select2")) {
+			
+			selectedCustomerID = tableRentCustomerTVBox.getSelectedRow();
+		    customerChoosed= tableRentCustomerTVBox.getValueAt(selectedCustomerID, 0).toString();
+		    
+		    allSelected2 = true;
+		   
+		}
+		
+		
+		if(e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true))
+		{
+	
+			JOptionPane.showMessageDialog(null, "Rented");
+			
+			for(int i = 0; i < list.size(); i++) {
+				
+				
+				
+			    jbdc.selectedTVBoxCustomer(list.get(i), customerChoosed, this.getFormattedTextFieldRentedDate() , this.getFormattedTextFieldReturnDateMovie() );
+			    list.remove(i);
+			}
+			
+			allSelected1 = false;
+			allSelected2 = false;
+			
+		}
+		
+
+	   if(e.getActionCommand().equals("Search1")) {
+	
+		   
+		   
+		    String st = textFieldSearchRentTVBox.getText();
+		    
+		  
+		    System.out.println(st);
+		
+		    Database jdbc = new Database();	       
+	        String [][] data = jdbc.searchTVBox(st);
+	        tabaleTVboxSelected(data);
+		
+	}
+	   if(e.getActionCommand().equals("Search2")) {
+			
+		   
+		   
+		    String st2 = textFieldSearchCustomerRentTVBox.getText();
+		    
+		  
+		    System.out.println(st2);
+		
+		    Database jdbc = new Database();	       
+	        String [][] data = jdbc. searchTVBoxCustomer(st2);
+	        tablecustomertvbox(data);
+		
 	}
 
-	public void setNewCheckBoxCardTVbox(JCheckBox newCheckBoxCardTVbox) {
-		NewCheckBoxCardTVbox = newCheckBoxCardTVbox;
+
 	}
-	
-	
 }
+

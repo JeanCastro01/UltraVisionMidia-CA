@@ -81,19 +81,28 @@ public class Dashboard extends JFrame implements ActionListener {
 		
 		JMenuItem MenuItemMusicLive = new JMenuItem("Music Live");
 		JMenuRent.add(MenuItemMusicLive);
+		MenuItemMusicLive.addActionListener(this);
+		MenuItemMusicLive.setActionCommand("Music Live");
 		
 		//contentPane.add(MenuItemMusicLive);
 		
 		JMenuItem MenuItemMovie = new JMenuItem("Movie");
 		JMenuRent.add(MenuItemMovie);
+		MenuItemMovie.addActionListener(this);
+		MenuItemMovie.setActionCommand("Movie");
+		
 		//contentPane.add(MenuItemMovie);
 		
 		JMenuItem MenuItemTVBox = new JMenuItem("TVBox");
 		JMenuRent.add(MenuItemTVBox);
+		MenuItemTVBox.addActionListener(this);
+		MenuItemTVBox.setActionCommand("TVBox");
 		//contentPane.add(MenuItemTVBox);
 		
 		JMenuItem JMenuItemLiveConcert = new JMenuItem("Live Concert");
 		JMenuRent.add(JMenuItemLiveConcert);
+		JMenuItemLiveConcert.addActionListener(this);
+		JMenuItemLiveConcert.setActionCommand("Live Concert");
 		//contentPane.add(JMenuItemLiveConcert);
 		
 		JMenu JMenuRegister = new JMenu("Register");
@@ -223,9 +232,39 @@ public class Dashboard extends JFrame implements ActionListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-            	 
          
-          
         }
+             else if (e.getActionCommand().equals("Music Live")) {
+                 try {
+					new RentMusicLive();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+             else if (e.getActionCommand().equals("Movie")) {
+                 try {
+					new RentMovie();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+             else if (e.getActionCommand().equals("TVBox")) {
+                 try {
+					new RentTVBox();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+             else if (e.getActionCommand().equals("Live Concert")) {
+                 try {
+					new RentLiveConcert();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
 	}
 }

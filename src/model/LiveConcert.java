@@ -1,5 +1,9 @@
 package model;
 
+import java.text.ParseException;
+
+import view.RentLiveConcert;
+
 /**
 *
 * @author jeancastro
@@ -9,6 +13,7 @@ public class LiveConcert extends AttributesGeneral{
 	private String Band;   
     private String DateRented;
     private String DateReturn;
+    private String liveConcertID;
 
 	 
 	  
@@ -25,9 +30,21 @@ public class LiveConcert extends AttributesGeneral{
 		
 		
 	}
+	    
+	    public LiveConcert(String yearOfRelease, String title, String genre, double Price, String Type, String Band, String liveConcertID) {
+			super(yearOfRelease, title, genre, Price, Type);
+			
+
+			this.Band = Band;
+		    this.DateRented = DateRented;
+		    this.DateReturn = DateReturn;
+		    this.liveConcertID = liveConcertID;
+	    }
 
 
-
+	public String getLiveConcertID() {
+			return liveConcertID;
+		}
 
 	public String getDateRented() {
 			return DateRented;

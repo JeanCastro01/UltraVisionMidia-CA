@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFormattedTextField;
+
 import com.mysql.cj.xdevapi.Result;
 
+import view.NewCustomer;
 import view.TitlesAvailable;
 
 public class Database {
@@ -631,8 +634,1538 @@ System.out.println( e ) ;
 return data;
 }
 
-//This method is only in charge of get data from database to print the table	
+public String[][] rentTVBox() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+  try{
+
+  String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+  String user = "jean";
+  String password = "Pass1234!";
+  Connection conn = null;
+  Statement stmt = null;
+  
+ // TitlesAvailable available = new TitlesAvailable();
+  
+ ///
+  //String selectitem = available.getComboBox();
+  
+  
+  String query1 = " SELECT Title, NumberOfDisco,Season, Type, Price FROM TVBox WHERE Rent=False"; 
+
+ // String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+  // Get a connection to the database
+  conn = DriverManager.getConnection(dbServer, user, password) ;
+
+  // Get a statement from the connection
+  stmt = conn.createStatement() ;
+
+  // Execute the query
+  ResultSet rs1 = stmt.executeQuery(query1) ;
+//  ResultSet rs2 = stmt.executeQuery(query2) ;
+
+  // Instantiating the array
+  data = new String[100][10];
+  // Creating a counter to keep track of the 
+  // row we're on
+  int row = 0;
+
+  // Loop through the result set
+  while(rs1.next()) {
+              
+      // And then, adding the data to an array
+     // data[row][0] = rs1.getString("Movie_id");
+      data[row][0] = rs1.getString("Title");    
+      data[row][1] = rs1.getString("NumberOfDisco");
+      data[row][2] = rs1.getString("Season");
+      data[row][3] = rs1.getString("Type");
+      data[row][4] = rs1.getString("Price");
+      // go the the next row
+      row++;
+  }
+  
+
+  
+
+  // Close the result set, statement and the connection
+  rs1.close() ;
+ // rs2.close() ;
+  stmt.close() ;
+  conn.close() ;
+}
+catch( SQLException se ){
+  System.out.println( "SQL Exception:" ) ;
+
+  // Loop through the SQL Exceptions
+  while( se != null ){
+  	System.out.println( "State  : " + se.getSQLState()  ) ;
+   	System.out.println( "Message: " + se.getMessage()   ) ;
+      System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+  }
+}
+catch( Exception e ){
+System.out.println( e ) ;
 }
 
+//Retuning the array of data
+return data;
+}
+
+//This method is only in charge of get data from database to print the table	
+
+public String[][] rentTVBoxCustomer() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+ try{
+
+ String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+ String user = "jean";
+ String password = "Pass1234!";
+ Connection conn = null;
+ Statement stmt = null;
+ 
+// TitlesAvailable available = new TitlesAvailable();
+ 
+///
+ //String selectitem = available.getComboBox();
+ String membership = "";
+ membership = "(TV) Box Set";
+ 
+ 
+ String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '" + membership+ "'";
+
+// String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+ // Get a connection to the database
+ conn = DriverManager.getConnection(dbServer, user, password) ;
+
+ // Get a statement from the connection
+ stmt = conn.createStatement() ;
+
+ // Execute the query
+ ResultSet rs1 = stmt.executeQuery(query1) ;
+// ResultSet rs2 = stmt.executeQuery(query2) ;
+
+ // Instantiating the array
+ data = new String[100][10];
+ // Creating a counter to keep track of the 
+ // row we're on
+ int row = 0;
+
+ // Loop through the result set
+ while(rs1.next()) {
+             
+     // And then, adding the data to an array
+    // data[row][0] = rs1.getString("Movie_id");
+     data[row][0] = rs1.getString("First_name");    
+     data[row][1] = rs1.getString("Last_name");
+     data[row][2] = rs1.getString("cust_email");
+     data[row][3] = rs1.getString("Tel");
+     data[row][4] = rs1.getString("Membership");
+     
+     // go the the next row
+     row++;
+ }
+ 
+
+ 
+
+ // Close the result set, statement and the connection
+ rs1.close() ;
+// rs2.close() ;
+ stmt.close() ;
+ conn.close() ;
+}
+catch( SQLException se ){
+ System.out.println( "SQL Exception:" ) ;
+
+ // Loop through the SQL Exceptions
+ while( se != null ){
+ 	System.out.println( "State  : " + se.getSQLState()  ) ;
+  	System.out.println( "Message: " + se.getMessage()   ) ;
+     System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+ }
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+}
+
+public String[][] rentMusicLive () {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+    try{
+  
+    String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+    String user = "jean";
+    String password = "Pass1234!";
+    Connection conn = null;
+    Statement stmt = null;
+    
+   // TitlesAvailable available = new TitlesAvailable();
+    
+   ///
+    //String selectitem = available.getComboBox();
+    
+    
+    String query1 = " SELECT Title, Singer, Type, Price FROM MusicLive WHERE Rent=False"; 
+
+   // String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+    // Get a connection to the database
+    conn = DriverManager.getConnection(dbServer, user, password) ;
+
+    // Get a statement from the connection
+    stmt = conn.createStatement() ;
+
+    // Execute the query
+    ResultSet rs1 = stmt.executeQuery(query1) ;
+ //   ResultSet rs2 = stmt.executeQuery(query2) ;
+
+    // Instantiating the array
+    data = new String[100][10];
+    // Creating a counter to keep track of the 
+    // row we're on
+    int row = 0;
+
+    // Loop through the result set
+    while(rs1.next()) {
+                
+        // And then, adding the data to an array
+       // data[row][0] = rs1.getString("Movie_id");
+        data[row][0] = rs1.getString("Title");    
+        data[row][1] = rs1.getString("Singer");
+        data[row][2] = rs1.getString("Type");
+        data[row][3] = rs1.getString("Price");
+        
+        // go the the next row
+        row++;
+    }
+    
+
+    
+
+    // Close the result set, statement and the connection
+    rs1.close() ;
+   // rs2.close() ;
+    stmt.close() ;
+    conn.close() ;
+}
+catch( SQLException se ){
+    System.out.println( "SQL Exception:" ) ;
+
+    // Loop through the SQL Exceptions
+    while( se != null ){
+    	System.out.println( "State  : " + se.getSQLState()  ) ;
+     	System.out.println( "Message: " + se.getMessage()   ) ;
+        System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+    }
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+// Retuning the array of data
+return data;
+}
+
+public String[][] rentMusicLiveCustomer() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(ML) Music Live & Live Concert Videos";
+
+
+String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '" + membership+ "'";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+// Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+// Get a statement from the connection
+stmt = conn.createStatement() ;
+
+// Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+// Instantiating the array
+data = new String[100][10];
+// Creating a counter to keep track of the 
+// row we're on
+int row = 0;
+
+// Loop through the result set
+while(rs1.next()) {
+            
+    // And then, adding the data to an array
+   // data[row][0] = rs1.getString("Movie_id");
+    data[row][0] = rs1.getString("First_name");    
+    data[row][1] = rs1.getString("Last_name");
+    data[row][2] = rs1.getString("cust_email");
+    data[row][3] = rs1.getString("Tel");
+    data[row][4] = rs1.getString("Membership");
+    
+    // go the the next row
+    row++;
+}
+
+
+
+
+// Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+// Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+ 	System.out.println( "Message: " + se.getMessage()   ) ;
+    System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+}
+
+public String[][] rentMovie () {
+
+	
+    String[][] data = null;
+    
+    
+    
+            try{
+          
+            String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+            String user = "jean";
+            String password = "Pass1234!";
+            Connection conn = null;
+            Statement stmt = null;
+            
+           // TitlesAvailable available = new TitlesAvailable();
+            
+           ///
+            //String selectitem = available.getComboBox();
+            
+            
+            String query1 = " SELECT Title, Director, Type, Price FROM Movie WHERE Rent=False"; 
+
+           // String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+            // Get a connection to the database
+            conn = DriverManager.getConnection(dbServer, user, password) ;
+
+            // Get a statement from the connection
+            stmt = conn.createStatement() ;
+
+            // Execute the query
+            ResultSet rs1 = stmt.executeQuery(query1) ;
+         //   ResultSet rs2 = stmt.executeQuery(query2) ;
+	
+            // Instantiating the array
+            data = new String[100][10];
+            // Creating a counter to keep track of the 
+            // row we're on
+            int row = 0;
+	
+            // Loop through the result set
+            while(rs1.next()) {
+                        
+                // And then, adding the data to an array
+               // data[row][0] = rs1.getString("Movie_id");
+                data[row][0] = rs1.getString("Title");    
+                data[row][1] = rs1.getString("Director");
+                data[row][2] = rs1.getString("Type");
+                data[row][3] = rs1.getString("Price");
+                // go the the next row
+                row++;
+            }
+            
+   
+            
+
+            // Close the result set, statement and the connection
+            rs1.close() ;
+           // rs2.close() ;
+            stmt.close() ;
+            conn.close() ;
+}
+catch( SQLException se ){
+            System.out.println( "SQL Exception:" ) ;
+
+            // Loop through the SQL Exceptions
+            while( se != null ){
+            	System.out.println( "State  : " + se.getSQLState()  ) ;
+             	System.out.println( "Message: " + se.getMessage()   ) ;
+	            System.out.println( "Error  : " + se.getErrorCode() ) ;
+      
+	se = se.getNextException() ;
+            }
+}
+catch( Exception e ){
+	System.out.println( e ) ;
+}
+        
+        // Retuning the array of data
+        return data;
+}
+
+//This method is only in charge of get data from database to print the table
+  
+
+
+
+public String[][] rentMovieCustomer() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(VL) Movie";
+
+
+String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '" + membership+ "'";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+           
+   // And then, adding the data to an array
+  // data[row][0] = rs1.getString("Movie_id");
+   data[row][0] = rs1.getString("First_name");    
+   data[row][1] = rs1.getString("Last_name");
+   data[row][2] = rs1.getString("cust_email");
+   data[row][3] = rs1.getString("Tel");
+   data[row][4] = rs1.getString("Membership");
+   
+   // go the the next row
+   row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+   System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+}
+
+
+
+public String[][] rentLiveConcert() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+   try{
+ 
+   String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+   String user = "jean";
+   String password = "Pass1234!";
+   Connection conn = null;
+   Statement stmt = null;
+   
+  // TitlesAvailable available = new TitlesAvailable();
+   
+  ///
+   //String selectitem = available.getComboBox();
+   
+   
+   String query1 = " SELECT  LiveConcert_id, Title, Band, Type, Price FROM LiveConcert WHERE Rent=False "; 
+
+  // String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+   // Get a connection to the database
+   conn = DriverManager.getConnection(dbServer, user, password) ;
+
+   // Get a statement from the connection
+   stmt = conn.createStatement() ;
+
+   // Execute the query
+   ResultSet rs1 = stmt.executeQuery(query1) ;
+//   ResultSet rs2 = stmt.executeQuery(query2) ;
+
+   // Instantiating the array
+   data = new String[100][10];
+   // Creating a counter to keep track of the 
+   // row we're on
+   int row = 0;
+
+   // Loop through the result set
+   while(rs1.next()) {
+               
+       // And then, adding the data to an array
+	   data[row][0] = rs1.getString("LiveConcert_id");
+       data[row][1] = rs1.getString("Title");    
+       data[row][2] = rs1.getString("Band");
+       data[row][3] = rs1.getString("Type");
+       data[row][4] = rs1.getString("Price");
+       
+       // go the the next row
+       row++;
+   }
+   
+
+   
+
+   // Close the result set, statement and the connection
+   rs1.close() ;
+  // rs2.close() ;
+   stmt.close() ;
+   conn.close() ;
+}
+catch( SQLException se ){
+   System.out.println( "SQL Exception:" ) ;
+
+   // Loop through the SQL Exceptions
+   while( se != null ){
+   	System.out.println( "State  : " + se.getSQLState()  ) ;
+    	System.out.println( "Message: " + se.getMessage()   ) ;
+       System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+   }
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+}
+
+//This method is only in charge of get data from database to print the table
+
+public String[][] rentLiveConcertCustomer() {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(ML) Music Live & Live Concert Videos";
+
+
+String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '" + membership+ "'";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+          
+  // And then, adding the data to an array
+ // data[row][0] = rs1.getString("Movie_id");
+  data[row][0] = rs1.getString("cust_id");	
+  data[row][1] = rs1.getString("First_name");    
+  data[row][2] = rs1.getString("Last_name");
+  data[row][3] = rs1.getString("cust_email");
+  data[row][4] = rs1.getString("Tel");
+  data[row][5] = rs1.getString("Membership");
+  
+  // go the the next row
+  row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+  System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+public boolean selectedLiveConcertCustomer(String selectedID, String customerChoosed, String formattedTextFieldRentedDate, String formattedTextFieldReturnDateMovie) {
+	
+    boolean customer = false;
+    try{
+        // Building the query
+       String query =  "INSERT INTO Rented (cust_id, LiveConcert_id, DataRented, DataReturn) " +  "VALUES ('" + customerChoosed + "','" + selectedID +"', '" + formattedTextFieldRentedDate +"', '" + formattedTextFieldReturnDateMovie + "');";
+     
+
+        
+
+        // Sending the query to the database
+        customer = ((java.sql.Statement) stmt).execute(query) ;
+
+ 
+
+    
+        
+    }
+    catch( SQLException se ){
+        System.out.println( "SQL Exception:" ) ;
+
+        // Loop through the SQL Exceptions
+        while( se != null ){
+            System.out.println( "State  : " + se.getSQLState()  ) ;
+            System.out.println( "Message: " + se.getMessage()   ) ;
+            System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+            se = se.getNextException() ;
+        }
+    }
+    catch( Exception e ){
+            System.out.println( e ) ;
+    }
+
+    // Retuning the login status
+    return customer	;
+}
+
+
+public String[][] searchLiveConcert(String st) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+
+
+
+String query1 = " SELECT LiveConcert_id, Title, Band, Type, Price FROM LiveConcert WHERE Title =    '" +st+ "' AND Rent= '" +false+ "' ";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+         
+ // And then, adding the data to an array
+// data[row][0] = rs1.getString("Movie_id");
+	   data[row][0] = rs1.getString("LiveConcert_id");
+       data[row][1] = rs1.getString("Title");    
+       data[row][2] = rs1.getString("Band");
+       data[row][3] = rs1.getString("Type");
+       data[row][4] = rs1.getString("Price");
+ 
+ // go the the next row
+ row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+ System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+
+public String[][] searchtLiveConcertCustomer(String st2) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(ML) Music Live & Live Concert Videos";
+
+
+String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name =   '" +st2+ "' AND Membership= '" + membership + "' ";
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+         
+ // And then, adding the data to an array
+// data[row][0] = rs1.getString("Movie_id");
+ data[row][0] = rs1.getString("cust_id");	
+ data[row][1] = rs1.getString("First_name");    
+ data[row][2] = rs1.getString("Last_name");
+ data[row][3] = rs1.getString("cust_email");
+ data[row][4] = rs1.getString("Tel");
+ data[row][5] = rs1.getString("Membership");
+ 
+ // go the the next row
+ row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+ System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+public String[][] searchMovie(String st) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+
+
+
+
+String query1 = " SELECT Movie_id ,Title, Director, Type, Price FROM Movie WHERE Title =    '" +st+ "' AND Rent= '" +false+ "' ";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+        
+// And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+	   data[row][0] = rs1.getString("Movie_id");
+      data[row][1] = rs1.getString("Title");    
+      data[row][2] = rs1.getString("Director");
+      data[row][3] = rs1.getString("Type");
+      data[row][4] = rs1.getString("Price");
+
+// go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+public boolean selectedMovieCustomer(String selectedID, String customerChoosed, String formattedTextFieldRentedDate, String formattedTextFieldReturnDateMovie) {
+	
+    boolean customer = false;
+    try{
+        // Building the query
+       String query =  "INSERT INTO Rented (cust_id, Movie_id, DataRented, DataReturn) " +  "VALUES ('" + customerChoosed + "','" + selectedID +"', '" +formattedTextFieldRentedDate +"', '" + formattedTextFieldReturnDateMovie + "');";
+     
+
+        
+
+        // Sending the query to the database
+        customer = ((java.sql.Statement) stmt).execute(query) ;
+
+ 
+
+    
+        
+    }
+    catch( SQLException se ){
+        System.out.println( "SQL Exception:" ) ;
+
+        // Loop through the SQL Exceptions
+        while( se != null ){
+            System.out.println( "State  : " + se.getSQLState()  ) ;
+            System.out.println( "Message: " + se.getMessage()   ) ;
+            System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+            se = se.getNextException() ;
+        }
+    }
+    catch( Exception e ){
+            System.out.println( e ) ;
+    }
+
+    // Retuning the login status
+    return customer	;
+}
+
+public String[][] searchMovieCustomer(String st2) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(VL) Movie";
+
+
+String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name =   '" +st2+ "' AND Membership= '" + membership + "' ";
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+        
+// And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+data[row][0] = rs1.getString("cust_id");	
+data[row][1] = rs1.getString("First_name");    
+data[row][2] = rs1.getString("Last_name");
+data[row][3] = rs1.getString("cust_email");
+data[row][4] = rs1.getString("Tel");
+data[row][5] = rs1.getString("Membership");
+
+// go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+public boolean selectedMusicliveCustomer(String selectedID, String customerChoosed, String formattedTextFieldRentedDateMusicLive, 
+		String FormattedTextFieldReturnDateMusicLive) {
+	
+    boolean customer = false;
+    try{
+        // Building the query
+       String query =  "INSERT INTO Rented (cust_id, Music_id, DataRented, DataReturn) " +  "VALUES ('" + customerChoosed + "','"
+        + selectedID +"', '" +formattedTextFieldRentedDateMusicLive +"', '" + FormattedTextFieldReturnDateMusicLive + "');";
+     
+
+        
+
+        // Sending the query to the database
+        customer = ((java.sql.Statement) stmt).execute(query) ;
+
+ 
+
+    
+        
+    }
+    catch( SQLException se ){
+        System.out.println( "SQL Exception:" ) ;
+
+        // Loop through the SQL Exceptions
+        while( se != null ){
+            System.out.println( "State  : " + se.getSQLState()  ) ;
+            System.out.println( "Message: " + se.getMessage()   ) ;
+            System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+            se = se.getNextException() ;
+        }
+    }
+    catch( Exception e ){
+            System.out.println( e ) ;
+    }
+
+    // Retuning the login status
+    return customer	;
+}
+
+public String[][] searchMusicLive(String st) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+
+
+
+
+String query1 = " SELECT Music_id, Title, Singer, Type, Price FROM MusicLive WHERE Title =    '" +st+ "' AND Rent= '" +false+ "' ";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+       
+//And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+	   data[row][0] = rs1.getString("Music_id");
+     data[row][1] = rs1.getString("Title");    
+     data[row][2] = rs1.getString("Singer");
+     data[row][3] = rs1.getString("Type");
+     data[row][4] = rs1.getString("Price");
+
+//go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+
+
+public String[][] searchMusicliveCustomer(String st2) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(ML) Music Live & Live Concert Videos";
+
+
+String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name =   '" +st2+ "' AND Membership= '" + membership + "' ";
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+       
+//And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+data[row][0] = rs1.getString("cust_id");	
+data[row][1] = rs1.getString("First_name");    
+data[row][2] = rs1.getString("Last_name");
+data[row][3] = rs1.getString("cust_email");
+data[row][4] = rs1.getString("Tel");
+data[row][5] = rs1.getString("Membership");
+
+//go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+public boolean selectedTVBoxCustomer(String selectedID, String customerChoosed, String formattedTextFieldRentedDate, 
+		String formattedTextFieldReturnDateMovie) {
+	
+    boolean customer = false;
+    try{
+        // Building the query
+       String query =  "INSERT INTO Rented (cust_id, TVBox_id, DataRented, DataReturn) " +  "VALUES ('" + customerChoosed + "','"
+        + selectedID +"', '" +formattedTextFieldRentedDate +"', '" + formattedTextFieldReturnDateMovie + "');";
+     
+
+        
+
+        // Sending the query to the database
+        customer = ((java.sql.Statement) stmt).execute(query) ;
+
+ 
+
+    
+        
+    }
+    catch( SQLException se ){
+        System.out.println( "SQL Exception:" ) ;
+
+        // Loop through the SQL Exceptions
+        while( se != null ){
+            System.out.println( "State  : " + se.getSQLState()  ) ;
+            System.out.println( "Message: " + se.getMessage()   ) ;
+            System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+            se = se.getNextException() ;
+        }
+    }
+    catch( Exception e ){
+            System.out.println( e ) ;
+    }
+
+    // Retuning the login status
+    return customer	;
+}
+
+
+public String[][] searchTVBox(String st) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+
+
+
+
+String query1 = " SELECT TVBox_id, Title, YearOfRelease, Season, Type, Price FROM TVBox WHERE Title =    '" +st+ "' AND Rent= '" +false+ "' ";
+
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+      
+//And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+	   data[row][0] = rs1.getString("TVBox_id");
+    data[row][1] = rs1.getString("Title");    
+    data[row][2] = rs1.getString("YearOfRelease");
+    data[row][3] = rs1.getString("Season");
+    data[row][4] = rs1.getString("Type");
+    data[row][5] = rs1.getString("Price");
+//go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+public String[][] searchTVBoxCustomer(String st2) {
+	
+	 String[][] data = null;
+	    
+	    
+	    
+try{
+
+String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+String user = "jean";
+String password = "Pass1234!";
+Connection conn = null;
+Statement stmt = null;
+
+//TitlesAvailable available = new TitlesAvailable();
+
+///
+//String selectitem = available.getComboBox();
+String membership = "";
+membership = "(TV) Box Set";
+
+
+String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name =   '" +st2+ "' AND Membership= '" + membership + "' ";
+//String query2 = "SELECT Movie_id, Title, Director, Type FROM Movie; ";
+
+//Get a connection to the database
+conn = DriverManager.getConnection(dbServer, user, password) ;
+
+//Get a statement from the connection
+stmt = conn.createStatement() ;
+
+//Execute the query
+ResultSet rs1 = stmt.executeQuery(query1) ;
+//ResultSet rs2 = stmt.executeQuery(query2) ;
+
+//Instantiating the array
+data = new String[100][10];
+//Creating a counter to keep track of the 
+//row we're on
+int row = 0;
+
+//Loop through the result set
+while(rs1.next()) {
+      
+//And then, adding the data to an array
+//data[row][0] = rs1.getString("Movie_id");
+data[row][0] = rs1.getString("cust_id");	
+data[row][1] = rs1.getString("First_name");    
+data[row][2] = rs1.getString("Last_name");
+data[row][3] = rs1.getString("cust_email");
+data[row][4] = rs1.getString("Tel");
+data[row][5] = rs1.getString("Membership");
+
+//go the the next row
+row++;
+}
+
+
+
+
+//Close the result set, statement and the connection
+rs1.close() ;
+//rs2.close() ;
+stmt.close() ;
+conn.close() ;
+}
+catch( SQLException se ){
+System.out.println( "SQL Exception:" ) ;
+
+//Loop through the SQL Exceptions
+while( se != null ){
+	System.out.println( "State  : " + se.getSQLState()  ) ;
+	System.out.println( "Message: " + se.getMessage()   ) ;
+System.out.println( "Error  : " + se.getErrorCode() ) ;
+
+se = se.getNextException() ;
+}
+}
+catch( Exception e ){
+System.out.println( e ) ;
+}
+
+//Retuning the array of data
+return data;
+
+}
+
+}
 
 

@@ -115,7 +115,7 @@ public class NewLiveConcert extends JFrame {
 		NewLabelTitle.setBounds(93, 172, 98, 16);
 		contentPane.add(NewLabelTitle);
 		
-		JButton ButtonRegisterMusicLive = new JButton("Register");
+		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 436, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
 		ButtonRegisterMusicLive.addActionListener((ActionListener)controllerInternalRef);
@@ -135,7 +135,7 @@ public class NewLiveConcert extends JFrame {
 		labelTypeLiveConcert.setBounds(93, 326, 61, 16);
 		contentPane.add(labelTypeLiveConcert);
 		
-	    mascara = new MaskFormatter("##/##/####");
+	    mascara = new MaskFormatter("####");
 		FormattedTextFieldYearOfRelease = new JFormattedTextField(mascara);
 		FormattedTextFieldYearOfRelease.setBounds(238, 270, 137, 26);
 		contentPane.add(FormattedTextFieldYearOfRelease);

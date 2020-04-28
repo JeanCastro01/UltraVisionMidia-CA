@@ -23,7 +23,7 @@ public class LiveConcertController implements ActionListener{
     public LiveConcertController() throws ParseException{
         
 		
-	 view = new NewLiveConcert(null);
+	 view = new NewLiveConcert(this);
 	
 		
     }
