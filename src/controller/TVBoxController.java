@@ -14,54 +14,42 @@ import view.NewTVBox;
 
 public class TVBoxController implements ActionListener {
 
-	
-	
 	NewTVBox view;
-   
-    
-    
-    // When the  controller starts, we need a new model and a new view
-    public TVBoxController() throws ParseException{
-        
-			
-	   view = new NewTVBox(this);
-	
-    }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-     
-    	
-    	String yearOfRelease = view.getFormattedTextFieldYearOfRelease();
-    	String title = view.getTextFieldTitle();
-    	String genre = view.getComboBoxGenre();
-    	double Price = view.getComboBoxPriceNewTVBox();
-    	String Type = view.getComboBoxTypeTVBox();
-    	String NumberOfDisco = view.getComboBoxNumberOfDisco();
-    	String Season = view.getComboBoxSeasonNewTVBox();
-    	
-    
-        
-        TVBox tvbox = new TVBox (yearOfRelease, title, genre, Price, Type, NumberOfDisco, Season);
-        
-      
-        if(e.getActionCommand().equals("Register")){
-        	
-        	Database db = new Database();
-             
-            boolean newtvboxRegistered =  db.newtvbox(tvbox);
-            
-            if(newtvboxRegistered){
-            		
-            JOptionPane.showMessageDialog(null, "Submited");
-             view.dispose();
-             
-            }
 
-            
-            }
- 
-    }
+	// When the controller starts, we need a new model and a new view
+	public TVBoxController() throws ParseException {
+
+		view = new NewTVBox(this);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		String yearOfRelease = view.getFormattedTextFieldYearOfRelease();
+		String title = view.getTextFieldTitle();
+		String genre = view.getComboBoxGenre();
+		double Price = view.getComboBoxPriceNewTVBox();
+		String Type = view.getComboBoxTypeTVBox();
+		String NumberOfDisco = view.getComboBoxNumberOfDisco();
+		String Season = view.getComboBoxSeasonNewTVBox();
+
+		TVBox tvbox = new TVBox(yearOfRelease, title, genre, Price, Type, NumberOfDisco, Season);
+
+		if (e.getActionCommand().equals("Register")) {
+
+			Database db = new Database();
+
+			boolean newtvboxRegistered = db.newtvbox(tvbox);
+
+			if (newtvboxRegistered) {
+
+				JOptionPane.showMessageDialog(null, "Submited");
+				view.dispose();
+
+			}
+
+		}
+
+	}
 }
-

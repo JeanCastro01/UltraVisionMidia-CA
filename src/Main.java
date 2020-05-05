@@ -15,9 +15,10 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		//new NewEmployee();
-		 new Dashboard();
+		
+		new Dashboard();
 		//new NewMovie();
-		//new NewLoyaltyCard();
+	//    new NewLoyaltyCard();
 	     //new NewCustomer();
 		// new NewMusicLive();
 		//new TitlesAvailable ();

@@ -30,58 +30,54 @@ public class NewEmployee extends JFrame {
 	 * Create the frame.
 	 */
 	public NewEmployee() {
-		
-		JFrame newemployee = new JFrame ();
-		
-	
+
+		JFrame newemployee = new JFrame();
+
 		newemployee.setTitle("Ultra Vision Midia");
 		newemployee.setVisible(true);
 		newemployee.setLocationRelativeTo(null);
 		newemployee.setResizable(false);
-	
-		
+
 		newemployee.setSize(new Dimension(800, 600));
-			
-		
+
 		contentPane = new JPanel();
 		contentPane.setSize(new Dimension(800, 600));
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		newemployee.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(6, 6, 788, 94);
 		contentPane.add(panel);
-		
+
 		JLabel NewLabelEmployee = new JLabel("New Employee");
 		NewLabelEmployee.setIcon(new ImageIcon(NewEmployee.class.getResource("/imagens/employee.png")));
 		panel.add(NewLabelEmployee);
-	
-		
+
 		textFieldUsernameEmployee = new JTextField();
 		textFieldUsernameEmployee.setBounds(238, 120, 450, 26);
 		contentPane.add(textFieldUsernameEmployee);
 		textFieldUsernameEmployee.setColumns(10);
-		
+
 		textFieldPasswordEmployee = new JTextField();
 		textFieldPasswordEmployee.setBounds(238, 178, 450, 26);
 		contentPane.add(textFieldPasswordEmployee);
 		textFieldPasswordEmployee.setColumns(10);
-		
+
 		JLabel textFieldEmployeeUsername = new JLabel("Username");
 		textFieldEmployeeUsername.setBounds(93, 125, 110, 16);
 		contentPane.add(textFieldEmployeeUsername);
-		
+
 		JLabel textFieldEmployeePassword = new JLabel("Password");
 		textFieldEmployeePassword.setBounds(93, 183, 98, 16);
 		contentPane.add(textFieldEmployeePassword);
-		
-	    ButtonRegisterMusicLive = new JButton("Register");
+
+		ButtonRegisterMusicLive = new JButton("Register");
 		ButtonRegisterMusicLive.setBounds(238, 241, 117, 29);
 		contentPane.add(ButtonRegisterMusicLive);
-		
+
 		newemployee.validate();
 		newemployee.repaint();
 	}
@@ -117,5 +113,5 @@ public class NewEmployee extends JFrame {
 	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
 		ButtonRegisterMusicLive = buttonRegisterMusicLive;
 	}
-	
+
 }

@@ -1,13 +1,7 @@
 package model;
 
 public enum TypeEnum {
-	
-	CD, 
-	DVD,
-	BLU_RAY;
-	
-	
+
+	CD, DVD, BLU_RAY;
 
 }
-
-

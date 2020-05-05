@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import model.Database;
+import model.MembershipCard;
 
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
@@ -59,120 +60,112 @@ public class RentMovie extends JFrame implements ActionListener {
 	private String customerChoosed;
 	private Database jbdc = new Database();
 	private String selectedPrice;
-	
-	
+
 	/**
 	 * Launch the application.
 	 */
 
 	/**
 	 * Create the frame.
-	 * @throws ParseException 
+	 * 
+	 * @throws ParseException
 	 */
 	public RentMovie() throws ParseException {
-		
-		
+
 		JFrame rentmovie = new JFrame();
-        
+
 		rentmovie.setTitle("Ultra Vision Midia");
 		rentmovie.setVisible(true);
-	    rentmovie.setSize(new Dimension(800, 700));
-	    rentmovie.setLocationRelativeTo(null);
+		rentmovie.setSize(new Dimension(800, 700));
+		rentmovie.setLocationRelativeTo(null);
 		rentmovie.setResizable(false);
-		
-		
-		
-		
+
 		contentPane = new JPanel();
 		contentPane.setSize(new Dimension(800, 800));
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		rentmovie.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(6, 6, 788, 94);
 		contentPane.add(panel);
-		
+
 		JLabel NewLabelRentMovie = new JLabel("Rent Movie");
 		NewLabelRentMovie.setIcon(new ImageIcon(NewMovie.class.getResource("/imagens/movie2.png")));
 		panel.add(NewLabelRentMovie);
-		
-		
+
 		ButtonSelectMovie = new JButton("Select");
 		ButtonSelectMovie.setBounds(576, 312, 117, 29);
 		contentPane.add(ButtonSelectMovie);
 		ButtonSelectMovie.setActionCommand("Select1");
 		ButtonSelectMovie.addActionListener(this);
-		
+
 		textFieldSearchMovie = new JTextField();
 		textFieldSearchMovie.setBounds(470, 118, 179, 26);
 		contentPane.add(textFieldSearchMovie);
 		textFieldSearchMovie.setColumns(10);
-		
-		NewLabelSearchIcon = new JButton ("");
+
+		NewLabelSearchIcon = new JButton("");
 		NewLabelSearchIcon.setIcon(new ImageIcon(NewLoyaltyCard.class.getResource("/imagens/search2.png")));
 		NewLabelSearchIcon.setBounds(646, 118, 39, 26);
 		contentPane.add(NewLabelSearchIcon);
 		NewLabelSearchIcon.setActionCommand("Search1");
 		NewLabelSearchIcon.addActionListener(this);
-		
+
 		JLabel NewLabelSearchMovie = new JLabel("Search Movie");
 		NewLabelSearchMovie.setBounds(352, 123, 91, 16);
 		contentPane.add(NewLabelSearchMovie);
-		
+
 		textFieldSearchCustomerMovie = new JTextField();
 		textFieldSearchCustomerMovie.setBounds(470, 348, 179, 26);
 		contentPane.add(textFieldSearchCustomerMovie);
 		textFieldSearchCustomerMovie.setColumns(10);
-		
+
 		JLabel NewLabelSearchCustomerMovie = new JLabel("Search Customer");
 		NewLabelSearchCustomerMovie.setBounds(332, 353, 117, 16);
 		contentPane.add(NewLabelSearchCustomerMovie);
-		
+
 		lblNewLabel = new JButton("");
 		lblNewLabel.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/search2.png")));
 		lblNewLabel.setBounds(646, 353, 61, 20);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setActionCommand("Search2");
 		lblNewLabel.addActionListener(this);
-		
-		
-		
+
 		NewButtonSelecCustomerMovie = new JButton("Select");
 		NewButtonSelecCustomerMovie.setBounds(576, 532, 117, 29);
 		contentPane.add(NewButtonSelecCustomerMovie);
 		NewButtonSelecCustomerMovie.setActionCommand("Select2");
 		NewButtonSelecCustomerMovie.addActionListener(this);
-		
+
 		mascara = new MaskFormatter("##/##/####");
 		formattedTextFieldReturnDateMovie = new JFormattedTextField(mascara);
 		formattedTextFieldReturnDateMovie.setBounds(127, 606, 130, 26);
 		contentPane.add(formattedTextFieldReturnDateMovie);
-		
+
 		mascara2 = new MaskFormatter("##/##/####");
 		formattedTextFieldRentedDate = new JFormattedTextField(mascara2);
 		formattedTextFieldRentedDate.setBounds(127, 568, 130, 26);
 		contentPane.add(formattedTextFieldRentedDate);
-		
+
 		JLabel NewLabelRentedDate = new JLabel(" Rented Date");
 		NewLabelRentedDate.setBounds(277, 573, 85, 16);
 		contentPane.add(NewLabelRentedDate);
-		
+
 		JLabel NewLabelReturnDateMovie = new JLabel("Return Date");
 		NewLabelReturnDateMovie.setBounds(279, 611, 83, 16);
 		contentPane.add(NewLabelReturnDateMovie);
-		
+
 		JLabel NewLabelTotalValueMovie = new JLabel("Total =");
 		NewLabelTotalValueMovie.setBounds(384, 649, 46, 21);
 		contentPane.add(NewLabelTotalValueMovie);
-		
-		
+
 		formattedTextFieldTotalValueMovie = new JFormattedTextField();
 		formattedTextFieldTotalValueMovie.setBounds(442, 646, 120, 26);
 		contentPane.add(formattedTextFieldTotalValueMovie);
-		
+
 		NewButtonRentMovie = new JButton("Rent");
 		NewButtonRentMovie.setBackground(Color.BLACK);
 		NewButtonRentMovie.setForeground(Color.RED);
@@ -180,77 +173,60 @@ public class RentMovie extends JFrame implements ActionListener {
 		contentPane.add(NewButtonRentMovie);
 		NewButtonRentMovie.setActionCommand("Rent");
 		NewButtonRentMovie.addActionListener(this);
-		
-		
-		
+
 		JLabel NewLabelCustomerIcon = new JLabel("");
-		NewLabelCustomerIcon.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/employee-removebg-preview.png")));
+		NewLabelCustomerIcon
+				.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/employee-removebg-preview.png")));
 		NewLabelCustomerIcon.setBounds(21, 415, 84, 72);
 		contentPane.add(NewLabelCustomerIcon);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/homepage2-removebg-preview.png")));
 		lblNewLabel_1.setBounds(21, 178, 94, 75);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon(RentMovie.class.getResource("/imagens/main logo removed background.png")));
 		lblNewLabel_2.setBounds(6, 603, 109, 67);
 		contentPane.add(lblNewLabel_2);
-		
+
 	}
-		public void tabalemovieSelected(String[][]outsideData){
-			
 
-			// ________LIVE CONCERT AVAILABLE TABlE___________	
-			
-			 // Using the Database connection class
-			     //Database jdbc = new Database();
+	public void tabalemovieSelected(String[][] outsideData) {
 
-			   // String[][] data = outsideData;
-			    String[] columnNames = {"ID","Title","Director","Type", "Price"};
-			
-				// Gathering the data
-		       
-		       
-				// Using a scroll pane
-				JScrollPane myPane = new JScrollPane();
-				myPane.setBounds(127, 143, 550, 161);
-		        contentPane.add(myPane);
-		        
-		        tableCustomerMovietable = new JTable(outsideData,columnNames);
-			   // table.setBounds(226, 169, 470, 389);
-			    contentPane.add( tableCustomerMovietable);
-				myPane.setViewportView(tableCustomerMovietable);	
-			
-		}
+		// ________LIVE CONCERT AVAILABLE TABlE___________
 
-		public void tablecustomermovie(String[][]outsideData2){
-			
-			
-			// ________ CUSTOMER LIVE CONCERT TABLE ___________		
-			
-			//Database jdbc = new Database();
-		  
-		    
-		    String[] columnNames2 = {"ID","FirstName","LastName","Email","Tel","Membership"};
+		String[] columnNames = { "ID", "Title", "Director", "Type", "Price" };
 
-//			// Gathering the data
-		    //data2 = jdbc.rentLiveConcertCustomer();
-		   
-			// Using a scroll pane
-			JScrollPane myPane2 = new JScrollPane();
-			myPane2.setBounds(127, 372, 549, 161);
-		    contentPane.add(myPane2);
-		    
-		    CustomerMovietable = new JTable(outsideData2,columnNames2);
-		   // table.setBounds(226, 169, 470, 389);
-		    contentPane.add(CustomerMovietable);
-			myPane2.setViewportView(CustomerMovietable);	
+		// Using a scroll pane
+		JScrollPane myPane = new JScrollPane();
+		myPane.setBounds(127, 143, 550, 161);
+		contentPane.add(myPane);
 
-			
-		}
-			
+		tableCustomerMovietable = new JTable(outsideData, columnNames);
+		contentPane.add(tableCustomerMovietable);
+		myPane.setViewportView(tableCustomerMovietable);
+		
+		
+
+	}
+
+	public void tablecustomermovie(String[][] outsideData2) {
+
+		// ________ CUSTOMER LIVE CONCERT TABLE ___________
+
+		String[] columnNames2 = { "ID", "FirstName", "LastName", "Email", "Tel", "Membership" };
+
+		// Using a scroll pane
+		JScrollPane myPane2 = new JScrollPane();
+		myPane2.setBounds(127, 372, 549, 161);
+		contentPane.add(myPane2);
+
+		CustomerMovietable = new JTable(outsideData2, columnNames2);
+		contentPane.add(CustomerMovietable);
+		myPane2.setViewportView(CustomerMovietable);
+
+	}
 
 	public JPanel getContentPane() {
 		return contentPane;
@@ -378,109 +354,90 @@ public class RentMovie extends JFrame implements ActionListener {
 
 	public void setNewCheckBoxCardMovie(JCheckBox newCheckBoxCardMovie) {
 		NewCheckBoxCardMovie = newCheckBoxCardMovie;
-	
-		
-	}
-	
-	
-	 int initial = 0;
 
-	
+	}
+
+	int initial = 0;
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-if (e.getActionCommand().equals("Select1")) {
-			
-			if(list.size() > 4)
-			{
-				
-			return;
+
+		if (e.getActionCommand().equals("Select1")) {
+
+			if (list.size() > 4) {
+
+				return;
 			}
-			
-			
+
 			selectedMovieID = tableCustomerMovietable.getSelectedRow();
 			selectedID = tableCustomerMovietable.getValueAt(selectedMovieID, 0).toString();
-			
-			selectedPriceMovie =  tableCustomerMovietable.getSelectedRow();
+
+			selectedPriceMovie = tableCustomerMovietable.getSelectedRow();
 			selectedPrice = tableCustomerMovietable.getValueAt(selectedPriceMovie, 4).toString();
-            
-				
-			current = Integer.parseInt((String)tableCustomerMovietable.getValueAt(selectedPriceMovie, 4)) ;
+
+			current = Integer.parseInt((String) tableCustomerMovietable.getValueAt(selectedPriceMovie, 4));
 			initial += current;
-		
+
 			allSelected1 = true;
 			list.add(selectedID);
-			
 
-			
 			formattedTextFieldTotalValueMovie.setText(String.valueOf(initial));
 
 		}
-	
-		 if (e.getActionCommand().equals("Select2")) {
-			
-			selectedCustomerID =  CustomerMovietable.getSelectedRow();
-		    customerChoosed = CustomerMovietable.getValueAt(selectedCustomerID, 0).toString();
-		    
-		    allSelected2 = true;
-		   
+
+		if (e.getActionCommand().equals("Select2")) {
+
+			selectedCustomerID = CustomerMovietable.getSelectedRow();
+			customerChoosed = CustomerMovietable.getValueAt(selectedCustomerID, 0).toString();
+
+			allSelected2 = true;
+
 		}
-		
-		
-		if(e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true))
-		{
-	
+
+		if (e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true)) {
+
+			jbdc.updatetableMovie(selectedID);
+			MembershipCard mCard = (jbdc.getMembershipPoints(customerChoosed));
+			int newPoints = Integer.parseInt(JOptionPane.showInputDialog("Please insert the amount of points"));
+			jbdc.updatePoints(customerChoosed, mCard, newPoints);
+			
+
 			JOptionPane.showMessageDialog(null, "Rented");
-			
-			for(int i = 0; i < list.size(); i++) {
-				
-				
-				
-			    jbdc.selectedMovieCustomer(list.get(i), customerChoosed, this.getFormattedTextFieldRentedDate() , this.getFormattedTextFieldReturnDateMovie() );
-			    list.remove(i);
+
+			for (int i = 0; i < list.size(); i++) {
+
+				jbdc.selectedMovieCustomer(list.get(i), customerChoosed, this.getFormattedTextFieldRentedDate(),
+						this.getFormattedTextFieldReturnDateMovie());
+				list.remove(i);
 			}
-			
+
 			allSelected1 = false;
 			allSelected2 = false;
-			
+
 		}
-		
 
-	   if(e.getActionCommand().equals("Search1")) {
-	
-		   
-		   
-		    String st = textFieldSearchMovie.getText();
-		    
-		  
-		    System.out.println(st);
-		
-		    Database jdbc = new Database();	       
-	        String [][] data = jdbc.searchMovie(st);
-	        tabalemovieSelected(data);
-		
-	}
-	   if(e.getActionCommand().equals("Search2")) {
-			
-		   
-		   
-		    String st2 = textFieldSearchCustomerMovie.getText();
-		    
-		  
-		    System.out.println(st2);
-		
-		    Database jdbc = new Database();	       
-	        String [][] data = jdbc.searchMovieCustomer(st2);
-	        tablecustomermovie(data);
-		
-	}
+		if (e.getActionCommand().equals("Search1")) {
 
+			String st = textFieldSearchMovie.getText();
+
+			System.out.println(st);
+
+			Database jdbc = new Database();
+			String[][] data = jdbc.searchMovie(st);
+			tabalemovieSelected(data);
+
+		}
+		if (e.getActionCommand().equals("Search2")) {
+
+			String st2 = textFieldSearchCustomerMovie.getText();
+
+			System.out.println(st2);
+
+			Database jdbc = new Database();
+			String[][] data = jdbc.searchMovieCustomer(st2);
+			tablecustomermovie(data);
+
+		}
 
 	}
 }
-
-		
-		
-		
-		
-
