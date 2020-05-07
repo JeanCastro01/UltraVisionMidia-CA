@@ -42,11 +42,14 @@ public class MovieController implements ActionListener {
 
 			boolean newmovieRegistered = db.newmovie(movie);
 
-			if (newmovieRegistered) {
+			if (newmovieRegistered!=false) {
 
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
 
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Fiels Are Empty");
 			}
 
 		}

@@ -1,13 +1,13 @@
+
+
+
+
 import java.text.ParseException;
 
-import view.Dashboard;
-import view.NewCustomer;
-import view.NewEmployee;
-import view.NewLoyaltyCard;
-import view.NewMovie;
-import view.NewMusicLive;
-import view.RentMovie;
-import view.TitlesAvailable;
+import controller.LiveConcertController;
+import controller.LoginController;
+import view.NewLiveConcert;
+
 
 public class Main {
 
@@ -15,13 +15,14 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		//new NewEmployee();
-		
-		new Dashboard();
+	  new LoginController();	
+		//new Dashboard(false);
 		//new NewMovie();
 	//    new NewLoyaltyCard();
 	     //new NewCustomer();
 		// new NewMusicLive();
 		//new TitlesAvailable ();
+		//new LiveConcertController();
 	}
 
 }

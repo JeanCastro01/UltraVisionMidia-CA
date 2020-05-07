@@ -13,6 +13,8 @@ import view.NewLiveConcert;
 public class LiveConcertController implements ActionListener {
 
 	NewLiveConcert view;
+	boolean allTrue=false;
+	boolean allFalse=false;
 
 	// When the controller starts, we need a new model and a new view
 	public LiveConcertController() throws ParseException {
@@ -39,11 +41,17 @@ public class LiveConcertController implements ActionListener {
 
 			boolean liveconcertRegistered = db.newliveconcert(liveconcert);
 
-			if (liveconcertRegistered) {
+			if (liveconcertRegistered !=false) {
 
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
-
+		
+			}
+			
+			else {
+				
+				JOptionPane.showMessageDialog(null, "Make sure Fields are not empty");
+				
 			}
 
 		}

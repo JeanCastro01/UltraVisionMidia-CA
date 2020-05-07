@@ -14,6 +14,16 @@ public class CustomerController implements ActionListener {
 
 	Customer model;
 	NewCustomer view;
+	String firstname;
+	String lastname;
+	String email;
+	String tel;
+	String membership;
+	String cardnumber;
+	Database db = new Database();
+	boolean newcustomerRegistered;
+	boolean valid = false;
+	
 
 	// When the controller starts, we need a new model and a new view
 	public CustomerController() throws ParseException {
@@ -25,33 +35,44 @@ public class CustomerController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		String firstname = view.getTextFieldFirstName();
-		String lastname = view.getTextFieldLastName();
-		String email = view.getTextFieldEmail();
-		String tel = view.getFormattedTextFieldTelephone();
-		String membership = view.getComboBoxMembership();
-		String cardnumber = view.getFormattedTextFieldCardNumber();
+		firstname = view.getTextFieldFirstName();
+		lastname = view.getTextFieldLastName();
+		email = view.getTextFieldEmail();
+		tel = view.getFormattedTextFieldTelephone();
+		membership = view.getComboBoxMembership();
+		cardnumber = view.getFormattedTextFieldCardNumber();
 
 		model = new Customer(firstname, lastname, email, membership, tel, cardnumber);
 
 		if (e.getActionCommand().equals("Register")) {
 
-			Database db = new Database();
-
-			boolean newcustomerRegistered = db.newcustomer(model);
 			
-			if (newcustomerRegistered==false) {
-				
-				db.newcustomerCard(model);
 
-				
-				
-				JOptionPane.showMessageDialog(null, "Submited");
+			newcustomerRegistered = db.newcustomer(model);
 
-				view.dispose();
+            
+		if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || tel.isEmpty() || cardnumber.isEmpty() || membership.isEmpty()) {
+				
+				
+				JOptionPane.showMessageDialog(null, "Make Sure Fields are not Empty");
+		
+				
 			}
+			
 
+			else if (newcustomerRegistered) {
+				
+		
+				db.newcustomerCard(model);
+				JOptionPane.showMessageDialog(null, "Submited");
+				view.dispose();
+	
+
+			}
 		}
-
 	}
 }
+
+
+
+

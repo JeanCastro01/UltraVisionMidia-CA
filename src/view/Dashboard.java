@@ -2,7 +2,11 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Timer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +26,13 @@ import controller.MovieController;
 import controller.MusicLiveController;
 import controller.TVBoxController;
 
+import model.Employee;
+
 import javax.swing.JMenuItem;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Rectangle;
 
 public class Dashboard extends JFrame implements ActionListener {
 
@@ -31,8 +41,9 @@ public class Dashboard extends JFrame implements ActionListener {
 
 	/**
 	 * Create the frame.
+	 * @param username 
 	 */
-	public Dashboard() {
+	public Dashboard(String username) {
 
 		dashboard = new JFrame();
 
@@ -49,7 +60,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(Dashboard.class.getResource("/imagens/ULtrAVISION.png")));
-		lblNewLabel_1.setBounds(143, 48, 565, 360);
+		lblNewLabel_1.setBounds(149, 48, 565, 360);
 		contentPane.add(lblNewLabel_1);
 
 		contentPane = new JPanel();
@@ -69,6 +80,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		// contentPane.add(menuBar);
 
 		JMenu JMenuRent = new JMenu("Rent");
+		JMenuRent.setBackground(Color.WHITE);
 		JMenuRent.setIcon(new ImageIcon(Dashboard.class.getResource("/imagens/homepage2-removebg-preview.png")));
 		menuBar.add(JMenuRent);
 		// contentPane.add(JMenuRent);
@@ -100,6 +112,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		// contentPane.add(JMenuItemLiveConcert);
 
 		JMenu JMenuRegister = new JMenu("Register");
+		JMenuRegister.setBackground(Color.WHITE);
 		menuBar.add(JMenuRegister);
 		// contentPane.add(JMenuRegister);
 
@@ -137,6 +150,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		// contentPane.add(JMenuItemNewEmployee);
 
 		JMenu JMenuLoyaltyCard = new JMenu("Loyalty Card");
+		JMenuLoyaltyCard.setBackground(Color.WHITE);
 		menuBar.add(JMenuLoyaltyCard);
 		// contentPane.add(JMenuLoyaltyCard);
 
@@ -147,6 +161,7 @@ public class Dashboard extends JFrame implements ActionListener {
 		// contentPane.add(mntmNewMenuItem);
 
 		JMenu SearchTitles = new JMenu("Search Titles");
+		SearchTitles.setBackground(Color.WHITE);
 		menuBar.add(SearchTitles);
 
 		JMenuItem JNewMenuItemSearchTitlesAvailable = new JMenuItem("Available");
@@ -158,11 +173,52 @@ public class Dashboard extends JFrame implements ActionListener {
 		SearchTitles.add(JNewMenuItemSearchTitlesRented);
 		JNewMenuItemSearchTitlesRented.setActionCommand("Rented");
 		JNewMenuItemSearchTitlesRented.addActionListener(this);
+		
+		
+		JMenu UpdateCustomer = new JMenu("Update");
+		UpdateCustomer.setBackground(Color.WHITE);
+		menuBar.add(UpdateCustomer);
+		
+		
+		JMenuItem JNewMenuItemUpdate = new JMenuItem("Update Customer");
+		UpdateCustomer.add(JNewMenuItemUpdate);
+		JNewMenuItemUpdate.setActionCommand("Update Customer");
+		JNewMenuItemUpdate.addActionListener(this);
+		
+		JMenu Logout = new JMenu("Log Out");
+		Logout.setBackground(Color.WHITE);
+		menuBar.add(Logout);
+		
+		
+		JMenuItem JNewMenuItemlogout = new JMenuItem("Log out");
+		Logout.add(JNewMenuItemlogout);
+		JNewMenuItemlogout.setActionCommand("Log out");
+		JNewMenuItemlogout.addActionListener(this);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("");
+		mntmNewMenuItem_1.setBackground(Color.WHITE);
+		mntmNewMenuItem_1.setActionCommand("");
+		menuBar.add(mntmNewMenuItem_1);
+		
+		JLabel label = new JLabel("Welcome: " + username);
+		label.setIcon(null);
+		label.setBounds(new Rectangle(14, 0, 0, 0));
+		label.setPreferredSize(new Dimension(200, 6));
+		label.setVerticalTextPosition(SwingConstants.TOP);
+		label.setVerticalAlignment(SwingConstants.TOP);
+		label.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 12));
+		label.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		menuBar.add(label);
+		JNewMenuItemlogout.addActionListener(this);
+		
+		
 
 		dashboard.validate();
 		dashboard.repaint();
 
 	}
+
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -202,7 +258,12 @@ public class Dashboard extends JFrame implements ActionListener {
 		}
 
 		else if (e.getActionCommand().equals("New Employee")) {
-			new NewEmployee();
+			try {
+				new EmployeeController();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("Loyalty Points")) {
 			new NewLoyaltyCard();
 		} else if (e.getActionCommand().equals("Available")) {
@@ -247,5 +308,18 @@ public class Dashboard extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("Rented")) {
 			new TitlesRented();
 		}
+		else if (e.getActionCommand().equals("Log out")) {
+			System.exit(0);
+		}
+		
+		
+	      else if (e.getActionCommand().equals("Update Customer")) {
+		     try {
+				new UpdateCustomer();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	}
 	}
 }

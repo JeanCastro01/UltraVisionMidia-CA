@@ -42,11 +42,14 @@ public class TVBoxController implements ActionListener {
 
 			boolean newtvboxRegistered = db.newtvbox(tvbox);
 
-			if (newtvboxRegistered) {
+			if (newtvboxRegistered!=false) {
 
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
 
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Fiels Are Empty");
 			}
 
 		}

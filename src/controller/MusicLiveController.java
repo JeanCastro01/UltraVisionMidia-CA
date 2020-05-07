@@ -41,11 +41,14 @@ public class MusicLiveController implements ActionListener {
 
 			boolean newmusicliveRegistered = db.newmusiclive(musiclive);
 
-			if (newmusicliveRegistered) {
+			if (newmusicliveRegistered!=false) {
 
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
 
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Fiels Are Empty");
 			}
 
 		}

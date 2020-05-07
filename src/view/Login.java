@@ -9,29 +9,30 @@ import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import controller.CustomerController;
-import controller.EmployeeController;
+import controller.LoginController;
 
-public class NewEmployee extends JFrame {
+public class Login extends JFrame {
+
 
 	private JPanel contentPane;
 	private JTextField textFieldUsernameEmployee;
-	private JTextField textFieldPasswordEmployee;
-	private JButton ButtonRegisterMusicLive;
+	private JPasswordField textFieldPasswordEmployee;
+	private JButton ButtonLogin;
 	private JFrame newemployee;
 
 	// This window needs to know who the controller is
-	private EmployeeController controllerInternalRef;
+	// This window needs to know who the controller is
+	private LoginController controllerInternalRef;
 
-	public NewEmployee(EmployeeController controller) throws ParseException {
+	public Login(LoginController controller) throws ParseException {
 
 		// Putting the reference of the controller in the local reference
 		this.controllerInternalRef = controller;
@@ -43,20 +44,14 @@ public class NewEmployee extends JFrame {
 
 	private void attributesSetter() throws ParseException {
 	
-	
-	/**
-	 * Launch the application.
-	 */
 
-	/**
-	 * Create the frame.
-	 */
 	
 
 		newemployee = new JFrame();
 
 		newemployee.setTitle("Ultra Vision Midia");
 		newemployee.setVisible(true);
+		newemployee.setSize(new Dimension(800, 600));
 		newemployee.setLocationRelativeTo(null);
 		newemployee.setResizable(false);
 
@@ -74,7 +69,7 @@ public class NewEmployee extends JFrame {
 		panel.setBounds(6, 6, 788, 94);
 		contentPane.add(panel);
 
-		JLabel NewLabelEmployee = new JLabel("New Employee");
+		JLabel NewLabelEmployee = new JLabel("Login");
 		NewLabelEmployee.setIcon(new ImageIcon(NewEmployee.class.getResource("/imagens/employee.png")));
 		panel.add(NewLabelEmployee);
 
@@ -83,7 +78,7 @@ public class NewEmployee extends JFrame {
 		contentPane.add(textFieldUsernameEmployee);
 		textFieldUsernameEmployee.setColumns(10);
 
-		textFieldPasswordEmployee = new JTextField();
+		textFieldPasswordEmployee = new JPasswordField();
 		textFieldPasswordEmployee.setBounds(238, 178, 450, 26);
 		contentPane.add(textFieldPasswordEmployee);
 		textFieldPasswordEmployee.setColumns(10);
@@ -96,36 +91,26 @@ public class NewEmployee extends JFrame {
 		textFieldEmployeePassword.setBounds(93, 183, 98, 16);
 		contentPane.add(textFieldEmployeePassword);
 
-		ButtonRegisterMusicLive = new JButton("Register");
-		ButtonRegisterMusicLive.setBounds(238, 241, 117, 29);
-		contentPane.add(ButtonRegisterMusicLive);
-		ButtonRegisterMusicLive.addActionListener((ActionListener) controllerInternalRef);
-		ButtonRegisterMusicLive.setActionCommand("Register");
+		ButtonLogin = new JButton("Log In");
+		ButtonLogin.setBounds(238, 241, 117, 29);
+		contentPane.add(ButtonLogin);
+		ButtonLogin.addActionListener((ActionListener) controllerInternalRef);
+		ButtonLogin.setActionCommand("login");
 
 		newemployee.validate();
 		newemployee.repaint();
 	}
 
-
+	public JButton getButtonRegisterMusicLive() {
+		return ButtonLogin;
+	}
 
 	public String getTextFieldUsernameEmployee() {
-		
-		String username = textFieldUsernameEmployee.getText();
-		return username;
+		return textFieldUsernameEmployee.getText();
 	}
-
 
 	public String getTextFieldPasswordEmployee() {
-		
-		String password = textFieldPasswordEmployee.getText();
-		return password;
+		return textFieldPasswordEmployee.getText();
 	}
-
-
-	public JButton getButtonRegisterMusicLive() {
-		return ButtonRegisterMusicLive;
-	}
-
-
 
 }

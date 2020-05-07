@@ -22,13 +22,13 @@ public class Database {
 	String password = "Pass1234!";
 	Connection conn = null;
 	Statement stmt = null;
+	ResultSet rs;
 
 	// Constructor. is starting the DB connection and
 	// putting everything in the variables declared above
 	public Database() {
 
 		try {
-			// Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
@@ -57,6 +57,7 @@ public class Database {
 
 		// Variable to define if the login is successful
 		boolean newcustomer = false;
+		
 		try {
 			// Building the query
 			String query = "INSERT INTO Customer (First_name, Last_name, cust_email, Tel, Membership, Card_number  )"
@@ -65,7 +66,9 @@ public class Database {
 					+ newcustomerRegistered.getMembership() + "','" + newcustomerRegistered.getCardNumber() + "');";
 
 			// Sending the query to the database
-			newcustomer = stmt.execute(query);
+		stmt.executeUpdate(query);
+		newcustomer= true;
+		
 
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
@@ -84,6 +87,37 @@ public class Database {
 
 		// Retuning the login status
 		return newcustomer;
+	}
+
+	public boolean newemployee(Employee newEmployeeRegistered) {
+
+		// Variable to define if the login is successful
+		boolean newemployee = false;
+		try {
+			// Building the query
+			String query = "INSERT INTO employee (Employee_username, Employee_password)" + "VALUES ('"
+					+ newEmployeeRegistered.getUsername() + "','" + newEmployeeRegistered.getPassword() + "');";
+
+			// Sending the query to the database
+			newemployee = stmt.execute(query);
+
+		} catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			// Loop through the SQL Exceptions
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		// Retuning the login status
+		return newemployee;
 	}
 
 	// This method is only in charge of saving a new user into the the DB
@@ -149,19 +183,9 @@ public class Database {
 					+ "');";
 
 			// Sending the query to the database
-			newliveconcert = ((java.sql.Statement) stmt).execute(query);
-
-		} catch (SQLException se) {
-			System.out.println("SQL Exception:");
-
-			// Loop through the SQL Exceptions
-			while (se != null) {
-				System.out.println("State  : " + se.getSQLState());
-				System.out.println("Message: " + se.getMessage());
-				System.out.println("Error  : " + se.getErrorCode());
-
-				se = se.getNextException();
-			}
+			stmt.execute(query);
+			newliveconcert = true;
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -921,12 +945,12 @@ public class Database {
 
 			String membership = "";
 			membership = "(TV) Box Set";
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
-					+ membership +  "'OR Membership= '" + membership2 + "'";
+					+ membership + "'OR Membership= '" + membership2 + "'";
 
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
@@ -1071,13 +1095,12 @@ public class Database {
 
 			String membership = "";
 			membership = "(ML) Music Live & Live Concert Videos";
-			
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
-					+ membership +  "'OR Membership= '" + membership2 + "'";
+					+ membership + "'OR Membership= '" + membership2 + "'";
 
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
@@ -1224,13 +1247,12 @@ public class Database {
 
 			String membership = "";
 			membership = "(VL) Movie";
-			
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
-					+ membership +  "'OR Membership= '" + membership2 + "'";
+					+ membership + "'OR Membership= '" + membership2 + "'";
 
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
@@ -1378,13 +1400,12 @@ public class Database {
 
 			String membership = "";
 			membership = "(ML) Music Live & Live Concert Videos";
-			
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership ='"
-					+ membership +  "'OR Membership= '" + membership2 + "'";
+					+ membership + "'OR Membership= '" + membership2 + "'";
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
 
@@ -1566,12 +1587,12 @@ public class Database {
 			// String selectitem = available.getComboBox();
 			String membership = "";
 			membership = "(ML) Music Live & Live Concert Videos";
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name LIKE '%"
-					+ st2 + "%' AND Membership= '" + membership +  "'OR Membership= '" + membership2 + "'";
+					+ st2 + "%' AND Membership= '" + membership + "'OR Membership= '" + membership2 + "'";
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
 
@@ -1750,18 +1771,14 @@ public class Database {
 			Connection conn = null;
 			Statement stmt = null;
 
-	
 			String membership = "";
 			membership = "(VL) Movie";
-			
+
 			String membership2 = "";
 			membership2 = "(PR) Premium";
-			
-			
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name LIKE '%"
 					+ st2 + "%' AND Membership= '" + membership + "'OR Membership= '" + membership2 + "'";
-		
 
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
@@ -1944,9 +1961,11 @@ public class Database {
 			// String selectitem = available.getComboBox();
 			String membership = "";
 			membership = "(ML) Music Live & Live Concert Videos";
+			String membership2 = "";
+			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name LIKE '%"
-					+ st2 + "%' AND Membership= '" + membership + "' ";
+					+ st2 + "%' AND Membership= '" + membership + "'OR Membership= '" + membership2 + "'";
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
 
@@ -2131,9 +2150,11 @@ public class Database {
 			// String selectitem = available.getComboBox();
 			String membership = "";
 			membership = "(TV) Box Set";
+			String membership2 = "";
+			membership2 = "(PR) Premium";
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE First_name LIKE '%"
-					+ st2 + "%' AND Membership= '" + membership + "' ";
+					+ st2 + "%' AND Membership= '" + membership + "'OR Membership= '" + membership2 + "'";
 			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
 			// Movie; ";
 
@@ -2311,7 +2332,7 @@ public class Database {
 	}
 
 	public int getCustomerIO(String email) throws SQLException {
-		
+
 		int cust_id = 0;
 
 		String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
@@ -2319,7 +2340,6 @@ public class Database {
 		String password = "Pass1234!";
 		Connection conn = null;
 		Statement stmt = null;
-
 
 		String query = "SELECT cust_id FROM Customer WHERE cust_email = '" + email + "'";
 		conn = DriverManager.getConnection(dbServer, user, password);
@@ -2376,8 +2396,7 @@ public class Database {
 			data[row][1] = email;
 			data[row][2] = rs1.getString("LoyaltyCard_id");
 			data[row][3] = rs1.getString("Points");
-	
-	
+
 			// go the the next row
 			row++;
 		}
@@ -2393,20 +2412,16 @@ public class Database {
 
 	}
 
-
-
-
 	public boolean updatePoints(String customerChoosed, MembershipCard mCard, int newPoints) {
 
 		int oldPoints = mCard.getPoints();
-		int sumOfPoints = oldPoints + newPoints ;
-		
-		
+		int sumOfPoints = oldPoints + newPoints;
 
 		boolean updatecustomerpoints = false;
 		try {
 			// Building the query
-			String query = "UPDATE LoyaltyCard SET Points = '" + sumOfPoints + "'  WHERE cust_id = '" + customerChoosed + "'";
+			String query = "UPDATE LoyaltyCard SET Points = '" + sumOfPoints + "'  WHERE cust_id = '" + customerChoosed
+					+ "'";
 
 			// Sending the query to the database
 			updatecustomerpoints = ((java.sql.Statement) stmt).execute(query);
@@ -2458,6 +2473,166 @@ public class Database {
 		MembershipCard mCard = new MembershipCard(cardPoints, cardID);
 
 		return mCard;
+
+	}
+
+	public boolean Login(Employee EmployeeLogged) {
+
+		// Variable to define if the login is successful
+		boolean login = false;
+		try {
+			// Building the query
+			String query = "SELECT Employee_username, Employee_password FROM employee WHERE Employee_username = '"
+					+ EmployeeLogged.getUsername() + "' AND Employee_password = '" + EmployeeLogged.getPassword()
+					+ "';";
+
+			// Sending the query to the database
+			ResultSet rs = stmt.executeQuery(query);
+
+			// If there is an entry in the database that satisfies
+			// the username and password, then the login is successful
+			// otherwise it fails
+			login = rs.next();
+
+			// Close the result set, statement and the connection
+			rs.close();
+
+			// Calling the method in charge of closing the connections
+			closings();
+
+		} catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			// Loop through the SQL Exceptions
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		// Retuning the login status
+		return login;
+	}
+
+	// This method is only in charge of saving a new user into the the DB
+
+	// Separeating closing statements for better code structure
+	private void closings() {
+		try {
+			stmt.close();
+			conn.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public String[][] searchcustomerupdate(String st) {
+		String[][] data = null;
+
+		try {
+
+			String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
+			String user = "jean";
+			String password = "Pass1234!";
+			Connection conn = null;
+			Statement stmt = null;
+
+			String query1 = "SELECT * FROM Customer WHERE cust_email ='" + st + "'";
+
+			// Get a connection to the database
+			conn = DriverManager.getConnection(dbServer, user, password);
+
+			// Get a statement from the connection
+			stmt = conn.createStatement();
+
+			// Execute the query
+			ResultSet rs1 = stmt.executeQuery(query1);
+			// ResultSet rs2 = stmt.executeQuery(query2) ;
+
+			// Instantiating the array
+			data = new String[100][10];
+			// Creating a counter to keep track of the
+			// row we're on
+			int row = 0;
+
+			// Loop through the result set
+			while (rs1.next()) {
+
+				// And then, adding the data to an array
+				// data[row][0] = rs1.getString("Movie_id");
+				data[row][0] = rs1.getString("cust_id");
+				data[row][1] = rs1.getString("First_name");
+				data[row][2] = rs1.getString("Last_name");
+				data[row][3] = rs1.getString("cust_email");
+				data[row][4] = rs1.getString("Tel");
+				data[row][5] = rs1.getString("Membership");
+				data[row][6] = rs1.getString("Card_number");
+
+				// go the the next row
+				row++;
+			}
+
+			// Close the result set, statement and the connection
+			rs1.close();
+			// rs2.close() ;
+			stmt.close();
+			conn.close();
+		} catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			// Loop through the SQL Exceptions
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		// Retuning the array of data
+		return data;
+
+	}
+
+	public boolean updatecustomerdetails(String selectedID, String textFieldFirstName, String textFieldLastName,
+			String textFieldEmail, String TextFieldTelephone, String TextFieldCardNumber, String comboBoxMembership) {
+
+		boolean customer = false;
+		try {
+			// Building the query
+			String query = "UPDATE Customer   SET  First_name = '" + textFieldFirstName + "', Last_name = '"
+					+ textFieldLastName + "', cust_email=  '" + textFieldEmail + "',Tel= '" + TextFieldTelephone
+					+ "', Membership = '" + comboBoxMembership + "',Card_number = '" + TextFieldCardNumber + "'"
+					+ "WHERE cust_id='" + selectedID + "'";
+
+			// Sending the query to the database
+			customer = ((java.sql.Statement) stmt).execute(query);
+
+		} catch (SQLException se) {
+			System.out.println("SQL Exception:");
+
+			// Loop through the SQL Exceptions
+			while (se != null) {
+				System.out.println("State  : " + se.getSQLState());
+				System.out.println("Message: " + se.getMessage());
+				System.out.println("Error  : " + se.getErrorCode());
+
+				se = se.getNextException();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return customer;
+		// TODO Auto-generated method stub
 
 	}
 

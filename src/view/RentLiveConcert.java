@@ -349,7 +349,7 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 
 		}
 
-		if (e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true)) {
+		if (e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true )) {
 
 			jbdc.updatetableliveconcert(selectedID);
 			MembershipCard mCard = (jbdc.getMembershipPoints(customerChoosed));
@@ -395,6 +395,8 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 			tablecustomerliveconcert(data);
 
 		}
+		
+		
 
 	}
 }
