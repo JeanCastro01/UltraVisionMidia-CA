@@ -161,28 +161,8 @@ public class NewTVBox extends JFrame {
 		newtvbox.repaint();
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 	public String getTextFieldTitle() {
 		return textFieldTitle.getText();
-	}
-
-	public void setTextFieldTitle(JTextField textFieldTitle) {
-		this.textFieldTitle = textFieldTitle;
-	}
-
-	public JButton getButtonRegisterTVbox() {
-		return ButtonRegisterTVBox;
-	}
-
-	public void setButtonRegisterTVBox(JButton buttonRegisterMusicLive) {
-		ButtonRegisterTVBox = buttonRegisterMusicLive;
 	}
 
 	public String getComboBoxGenre() {
@@ -209,34 +189,14 @@ public class NewTVBox extends JFrame {
 		return type;
 	}
 
-	public void setComboBoxTypeTVBox(JComboBox comboBoxTypeTVBox) {
-		this.comboBoxTypeTVBox = comboBoxTypeTVBox;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
-
 	public String getFormattedTextFieldYearOfRelease() {
 		return FormattedTextFieldYearOfRelease.getText();
-	}
-
-	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
-		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
 	}
 
 	public String getComboBoxNumberOfDisco() {
 
 		String number = comboBoxNumberOfDisco.getSelectedItem().toString();
 		return number;
-	}
-
-	public void setComboBoxNumberOfDisco(JComboBox comboBoxNumberOfDisco) {
-		this.comboBoxNumberOfDisco = comboBoxNumberOfDisco;
 	}
 
 	public double getComboBoxPriceNewTVBox() {
@@ -246,10 +206,6 @@ public class NewTVBox extends JFrame {
 		double doublePrice = Double.parseDouble(price);
 
 		return doublePrice;
-	}
-
-	public void setComboBoxPriceNewTVBox(JComboBox comboBoxPriceNewTVBox) {
-		this.comboBoxPriceNewTVBox = comboBoxPriceNewTVBox;
 	}
 
 }

@@ -33,7 +33,14 @@ import model.Customer;
 import model.Database;
 import model.LiveConcert;
 import model.MembershipCard;
-
+/**
+ * this class is to rent Live Concert wich the employee will be able to select
+ * the customer and the titles that will be rented which also implements Actions
+ * listener
+ * 
+ * @author jeancastro
+ *
+ */
 public class RentLiveConcert extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -199,6 +206,13 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 		rentliveconcert.repaint();
 
 	}
+	
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database LiveConcert table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
 
 	public void tabaleliveconcertSelected(String[][] outsideData) {
 
@@ -218,6 +232,13 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 		myPane.setViewportView(tableRentLiveConcert);
 
 	}
+	
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database LiveConcert table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
 
 	public void tablecustomerliveconcert(String[][] outsideData2) {
 
@@ -234,47 +255,6 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 		contentPane.add(tableRentCustomerLiveConcert);
 		myPane2.setViewportView(tableRentCustomerLiveConcert);
 
-	}
-
-	public JTextField getTableCustomerMovie() {
-		return tableCustomerMovie;
-	}
-
-	public JTextField getTextFieldSearchRentLiveConcert() {
-		return textFieldSearchRentLiveConcert;
-	}
-
-	public void setTextFieldSearchRentLiveConcert(JTextField textFieldSearchRentLiveConcert) {
-		this.textFieldSearchRentLiveConcert = textFieldSearchRentLiveConcert;
-	}
-
-	public JTable getTableRentLiveConcert() {
-		return tableRentLiveConcert;
-	}
-
-	public void setTableRentLiveConcert(JTable tableRentLiveConcert) {
-		this.tableRentLiveConcert = tableRentLiveConcert;
-	}
-
-	public JTable getTableRentCustomerLiveConcert() {
-		return tableRentCustomerLiveConcert;
-	}
-
-	public void setTableRentCustomerLiveConcert(JTable tableRentCustomerLiveConcert) {
-		this.tableRentCustomerLiveConcert = tableRentCustomerLiveConcert;
-	}
-
-	public JTextField getTextFieldSearchCustomerRentLiveConcert() {
-		return textFieldSearchCustomerRentLiveConcert;
-	}
-
-	public void setTextFieldSearchCustomerRentLiveConcert(JTextField textFieldSearchCustomerRentLiveConcert) {
-		this.textFieldSearchCustomerRentLiveConcert = textFieldSearchCustomerRentLiveConcert;
-	}
-
-	public JButton getButtonSelectRentLiveConcert() {
-
-		return ButtonSelectRentLiveConcert;
 	}
 
 	public Object getNewButtonSelectCustomerRentLiveConcert() {
@@ -298,19 +278,7 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 
 	}
 
-	public JFormattedTextField getFormattedTextFieldTotalValueLiveConcert() {
-		return formattedTextFieldTotalValueLiveConcert;
-	}
 
-	public void setFormattedTextFieldTotalValueLiveConcert(
-			JFormattedTextField formattedTextFieldTotalValueLiveConcert) {
-		this.formattedTextFieldTotalValueLiveConcert = formattedTextFieldTotalValueLiveConcert;
-	}
-
-	public Object getNewButtonRentLiveConcert() {
-
-		return NewButtonRentLiveConcert;
-	}
 
 	int initial = 0;
 
@@ -349,13 +317,12 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 
 		}
 
-		if (e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true )) {
+		if (e.getActionCommand().equals("Rent") && (allSelected1 == true && allSelected2 == true)) {
 
 			jbdc.updatetableliveconcert(selectedID);
 			MembershipCard mCard = (jbdc.getMembershipPoints(customerChoosed));
 			int newPoints = Integer.parseInt(JOptionPane.showInputDialog("Please insert the amount of points"));
 			jbdc.updatePoints(customerChoosed, mCard, newPoints);
-		
 
 			JOptionPane.showMessageDialog(null, "Rented");
 
@@ -395,8 +362,6 @@ public class RentLiveConcert extends JFrame implements ActionListener {
 			tablecustomerliveconcert(data);
 
 		}
-		
-		
 
 	}
 }

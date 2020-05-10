@@ -28,6 +28,14 @@ import javax.swing.text.MaskFormatter;
 import model.Database;
 import model.MembershipCard;
 
+/**
+ * this class is to rent a new TVBOX wich the employee will be able to select
+ * the customer and the titles that will be rented which also implements Actions
+ * listener
+ * 
+ * @author jeancastro
+ *
+ */
 public class RentTVBox extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -56,6 +64,7 @@ public class RentTVBox extends JFrame implements ActionListener {
 	private int selectedTVBoxID;
 	private int selectedTVBoxPrice;
 	private JButton NewLabeliconRentTVBox;
+	private String selectedPrice;
 
 	/**
 	 * Launch the application.
@@ -191,6 +200,13 @@ public class RentTVBox extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database TVBox table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
+
 	public void tabaleTVboxSelected(String[][] outsideData) {
 
 		// ________LIVE CONCERT AVAILABLE TABlE___________
@@ -215,6 +231,12 @@ public class RentTVBox extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database TVBox table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
 	public void tablecustomertvbox(String[][] outsideData2) {
 
 		// ________ CUSTOMER LIVE CONCERT TABLE ___________
@@ -238,124 +260,23 @@ public class RentTVBox extends JFrame implements ActionListener {
 
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
-	public JTextField getTableCustomerMovie() {
-		return tableCustomerMovie;
-	}
-
-	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
-		this.tableCustomerMovie = tableCustomerMovie;
-	}
-
-	public JTextField getTextFieldSearchRentTVBox() {
-		return textFieldSearchRentTVBox;
-	}
-
-	public void setTextFieldSearchRentTVBox(JTextField textFieldSearchRentTVBox) {
-		this.textFieldSearchRentTVBox = textFieldSearchRentTVBox;
-	}
-
-	public JTable getTableRentTVBox() {
-		return tableRentTVBox;
-	}
-
-	public void setTableRentTVBox(JTable tableRentTVBox) {
-		this.tableRentTVBox = tableRentTVBox;
-	}
-
-	public JTable getTableRentCustomerTVBox() {
-		return tableRentCustomerTVBox;
-	}
-
-	public void setTableRentCustomerTVBox(JTable tableRentCustomerTVBox) {
-		this.tableRentCustomerTVBox = tableRentCustomerTVBox;
-	}
-
-	public JTextField getTextFieldSearchCustomerRentTVBox() {
-		return textFieldSearchCustomerRentTVBox;
-	}
-
-	public void setTextFieldSearchCustomerRentTVBox(JTextField textFieldSearchCustomerRentTVBox) {
-		this.textFieldSearchCustomerRentTVBox = textFieldSearchCustomerRentTVBox;
-	}
-
-	public JButton getButtonSelectRentTVbox() {
-		return ButtonSelectRentTVbox;
-	}
-
-	public void setButtonSelectRentTVbox(JButton buttonSelectRentTVbox) {
-		ButtonSelectRentTVbox = buttonSelectRentTVbox;
-	}
-
-	public JButton getNewLabelSearchIconRentTVBox() {
-		return NewLabelSearchIconRentTVBox;
-	}
-
-	public void setNewLabelSearchIconRentTVBox(JButton newLabelSearchIconRentTVBox) {
-		NewLabelSearchIconRentTVBox = newLabelSearchIconRentTVBox;
-	}
-
-	public JButton getNewButtonSelecCustomerRentTVBox() {
-		return NewButtonSelecCustomerRentTVBox;
-	}
-
-	public void setNewButtonSelecCustomerRentTVBox(JButton newButtonSelecCustomerRentTVBox) {
-		NewButtonSelecCustomerRentTVBox = newButtonSelecCustomerRentTVBox;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
+	/**
+	 * the method return the tvbox return date
+	 * 
+	 * @return this tvbox's return date
+	 */
 
 	public String getFormattedTextFieldReturnDateMovie() {
 		return formattedTextFieldReturnDateMovie.getText();
 	}
 
-	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
-		this.formattedTextFieldReturnDateMovie = formattedTextFieldReturnDateMovie;
-	}
-
-	public MaskFormatter getMascara2() {
-		return mascara2;
-	}
-
-	public void setMascara2(MaskFormatter mascara2) {
-		this.mascara2 = mascara2;
-	}
-
+	/**
+	 * this method return the tvbox rented date
+	 * 
+	 * @return this tvbox's rented date
+	 */
 	public String getFormattedTextFieldRentedDate() {
 		return formattedTextFieldRentedDate.getText();
-	}
-
-	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
-		this.formattedTextFieldRentedDate = formattedTextFieldRentedDate;
-	}
-
-	public JFormattedTextField getFormattedTextFieldTotalValueTVBox() {
-		return formattedTextFieldTotalValueTVBox;
-	}
-
-	public void setFormattedTextFieldTotalValueTVBox(JFormattedTextField formattedTextFieldTotalValueTVBox) {
-		this.formattedTextFieldTotalValueTVBox = formattedTextFieldTotalValueTVBox;
-	}
-
-	public JButton getNewButtonRentTVBox() {
-		return NewButtonRentTVBox;
-	}
-
-	public void setNewButtonRentTVBox(JButton newButtonRentTVBox) {
-		NewButtonRentTVBox = newButtonRentTVBox;
 	}
 
 	int initial = 0;

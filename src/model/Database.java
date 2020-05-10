@@ -15,6 +15,13 @@ import com.mysql.cj.xdevapi.Result;
 import view.NewCustomer;
 import view.TitlesAvailable;
 
+/**
+ * this class is responsable for all the conection between the program and
+ * database
+ * 
+ * @author jeancastro
+ *
+ */
 public class Database {
 
 	String dbServer = "jdbc:mysql://52.50.23.197:3306/jean";
@@ -26,6 +33,7 @@ public class Database {
 
 	// Constructor. is starting the DB connection and
 	// putting everything in the variables declared above
+
 	public Database() {
 
 		try {
@@ -53,11 +61,19 @@ public class Database {
 
 	}
 
+	/**
+	 * this is method is to register a new customer into the DB using the
+	 * customer data as paramater from the controller
+	 * 
+	 * @param newcustomerRegistered
+	 * @return this newcustomer's true
+	 */
+
 	public boolean newcustomer(Customer newcustomerRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the register is successful
 		boolean newcustomer = false;
-		
+
 		try {
 			// Building the query
 			String query = "INSERT INTO Customer (First_name, Last_name, cust_email, Tel, Membership, Card_number  )"
@@ -66,9 +82,8 @@ public class Database {
 					+ newcustomerRegistered.getMembership() + "','" + newcustomerRegistered.getCardNumber() + "');";
 
 			// Sending the query to the database
-		stmt.executeUpdate(query);
-		newcustomer= true;
-		
+			stmt.executeUpdate(query);
+			newcustomer = true;
 
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
@@ -85,13 +100,21 @@ public class Database {
 			System.out.println(e);
 		}
 
-		// Retuning the login status
+		// Retuning the register status
 		return newcustomer;
 	}
 
+	/**
+	 * this method is to register a new employee into the DB using the username
+	 * and password as parameter from the controller
+	 * 
+	 * @param newEmployeeRegistered
+	 * @return this newemployee's true
+	 */
+
 	public boolean newemployee(Employee newEmployeeRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the register is successful
 		boolean newemployee = false;
 		try {
 			// Building the query
@@ -99,7 +122,8 @@ public class Database {
 					+ newEmployeeRegistered.getUsername() + "','" + newEmployeeRegistered.getPassword() + "');";
 
 			// Sending the query to the database
-			newemployee = stmt.execute(query);
+			stmt.executeUpdate(query);
+			newemployee = true;
 
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
@@ -116,14 +140,20 @@ public class Database {
 			System.out.println(e);
 		}
 
-		// Retuning the login status
+		// Retuning the register status
 		return newemployee;
 	}
 
-	// This method is only in charge of saving a new user into the the DB
+	/**
+	 * this method is to creat a new card with 0 points for the customer once it
+	 * is registered
+	 * 
+	 * @param newcustomerRegistered
+	 */
+
 	public void newcustomerCard(Customer newcustomerRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the insert is successful
 
 		int cust_id = 0;
 		int points = 0;
@@ -167,10 +197,18 @@ public class Database {
 
 	}
 
-	// This method is only in charge of saving a new user into the the DB
+	// This method is only in charge of saving a new Live Concert Title into the
+	// the DB
+	/**
+	 * this method is to register a new live concert into the database passing
+	 * the liveconcert data from the controller
+	 * 
+	 * @param newliveconcertRegistered
+	 * @return this newliveconcert true
+	 */
 	public boolean newliveconcert(LiveConcert newliveconcertRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the title is successful
 		boolean newliveconcert = false;
 		boolean Rent = false;
 		try {
@@ -185,7 +223,7 @@ public class Database {
 			// Sending the query to the database
 			stmt.execute(query);
 			newliveconcert = true;
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -194,11 +232,18 @@ public class Database {
 		return newliveconcert;
 	}
 
-	// This method is only in charge of saving a new user into the the DB
+	// This method is only in charge of saving a new movie into the the DB
+	/**
+	 * this method is to register the movie into the DB passsing newmovie as
+	 * parameter from the controller
+	 * 
+	 * @param newmovieRegistered
+	 * @return newmovie's true
+	 */
 
 	public boolean newmovie(Movie newmovieRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the title is successful
 
 		boolean newmovie = false;
 		boolean Rent = false;
@@ -227,17 +272,22 @@ public class Database {
 			System.out.println(e);
 		}
 
-		// Retuning the login status
+		// Retuning the title status
 		return newmovie;
 	}
 
-	// This method is only in charge of saving a new user into the the DB
-
-	// Separeating closing statements for better code structure
+	// This method is only in charge of saving a new Music Live into the the DB
+	/**
+	 * this methis is to register a new music live into the DB passing
+	 * newmusiliveregistered as parameter form the controller
+	 * 
+	 * @param newmusicliveRegistered
+	 * @return newmusiclive's true
+	 */
 
 	public boolean newmusiclive(MusicLive newmusicliveRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the title is successful
 		boolean newmusiclive = false;
 		boolean Rent = false;
 		try {
@@ -249,7 +299,8 @@ public class Database {
 					+ "');";
 
 			// Sending the query to the database
-			newmusiclive = ((java.sql.Statement) stmt).execute(query);
+			stmt.executeUpdate(query);
+			newmusiclive = true;
 
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
@@ -266,17 +317,22 @@ public class Database {
 			System.out.println(e);
 		}
 
-		// Retuning the login status
+		// Retuning the title status
 		return newmusiclive;
 	}
 
-	// This method is only in charge of saving a new user into the the DB
-
-	// Separeating closing statements for better code structure
+	// This method is only in charge of saving a new Tv BOX into the the DB
+	/**
+	 * this method is to register a new tvbox into the DB passing
+	 * tvboxregistered as parameter from the controller
+	 * 
+	 * @param newtvboxRegistered
+	 * @return newtvbox's true
+	 */
 
 	public boolean newtvbox(TVBox newtvboxRegistered) {
 
-		// Variable to define if the login is successful
+		// Variable to define if the title is successful
 		boolean newtvbox = false;
 		boolean Rent = false;
 		try {
@@ -288,7 +344,8 @@ public class Database {
 					+ "','" + newtvboxRegistered.getPrice() + "');";
 
 			// Sending the query to the database
-			newtvbox = ((java.sql.Statement) stmt).execute(query);
+			stmt.executeUpdate(query);
+			newtvbox = true;
 
 		} catch (SQLException se) {
 			System.out.println("SQL Exception:");
@@ -305,11 +362,19 @@ public class Database {
 			System.out.println(e);
 		}
 
-		// Retuning the login status
+		// Retuning the title status
 		return newtvbox;
 	}
 
-	// This method is only in charge of saving a new user into the the DB
+	// This method is only in charge of showing the availables titles from
+	// database
+
+	/**
+	 * this method is to collect data from the movie DB table unless the rent is
+	 * false
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] titleavailablemovie() {
 
@@ -332,7 +397,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -344,7 +408,6 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Director");
 				data[row][2] = rs1.getString("Type");
@@ -376,6 +439,13 @@ public class Database {
 		// Retuning the array of data
 		return data;
 	}
+
+	/**
+	 * this method is to collect data from the movie DB table unless the rent is
+	 * true
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] titRentedmovie() {
 
@@ -399,7 +469,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -411,7 +480,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Director");
 				data[row][2] = rs1.getString("Type");
@@ -422,7 +491,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -447,6 +516,12 @@ public class Database {
 	// This method is only in charge of get data from database to print the
 	// table
 
+	/**
+	 * this method is to collect data from the music live DB table unless the
+	 * rent is false
+	 * 
+	 * @return this data
+	 */
 	public String[][] titleavailablemusiclive() {
 
 		String[][] data = null;
@@ -469,7 +544,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -481,7 +555,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Singer");
 				data[row][2] = rs1.getString("Type");
@@ -513,6 +587,13 @@ public class Database {
 		// Retuning the array of data
 		return data;
 	}
+
+	/**
+	 * this method is to collect data from the music live DB table unless the
+	 * rent is true
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] titleRentedmusiclive() {
 
@@ -536,7 +617,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -548,7 +628,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Singer");
 				data[row][2] = rs1.getString("Type");
@@ -583,6 +663,13 @@ public class Database {
 
 	// This method is only in charge of get data from database to print the
 	// table
+
+	/**
+	 * this method is to collect that from the live concert DB table unless the
+	 * rent is false
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] titleavailableliveconcert() {
 
@@ -606,7 +693,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -618,7 +704,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Band");
 				data[row][2] = rs1.getString("Type");
@@ -629,7 +715,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -651,6 +737,12 @@ public class Database {
 		return data;
 	}
 
+	/**
+	 * this method is to collect data from the live concert DB table unless the
+	 * rent is true;
+	 * 
+	 * @return this data
+	 */
 	public String[][] titleRentedliveconcert() {
 
 		String[][] data = null;
@@ -673,7 +765,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -685,7 +776,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Band");
 				data[row][2] = rs1.getString("Type");
@@ -721,6 +812,12 @@ public class Database {
 	// This method is only in charge of get data from database to print the
 	// table
 
+	/**
+	 * this method is to collect data frm the tvbox db table unless the rent is
+	 * false
+	 * 
+	 * @return this data
+	 */
 	public String[][] titleavailabletvbox() {
 
 		String[][] data = null;
@@ -735,9 +832,6 @@ public class Database {
 
 			String query1 = " SELECT Title, NumberOfDisco,Season, Type FROM TVBox WHERE Rent= '" + false + "'";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -746,7 +840,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -791,6 +884,13 @@ public class Database {
 		// Retuning the array of data
 		return data;
 	}
+
+	/**
+	 * this method is to collect data from the tvbox DB table unless the rent is
+	 * true
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] titleRentedtvbox() {
 
@@ -814,7 +914,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -838,7 +937,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -859,6 +958,13 @@ public class Database {
 		// Retuning the array of data
 		return data;
 	}
+
+	/**
+	 * this method is to collect data from the TVBox DB table unless the rent is
+	 * false
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] rentTVBox() {
 
@@ -882,7 +988,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -894,7 +999,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("NumberOfDisco");
 				data[row][2] = rs1.getString("Season");
@@ -906,7 +1011,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -931,6 +1036,13 @@ public class Database {
 	// This method is only in charge of get data from database to print the
 	// table
 
+	/**
+	 * this method is to collect data from the customer DB table unless the
+	 * membership plan is for the right title
+	 * 
+	 * @return this data
+	 */
+
 	public String[][] rentTVBoxCustomer() {
 
 		String[][] data = null;
@@ -952,9 +1064,6 @@ public class Database {
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
 					+ membership + "'OR Membership= '" + membership2 + "'";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -963,7 +1072,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -975,7 +1083,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("First_name");
 				data[row][1] = rs1.getString("Last_name");
 				data[row][2] = rs1.getString("cust_email");
@@ -1010,6 +1118,13 @@ public class Database {
 		return data;
 	}
 
+	/**
+	 * this method is to collect data from the music live DB table unless the
+	 * rent is false
+	 * 
+	 * @return this data
+	 */
+
 	public String[][] rentMusicLive() {
 
 		String[][] data = null;
@@ -1024,9 +1139,6 @@ public class Database {
 
 			String query1 = " SELECT Title, Singer, Type, Price FROM MusicLive WHERE Rent=False";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -1035,7 +1147,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1059,7 +1170,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -1080,6 +1191,13 @@ public class Database {
 		// Retuning the array of data
 		return data;
 	}
+
+	/**
+	 * this method is to collect data from the customer DB table unless the
+	 * membership plan is for the right title
+	 * 
+	 * @return this data
+	 */
 
 	public String[][] rentMusicLiveCustomer() {
 
@@ -1102,9 +1220,6 @@ public class Database {
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
 					+ membership + "'OR Membership= '" + membership2 + "'";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -1113,7 +1228,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1125,7 +1239,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("First_name");
 				data[row][1] = rs1.getString("Last_name");
 				data[row][2] = rs1.getString("cust_email");
@@ -1138,7 +1252,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -1160,6 +1274,13 @@ public class Database {
 		return data;
 	}
 
+	/**
+	 * this method is to collect data from the Movie DB table unless the rent is
+	 * false
+	 * 
+	 * @return this data
+	 */
+
 	public String[][] rentMovie() {
 
 		String[][] data = null;
@@ -1174,9 +1295,6 @@ public class Database {
 
 			String query1 = " SELECT Title, Director, Type, Price FROM Movie WHERE Rent=False";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -1185,7 +1303,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1197,7 +1314,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("Title");
 				data[row][1] = rs1.getString("Director");
 				data[row][2] = rs1.getString("Type");
@@ -1233,6 +1350,13 @@ public class Database {
 	// This method is only in charge of get data from database to print the
 	// table
 
+	/**
+	 * this method is to collect data from the customer DB table unless the
+	 * membership plan is for the right title
+	 * 
+	 * @return this data
+	 */
+
 	public String[][] rentMovieCustomer() {
 
 		String[][] data = null;
@@ -1254,9 +1378,6 @@ public class Database {
 			String query1 = "SELECT First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership = '"
 					+ membership + "'OR Membership= '" + membership2 + "'";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -1265,7 +1386,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1312,6 +1432,12 @@ public class Database {
 		return data;
 	}
 
+	/**
+	 * this method is to collect data from the liveConcert DB table unless the
+	 * rent is false
+	 * 
+	 * @return this data
+	 */
 	public String[][] rentLiveConcert() {
 
 		String[][] data = null;
@@ -1326,9 +1452,6 @@ public class Database {
 
 			String query1 = " SELECT  LiveConcert_id, Title, Band, Type, Price FROM LiveConcert WHERE Rent=False ";
 
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
-
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
 
@@ -1337,7 +1460,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1386,6 +1508,13 @@ public class Database {
 	// This method is only in charge of get data from database to print the
 	// table
 
+	/**
+	 * this method is to collect data from the customer DB table unless the
+	 * membership plan is for the right title
+	 * 
+	 * @return this data
+	 */
+
 	public String[][] rentLiveConcertCustomer() {
 
 		String[][] data = null;
@@ -1406,8 +1535,6 @@ public class Database {
 
 			String query1 = "SELECT cust_id, First_name, Last_name,cust_email,Tel, Membership FROM Customer WHERE Membership ='"
 					+ membership + "'OR Membership= '" + membership2 + "'";
-			// String query2 = "SELECT Movie_id, Title, Director, Type FROM
-			// Movie; ";
 
 			// Get a connection to the database
 			conn = DriverManager.getConnection(dbServer, user, password);
@@ -1417,7 +1544,6 @@ public class Database {
 
 			// Execute the query
 			ResultSet rs1 = stmt.executeQuery(query1);
-			// ResultSet rs2 = stmt.executeQuery(query2) ;
 
 			// Instantiating the array
 			data = new String[100][10];
@@ -1429,7 +1555,7 @@ public class Database {
 			while (rs1.next()) {
 
 				// And then, adding the data to an array
-				// data[row][0] = rs1.getString("Movie_id");
+
 				data[row][0] = rs1.getString("cust_id");
 				data[row][1] = rs1.getString("First_name");
 				data[row][2] = rs1.getString("Last_name");
@@ -1443,7 +1569,7 @@ public class Database {
 
 			// Close the result set, statement and the connection
 			rs1.close();
-			// rs2.close() ;
+
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
@@ -1652,6 +1778,11 @@ public class Database {
 		return data;
 
 	}
+	/**
+	 * this method is to collect data from the Movie DB table passing the texfield text from the frame
+	 * @param st
+	 * @return this data
+	 */
 
 	public String[][] searchMovie(String st) {
 
@@ -1726,6 +1857,15 @@ public class Database {
 		return data;
 
 	}
+	
+	/**
+	 * this method is to insert into the Rented DB table passing the customer ID, movie_ID, datarented, datareturn selected as parameter from the frame table
+	 * @param selectedID movie id
+	 * @param customerChoosed customer id 
+	 * @param formattedTextFieldRentedDate data from texfield
+	 * @param formattedTextFieldReturnDateMovie data from texfield
+	 * @return this customer
+	 */
 
 	public boolean selectedMovieCustomer(String selectedID, String customerChoosed, String formattedTextFieldRentedDate,
 			String formattedTextFieldReturnDateMovie) {
@@ -1758,6 +1898,12 @@ public class Database {
 		// Retuning the login status
 		return customer;
 	}
+	
+	/**
+	 * this method is to collect data from the Movie DB table passing the texfield text from the frame
+	 * @param st2
+	 * @return
+	 */
 
 	public String[][] searchMovieCustomer(String st2) {
 

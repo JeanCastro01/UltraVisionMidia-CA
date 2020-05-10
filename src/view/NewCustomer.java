@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,12 @@ import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 
+/**
+ * this class is responsable to the new customer session view
+ * 
+ * @author jeancastro
+ *
+ */
 public class NewCustomer extends JFrame {
 
 	private JPanel contentPane;
@@ -43,6 +50,15 @@ public class NewCustomer extends JFrame {
 	// This window needs to know who the controller is
 	private CustomerController controllerInternalRef;
 
+	/**
+	 * this constructor for the customer controller and is passing the
+	 * controller as parameter
+	 * 
+	 * @param controller
+	 *            customer's controller
+	 * @throws ParseException
+	 */
+
 	public NewCustomer(CustomerController controller) throws ParseException {
 
 		// Putting the reference of the controller in the local reference
@@ -52,6 +68,12 @@ public class NewCustomer extends JFrame {
 		attributesSetter();
 
 	}
+
+	/**
+	 * this method is to creat the Frame for the new customer
+	 * 
+	 * @throws ParseException
+	 */
 
 	private void attributesSetter() throws ParseException {
 
@@ -148,36 +170,16 @@ public class NewCustomer extends JFrame {
 		newcustomer.repaint();
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 	public String getTextFieldFirstName() {
 		return textFieldFirstName.getText();
-	}
-
-	public void setTextFieldFirstName(JTextField textFieldFirstName) {
-		this.textFieldFirstName = textFieldFirstName;
 	}
 
 	public String getTextFieldEmail() {
 		return textFieldEmail.getText();
 	}
 
-	public void setTextFieldEmail(JTextField textFieldEmail) {
-		this.textFieldEmail = textFieldEmail;
-	}
-
 	public String getTextFieldLastName() {
 		return textFieldLastName.getText();
-	}
-
-	public void setTextFieldLastName(JTextField textFieldLastName) {
-		this.textFieldLastName = textFieldLastName;
 	}
 
 	public String getComboBoxMembership() {
@@ -185,32 +187,12 @@ public class NewCustomer extends JFrame {
 		return membership;
 	}
 
-	public void setComboBoxMembership(JComboBox comboBoxMembership) {
-		this.comboBoxMembership = comboBoxMembership;
-	}
-
-	public JButton getButtonRegisterCustomer() {
-		return ButtonRegisterCustomer;
-	}
-
-	public void setButtonRegisterCustomer(JButton buttonRegisterCustomer) {
-		ButtonRegisterCustomer = buttonRegisterCustomer;
-	}
-
 	public String getFormattedTextFieldCardNumber() {
 		return FormattedTextFieldCardNumber.getText();
 	}
 
-	public void setFormattedTextFieldCardNumber(JFormattedTextField formattedTextFieldCardNumber) {
-		FormattedTextFieldCardNumber = formattedTextFieldCardNumber;
-	}
-
 	public String getFormattedTextFieldTelephone() {
 		return FormattedTextFieldTelephone.getText();
-	}
-
-	public void setFormattedTextFieldTelephone(JFormattedTextField formattedTextFieldTelephone) {
-		FormattedTextFieldTelephone = formattedTextFieldTelephone;
 	}
 
 }

@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.event.ActionEvent;
+
+
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -33,6 +35,12 @@ import java.awt.Component;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Rectangle;
+
+/**
+ * this class is the dashboard for the employee after logged in which implements ActionListener
+ * @author jeancastro
+ *
+ */
 
 public class Dashboard extends JFrame implements ActionListener {
 

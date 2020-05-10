@@ -1,7 +1,9 @@
 package model;
 
 /**
- *
+ * this class is responsable for some attributes that is being extended in other
+ * classes
+ * 
  * @author jeancastro
  */
 public abstract class AttributesGeneral {
@@ -13,6 +15,22 @@ public abstract class AttributesGeneral {
 	private double Price;
 	private String Type;
 
+	/**
+	 * this constructor for the attributesgeneral, year of release, title,
+	 * genre, rent, price, type
+	 * 
+	 * @param yearOfRelease
+	 *            Title's year of release
+	 * @param title
+	 *            for the title's
+	 * @param genre
+	 *            Genre's titles
+	 * @param Price
+	 *            Price's titles
+	 * @param Type
+	 *            Type's titles (CD/DVD/BLU_RAY)
+	 */
+
 	public AttributesGeneral(String yearOfRelease, String title, String genre, double Price, String Type) {
 		super();
 		this.YearOfRelease = yearOfRelease;
@@ -23,52 +41,61 @@ public abstract class AttributesGeneral {
 		this.Type = Type;
 	}
 
+	/**
+	 * this method return the title price
+	 * 
+	 * @return title's price
+	 */
 	public double getPrice() {
 		return Price;
 	}
 
-	public void setPrice(double price) {
-		Price = price;
-	}
-
+	/**
+	 * this method return the title year of release
+	 * 
+	 * @return this title's year of release
+	 */
 	public String getYearOfRelease() {
 		return YearOfRelease;
 	}
 
-	public void setYearOfRelease(String yearOfRelease) {
-		YearOfRelease = yearOfRelease;
-	}
+	/**
+	 * this method return the title name
+	 * 
+	 * @return this title's name
+	 */
 
 	public String getTitle() {
 		return Title;
 	}
 
-	public void setTitle(String title) {
-		Title = title;
-	}
+	/**
+	 * this method return the title genre
+	 * 
+	 * @return this title's genre
+	 */
 
 	public String getGenre() {
 		return Genre;
 	}
 
-	public void setGenre(String genre) {
-		Genre = genre;
-	}
+	/**
+	 * this method return if the title is available or rented
+	 * 
+	 * @return this title's rented or not
+	 */
 
 	public boolean isRent() {
 		return Rent;
 	}
 
-	public void setRent(boolean rent) {
-		Rent = rent;
-	}
-
+	/**
+	 * this method return the title type
+	 * 
+	 * @return this title type
+	 */
 	public String getType() {
 		return Type;
-	}
-
-	public void setType(String type) {
-		Type = type;
 	}
 
 }

@@ -3,7 +3,8 @@ package model;
 import java.util.ArrayList;
 
 /**
- *
+ * this method is for the customer attributes
+ * 
  * @author jeancastro
  */
 public class Customer {
@@ -16,6 +17,25 @@ public class Customer {
 	private String CardNumber;
 	ArrayList<String> listoftitles = new ArrayList<String>(3);
 	private String customerID;
+
+	/**
+	 * this constructor for the customer with
+	 * firstname,lastname,email,tel,membership,cardnumber,customerID,listoftitles
+	 * attributes
+	 * 
+	 * @param firstname
+	 *            Customer's First name
+	 * @param lastname
+	 *            customer's last name
+	 * @param email
+	 *            customer's email
+	 * @param Membership
+	 *            membership's plan (LIVE CONCERT/MUSIC LIVE/TV BOX/ MOVIE)
+	 * @param Tel
+	 *            customer's telephone
+	 * @param CardNumber
+	 *            customer's card number
+	 */
 
 	public Customer(String firstname, String lastname, String email, String Membership, String Tel, String CardNumber) {
 		super();
@@ -42,68 +62,80 @@ public class Customer {
 		this.customerID = customerID;
 	}
 
+	/**
+	 * this method return the customer ID
+	 * 
+	 * @return this customer's ID
+	 */
 	public String getCustomerID() {
 		return customerID;
 	}
 
-	public void setCustomerID(String customerID) {
-		this.customerID = customerID;
-	}
-
+	/**
+	 * this method return list of titles retend by the customer
+	 * 
+	 * @return this customer's list of titles
+	 */
 	public ArrayList<String> getListoftitles() {
 		return listoftitles;
 	}
 
-	public void setListoftitles(ArrayList<String> selectedID) {
-		this.listoftitles = selectedID;
-	}
-
+	/**
+	 * this method return the customer membership plan (LIVE CONCERT/MUSIC
+	 * LIVE/TV BOX/ MOVIE)
+	 * 
+	 * @return this membership's plan
+	 */
 	public String getMembership() {
 		return Membership;
 	}
 
-	public void setMembership(String membership) {
-		Membership = membership;
-	}
-
+	/**
+	 * this method return the customer first name
+	 * 
+	 * @return this customer's first name
+	 */
 	public String getFirstname() {
 		return Firstname;
 	}
 
-	public void setFirstname(String firstname) {
-		Firstname = firstname;
-	}
-
+	/**
+	 * this method return customer last name
+	 * 
+	 * @return this customer's last name
+	 */
 	public String getLastname() {
 		return Lastname;
 	}
 
-	public void setLastname(String lastname) {
-		Lastname = lastname;
-	}
+	/**
+	 * this method return the customer email
+	 * 
+	 * @return this customer's email
+	 */
 
 	public String getEmail() {
 		return Email;
 	}
 
-	public void setEmail(String email) {
-		Email = email;
-	}
+	/**
+	 * this method return the customer telephone number
+	 * 
+	 * @return this customer's telphone number
+	 */
 
 	public String getTel() {
 		return Tel;
 	}
 
-	public void setTel(String Tel) {
-		Email = Tel;
-	}
+	/**
+	 * this method retunr the customer card number
+	 * 
+	 * @return this customer's card number
+	 */
 
 	public String getCardNumber() {
 		return CardNumber;
-	}
-
-	public void setCardNumber(String cardNumber) {
-		CardNumber = cardNumber;
 	}
 
 }

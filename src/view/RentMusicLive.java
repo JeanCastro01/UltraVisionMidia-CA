@@ -1,9 +1,8 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -12,7 +11,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,13 +20,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
+
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import model.Database;
 import model.MembershipCard;
 
+/**
+ * this class is to rent MusicLive wich the employee will be able to select
+ * the customer and the titles that will be rented which also implements Actions
+ * listener
+ * 
+ * @author jeancastro
+ *
+ */
 public class RentMusicLive extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -43,7 +50,7 @@ public class RentMusicLive extends JFrame implements ActionListener {
 	private JFormattedTextField formattedTextFieldRentedDateMusicLive;
 	private JFormattedTextField formattedTextFieldTotalValueMusicLive;
 	private JButton NewButtonRentMusicLive;
-	private JCheckBox NewCheckBoxCardMusicLive;
+
 	private JTable tableRentMusicLive;
 	private JTable tableRentCustomerMusicLive;
 	private int selectedLiveConcertID;
@@ -58,6 +65,7 @@ public class RentMusicLive extends JFrame implements ActionListener {
 	private String customerChoosed;
 	private JLabel NewLabelSearchCustomerMovie;
 	private JButton NewLabelSearchIconCustomerMusicLive;
+	private String selectedPrice;
 
 	/**
 	 * Launch the application.
@@ -194,12 +202,17 @@ public class RentMusicLive extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database Music Live table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
+
 	public void tabaleMusicliveSelected(String[][] outsideData) {
 
 		// ________LIVE CONCERT AVAILABLE TABlE___________
 
-	
-	
 		String[] columnNames = { "ID", "Title", "Singer", "Type", "Price" };
 
 		// Gathering the data
@@ -214,6 +227,13 @@ public class RentMusicLive extends JFrame implements ActionListener {
 		myPane.setViewportView(tableRentMusicLive);
 
 	}
+
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * Customer table using outisdedata as parameter
+	 * 
+	 * @param outsideData
+	 */
 
 	public void tablecustomerMusiclive(String[][] outsideData2) {
 
@@ -238,108 +258,12 @@ public class RentMusicLive extends JFrame implements ActionListener {
 
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
-	public JTextField getTableCustomerMovie() {
-		return tableCustomerMovie;
-	}
-
-	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
-		this.tableCustomerMovie = tableCustomerMovie;
-	}
-
-	public JTextField getTextFieldSearchMusicLive() {
-		return textFieldSearchMusicLive;
-	}
-
-	public void setTextFieldSearchMusicLive(JTextField textFieldSearchMusicLive) {
-		this.textFieldSearchMusicLive = textFieldSearchMusicLive;
-	}
-
-	public JTable getTableRentMusicLive() {
-		return tableRentMusicLive;
-	}
-
-	public void setTableRentMusicLive(JTable tableRentMusicLive) {
-		this.tableRentMusicLive = tableRentMusicLive;
-	}
-
-	public JTable getTableRentCustomerMusicLive() {
-		return tableRentCustomerMusicLive;
-	}
-
-	public void setTableRentCustomerMusicLive(JTable tableRentCustomerMusicLive) {
-		this.tableRentCustomerMusicLive = tableRentCustomerMusicLive;
-	}
-
-	public JTextField getTextFieldSearchCustomerMusicLive() {
-		return textFieldSearchCustomerMusicLive;
-	}
-
-	public void setTextFieldSearchCustomerMusicLive(JTextField textFieldSearchCustomerMusicLive) {
-		this.textFieldSearchCustomerMusicLive = textFieldSearchCustomerMusicLive;
-	}
-
-	public JButton getButtonSelectMusicLive() {
-		return ButtonSelectMusicLive;
-	}
-
-	public void setButtonSelectMusicLive(JButton buttonSelectMusicLive) {
-		ButtonSelectMusicLive = buttonSelectMusicLive;
-	}
-
-	public JButton getNewLabelSearchIconRentMusicLive() {
-		return NewLabelSearchIconRentMusicLive;
-	}
-
-	public void setNewLabelSearchIconRentMusicLive(JButton newLabelSearchIconRentMusicLive) {
-		NewLabelSearchIconRentMusicLive = newLabelSearchIconRentMusicLive;
-	}
-
-	public JButton getNewButtonSelecCustomerMusicLive() {
-		return NewButtonSelecCustomerMusicLive;
-	}
-
-	public void setNewButtonSelecCustomerMusicLive(JButton newButtonSelecCustomerMusicLive) {
-		NewButtonSelecCustomerMusicLive = newButtonSelecCustomerMusicLive;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
-
 	public String getFormattedTextFieldReturnDateMusicLive() {
 		return formattedTextFieldReturnDateMusicLive.getText();
 	}
 
-	public void setFormattedTextFieldReturnDateMusicLive(JFormattedTextField formattedTextFieldReturnDateMusicLive) {
-		this.formattedTextFieldReturnDateMusicLive = formattedTextFieldReturnDateMusicLive;
-	}
-
-	public MaskFormatter getMascara2() {
-		return mascara2;
-	}
-
 	public String getFormattedTextFieldRentedDateMusicLive() {
 		return formattedTextFieldRentedDateMusicLive.getText();
-	}
-
-	public JFormattedTextField getFormattedTextFieldTotalValueMusicLive() {
-		return formattedTextFieldTotalValueMusicLive;
-	}
-
-	public JButton getNewButtonRentMusicLive() {
-		return NewButtonRentMusicLive;
 	}
 
 	int initial = 0;

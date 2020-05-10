@@ -13,11 +13,12 @@ import view.NewCustomer;
 import view.NewEmployee;
 
 public class EmployeeController implements ActionListener {
-	
-	
-	
+
 	Employee model;
 	NewEmployee view;
+	String username;
+	String password;
+	boolean newEmployeeRegistered;
 
 	// When the controller starts, we need a new model and a new view
 	public EmployeeController() throws ParseException {
@@ -25,13 +26,16 @@ public class EmployeeController implements ActionListener {
 		view = new NewEmployee(this);
 
 	}
+	
+	/**
+	 * this methos is to get data from the newcustomer frame and passing newcustomerRegistered as parameter to the DB unless the action is performed
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		String username = view.getTextFieldUsernameEmployee();
-		String password = view.getTextFieldPasswordEmployee();
-
+		username = view.getTextFieldUsernameEmployee();
+		password = view.getTextFieldPasswordEmployee();
 
 		model = new Employee(username, password);
 
@@ -39,21 +43,18 @@ public class EmployeeController implements ActionListener {
 
 			Database db = new Database();
 
-			boolean newEmployeeRegistered = db.newemployee(model);
-			
-			if (newEmployeeRegistered==false) {
+			newEmployeeRegistered = db.newemployee(model); // passing the data to the method in the database class if true, return the data
 
-				JOptionPane.showMessageDialog(null, "Submited");
+			if (username.isEmpty() || password.isEmpty()) {
+
+				JOptionPane.showMessageDialog(null, "Fiels Are Empty");
 				view.dispose();
 
-			}
-			else if (newEmployeeRegistered ==true){
-				JOptionPane.showMessageDialog(null, "Fiels Are Empty");
+			} else {
+				JOptionPane.showMessageDialog(null, "Submited");
 			}
 
 		}
 
 	}
 }
-
-

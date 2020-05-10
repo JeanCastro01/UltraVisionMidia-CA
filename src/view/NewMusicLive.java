@@ -143,36 +143,12 @@ public class NewMusicLive extends JFrame {
 		newmusiclive.repaint();
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 	public String getTextFieldSinger() {
 		return textFieldSinger.getText();
 	}
 
-	public void setTextFieldSinger(JTextField textFieldSinger) {
-		this.textFieldSinger = textFieldSinger;
-	}
-
 	public String getTextFieldTitle() {
 		return textFieldTitle.getText();
-	}
-
-	public void setTextFieldTitle(JTextField textFieldTitle) {
-		this.textFieldTitle = textFieldTitle;
-	}
-
-	public JButton getButtonRegisterMusicLive() {
-		return ButtonRegisterMusicLive;
-	}
-
-	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
-		ButtonRegisterMusicLive = buttonRegisterMusicLive;
 	}
 
 	public String getComboBoxGenre() {
@@ -181,26 +157,10 @@ public class NewMusicLive extends JFrame {
 		return Genre;
 	}
 
-	public void setComboBoxGenre(JComboBox comboBoxGenre) {
-		ComboBoxGenre = comboBoxGenre;
-	}
-
 	public String getComboBoxTypeMusicLive() {
 
 		String Type = comboBoxTypeMusicLive.getSelectedItem().toString();
 		return Type;
-	}
-
-	public void setComboBoxTypeMusicLive(JComboBox comboBoxTypeMusicLive) {
-		this.comboBoxTypeMusicLive = comboBoxTypeMusicLive;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
 	}
 
 	public String getFormattedTextFieldYearOfRelease() {
@@ -208,19 +168,11 @@ public class NewMusicLive extends JFrame {
 		return yearOfRelease;
 	}
 
-	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
-		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
-	}
-
 	public double getComboBoxPriceNewMusicLive() {
 
 		String pricenewmusiclive = comboBoxPriceNewMusicLive.getSelectedItem().toString();
 		double doubleprice = Double.parseDouble(pricenewmusiclive);
 		return doubleprice;
-	}
-
-	public void setComboBoxPriceNewMusicLive(JComboBox comboBoxPriceNewMusicLive) {
-		this.comboBoxPriceNewMusicLive = comboBoxPriceNewMusicLive;
 	}
 
 }

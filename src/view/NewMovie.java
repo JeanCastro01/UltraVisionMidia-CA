@@ -143,36 +143,16 @@ public class NewMovie extends JFrame {
 		newmovie.repaint();
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 	public String getTextFieldDirector() {
 		return textFieldDirector.getText();
-	}
-
-	public void setTextFieldDirector(JTextField textFieldDirector) {
-		this.textFieldDirector = textFieldDirector;
 	}
 
 	public String getTextFieldTitle() {
 		return textFieldTitle.getText();
 	}
 
-	public void setTextFieldTitle(JTextField textFieldTitle) {
-		this.textFieldTitle = textFieldTitle;
-	}
-
 	public JButton getButtonRegisterMovie() {
 		return ButtonRegisterMovie;
-	}
-
-	public void setButtonRegisterMovie(JButton buttonRegisterMovie) {
-		ButtonRegisterMovie = buttonRegisterMovie;
 	}
 
 	public String getComboBoxGenre() {
@@ -191,24 +171,8 @@ public class NewMovie extends JFrame {
 		return type;
 	}
 
-	public void setComboBoxTypeMovie(JComboBox comboBoxTypeMovie) {
-		this.comboBoxTypeMovie = comboBoxTypeMovie;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
-
 	public String getFormattedTextFieldYearOfRelease() {
 		return FormattedTextFieldYearOfRelease.getText();
-	}
-
-	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
-		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
 	}
 
 	public double getComboBoxPriceNewMovie() {
@@ -220,7 +184,4 @@ public class NewMovie extends JFrame {
 		return doublePrice;
 	}
 
-	public void setComboBoxPriceNewMovie(JComboBox comboBoxPriceNewMovie) {
-		this.comboBoxPriceNewMovie = comboBoxPriceNewMovie;
-	}
 }

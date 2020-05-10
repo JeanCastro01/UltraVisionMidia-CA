@@ -103,49 +103,23 @@ public class NewLoyaltyCard extends JFrame implements ActionListener {
 		// table.setBounds(226, 169, 470, 389);
 		contentPane.add(table);
 		myPane2.setViewportView(table);
-		
-		
 
-	}
-
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
 	}
 
 	public JTable getTableCustomerLoyaltyCard() {
 		return getTableCustomerLoyaltyCard();
 	}
 
-	public void setTableCustomerLoyaltyCard(JTable tableCustomerLoyaltyCard) {
-		this.tableCustomerLoyaltyCard = tableCustomerLoyaltyCard;
-	}
-
 	public JTextField getTextField() {
 		return textField;
-	}
-
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
 	}
 
 	public JButton getButtonCreateLoyaltyCard() {
 		return ButtonCreateLoyaltyCard;
 	}
 
-	public void setButtonCreateLoyaltyCard(JButton buttonCreateLoyaltyCard) {
-		ButtonCreateLoyaltyCard = buttonCreateLoyaltyCard;
-	}
-
 	public JLabel getNewLabelSearchIcon() {
 		return NewLabelSearchIcon;
-	}
-
-	public void setNewLabelSearchIcon(JLabel newLabelSearchIcon) {
-		NewLabelSearchIcon = newLabelSearchIcon;
 	}
 
 	@Override
@@ -156,10 +130,8 @@ public class NewLoyaltyCard extends JFrame implements ActionListener {
 			Database jdbc = new Database();
 
 			String email = textField.getText();
-			
-			
-			
-			int cust_id=0;
+
+			int cust_id = 0;
 			try {
 				cust_id = jdbc.getCustomerIO(email);
 			} catch (SQLException e2) {
@@ -167,7 +139,7 @@ public class NewLoyaltyCard extends JFrame implements ActionListener {
 				e2.printStackTrace();
 			}
 
-			String[][] data =null;
+			String[][] data = null;
 			try {
 				data = jdbc.cardPoints(cust_id, email);
 			} catch (SQLException e1) {

@@ -147,28 +147,12 @@ public class NewLiveConcert extends JFrame {
 		newliveconcert.repaint();
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
 	public String getTextFieldBand() {
 		return textFieldBand.getText();
 	}
 
-	public void setTextFieldBand(JTextField textFieldBand) {
-		this.textFieldBand = textFieldBand;
-	}
-
 	public String getTextFieldTitle() {
 		return textFieldTitle.getText();
-	}
-
-	public void setTextFieldTitle(JTextField textFieldTitle) {
-		this.textFieldTitle = textFieldTitle;
 	}
 
 	public String getComboBoxGenre() {
@@ -186,33 +170,8 @@ public class NewLiveConcert extends JFrame {
 		return type;
 	}
 
-	public void setComboBoxTypeLiveConcert(JComboBox comboBoxTypeLiveConcert) {
-
-		comboBoxTypeLiveConcert = comboBoxTypeLiveConcert;
-	}
-
-	public JLabel getLabelTypeLiveConcert() {
-		return labelTypeLiveConcert;
-	}
-
-	public void setLabelTypeLiveConcert(JLabel labelTypeLiveConcert) {
-		this.labelTypeLiveConcert = labelTypeLiveConcert;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
-
 	public String getFormattedTextFieldYearOfRelease() {
 		return FormattedTextFieldYearOfRelease.getText();
-	}
-
-	public void setFormattedTextFieldYearOfRelease(JFormattedTextField formattedTextFieldYearOfRelease) {
-		FormattedTextFieldYearOfRelease = formattedTextFieldYearOfRelease;
 	}
 
 	public double getComboBoxLiveConcertPrice() {
@@ -224,16 +183,8 @@ public class NewLiveConcert extends JFrame {
 		return doublePrice;
 	}
 
-	public void setComboBoxLiveConcertPrice(JComboBox comboBoxLiveConcertPrice) {
-		this.comboBoxLiveConcertPrice = comboBoxLiveConcertPrice;
-	}
-
 	public JButton getButtonRegisterMusicLive() {
 		return ButtonRegisterMusicLive;
-	}
-
-	public void setButtonRegisterMusicLive(JButton buttonRegisterMusicLive) {
-		ButtonRegisterMusicLive = buttonRegisterMusicLive;
 	}
 
 }

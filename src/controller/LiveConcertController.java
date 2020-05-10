@@ -9,12 +9,23 @@ import javax.swing.JOptionPane;
 import model.Database;
 import model.LiveConcert;
 import view.NewLiveConcert;
-
+/**
+ * this class is the live concert controller which also implements the ActionListener
+ * @author jeancastro
+ *
+ */
 public class LiveConcertController implements ActionListener {
 
 	NewLiveConcert view;
-	boolean allTrue=false;
-	boolean allFalse=false;
+	boolean allTrue = false;
+	boolean allFalse = false;
+	String yearOfRelease;
+	String title;
+	String genre;
+	double Price;
+	String Type;
+	String Band;
+	boolean liveconcertRegistered;
 
 	// When the controller starts, we need a new model and a new view
 	public LiveConcertController() throws ParseException {
@@ -22,16 +33,19 @@ public class LiveConcertController implements ActionListener {
 		view = new NewLiveConcert(this);
 
 	}
+	/**
+	 * this methos is to get data from the NewLiveConcert frame and passing liveconcertRegistered as parameter to the DB unless the action is performed
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		String yearOfRelease = view.getFormattedTextFieldYearOfRelease();
-		String title = view.getTextFieldTitle();
-		String genre = view.getComboBoxGenre();
-		double Price = view.getComboBoxLiveConcertPrice();
-		String Type = view.getComboBoxTypeLiveConcert();
-		String Band = view.getTextFieldBand();
+		yearOfRelease = view.getFormattedTextFieldYearOfRelease();
+		title = view.getTextFieldTitle();
+		genre = view.getComboBoxGenre();
+		Price = view.getComboBoxLiveConcertPrice();
+		Type = view.getComboBoxTypeLiveConcert();
+		Band = view.getTextFieldBand();
 
 		LiveConcert liveconcert = new LiveConcert(yearOfRelease, title, genre, Price, Type, Band);
 
@@ -39,19 +53,20 @@ public class LiveConcertController implements ActionListener {
 
 			Database db = new Database();
 
-			boolean liveconcertRegistered = db.newliveconcert(liveconcert);
+			
+			liveconcertRegistered = db.newliveconcert(liveconcert); // passing the data to the method in the database class if true, return the data
 
-			if (liveconcertRegistered !=false) {
+			if (yearOfRelease.isEmpty() || title.isEmpty() || genre.isEmpty() || Type.isEmpty() || Band.isEmpty()) {
+
+				JOptionPane.showMessageDialog(null, "Make sure Fields are not empty");
+
+			}
+
+			else {
 
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
-		
-			}
-			
-			else {
-				
-				JOptionPane.showMessageDialog(null, "Make sure Fields are not empty");
-				
+
 			}
 
 		}

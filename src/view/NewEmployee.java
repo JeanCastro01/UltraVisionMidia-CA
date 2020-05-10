@@ -42,16 +42,14 @@ public class NewEmployee extends JFrame {
 	}
 
 	private void attributesSetter() throws ParseException {
-	
-	
-	/**
-	 * Launch the application.
-	 */
 
-	/**
-	 * Create the frame.
-	 */
-	
+		/**
+		 * Launch the application.
+		 */
+
+		/**
+		 * Create the frame.
+		 */
 
 		newemployee = new JFrame();
 
@@ -106,26 +104,20 @@ public class NewEmployee extends JFrame {
 		newemployee.repaint();
 	}
 
-
-
 	public String getTextFieldUsernameEmployee() {
-		
+
 		String username = textFieldUsernameEmployee.getText();
 		return username;
 	}
 
-
 	public String getTextFieldPasswordEmployee() {
-		
+
 		String password = textFieldPasswordEmployee.getText();
 		return password;
 	}
 
-
 	public JButton getButtonRegisterMusicLive() {
 		return ButtonRegisterMusicLive;
 	}
-
-
 
 }

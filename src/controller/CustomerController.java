@@ -10,6 +10,11 @@ import model.Database;
 import view.Dashboard;
 import view.NewCustomer;
 
+/**
+ * this is the controller for the Customer which also implements ActionListemner 
+ * @author jeancastro
+ *
+ */
 public class CustomerController implements ActionListener {
 
 	Customer model;
@@ -23,8 +28,12 @@ public class CustomerController implements ActionListener {
 	Database db = new Database();
 	boolean newcustomerRegistered;
 	boolean valid = false;
-	
 
+	/**
+	 * this constructor for the customer controller
+	 * 
+	 * @throws ParseException
+	 */
 	// When the controller starts, we need a new model and a new view
 	public CustomerController() throws ParseException {
 
@@ -32,6 +41,9 @@ public class CustomerController implements ActionListener {
 
 	}
 
+	/**
+	 * this methos is to get data from the newcustomer frame and passing newcustomerRegistered as parameter to the DB unless the action is performed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -46,33 +58,22 @@ public class CustomerController implements ActionListener {
 
 		if (e.getActionCommand().equals("Register")) {
 
-			
+			newcustomerRegistered = db.newcustomer(model); // passing the data to the method in the database class if true, return the data
 
-			newcustomerRegistered = db.newcustomer(model);
+			if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || tel.isEmpty() || cardnumber.isEmpty()
+					|| membership.isEmpty()) {
 
-            
-		if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || tel.isEmpty() || cardnumber.isEmpty() || membership.isEmpty()) {
-				
-				
 				JOptionPane.showMessageDialog(null, "Make Sure Fields are not Empty");
-		
-				
-			}
-			
 
-			else if (newcustomerRegistered) {
-				
-		
+			}
+
+			else {
+
 				db.newcustomerCard(model);
 				JOptionPane.showMessageDialog(null, "Submited");
 				view.dispose();
-	
 
 			}
 		}
 	}
 }
-
-
-
-

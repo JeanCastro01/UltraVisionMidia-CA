@@ -30,6 +30,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 
+/**
+ * this class is to rent Movie wich the employee will be able to select
+ * the customer and the titles that will be rented which also implements Actions
+ * listener
+ * 
+ * @author jeancastro
+ *
+ */
+
 public class RentMovie extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -192,6 +201,13 @@ public class RentMovie extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database Movie table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
+
 	public void tabalemovieSelected(String[][] outsideData) {
 
 		// ________LIVE CONCERT AVAILABLE TABlE___________
@@ -206,10 +222,15 @@ public class RentMovie extends JFrame implements ActionListener {
 		tableCustomerMovietable = new JTable(outsideData, columnNames);
 		contentPane.add(tableCustomerMovietable);
 		myPane.setViewportView(tableCustomerMovietable);
-		
-		
 
 	}
+	/**
+	 * this method is to creat the table passing the data collected from the
+	 * database customer table using outsidedata as parameter
+	 * 
+	 * @param outsideData
+	 */
+
 
 	public void tablecustomermovie(String[][] outsideData2) {
 
@@ -228,133 +249,12 @@ public class RentMovie extends JFrame implements ActionListener {
 
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
-	public JTextField getTableCustomerMovie() {
-		return tableCustomerMovie;
-	}
-
-	public void setTableCustomerMovie(JTextField tableCustomerMovie) {
-		this.tableCustomerMovie = tableCustomerMovie;
-	}
-
-	public JTextField getTextFieldSearchMovie() {
-		return textFieldSearchMovie;
-	}
-
-	public void setTextFieldSearchMovie(JTextField textFieldSearchMovie) {
-		this.textFieldSearchMovie = textFieldSearchMovie;
-	}
-
-	public JTable getTableCustomerMovietable() {
-		return tableCustomerMovietable;
-	}
-
-	public void setTableCustomerMovietable(JTable tableCustomerMovietable) {
-		this.tableCustomerMovietable = tableCustomerMovietable;
-	}
-
-	public JTable geCustomerMovietable() {
-		return CustomerMovietable;
-	}
-
-	public void setCustomerMovietable(JTable table) {
-		this.CustomerMovietable = table;
-	}
-
-	public JTextField getTextFieldSearchCustomerMovie() {
-		return textFieldSearchCustomerMovie;
-	}
-
-	public void setTextFieldSearchCustomerMovie(JTextField textFieldSearchCustomerMovie) {
-		this.textFieldSearchCustomerMovie = textFieldSearchCustomerMovie;
-	}
-
-	public JButton getButtonSelectMovie() {
-		return ButtonSelectMovie;
-	}
-
-	public void setButtonSelectMovie(JButton buttonSelectMovie) {
-		ButtonSelectMovie = buttonSelectMovie;
-	}
-
-	public JButton getNewLabelSearchIcon() {
-		return NewLabelSearchIcon;
-	}
-
-	public void setNewLabelSearchIcon(JButton newLabelSearchIcon) {
-		NewLabelSearchIcon = newLabelSearchIcon;
-	}
-
-	public JButton getNewButtonSelecCustomerMovie() {
-		return NewButtonSelecCustomerMovie;
-	}
-
-	public void setNewButtonSelecCustomerMovie(JButton newButtonSelecCustomerMovie) {
-		NewButtonSelecCustomerMovie = newButtonSelecCustomerMovie;
-	}
-
-	public MaskFormatter getMascara() {
-		return mascara;
-	}
-
-	public void setMascara(MaskFormatter mascara) {
-		this.mascara = mascara;
-	}
-
 	public String getFormattedTextFieldReturnDateMovie() {
 		return formattedTextFieldReturnDateMovie.getText();
 	}
 
-	public void setFormattedTextFieldReturnDateMovie(JFormattedTextField formattedTextFieldReturnDateMovie) {
-		this.formattedTextFieldReturnDateMovie = formattedTextFieldReturnDateMovie;
-	}
-
-	public MaskFormatter getMascara2() {
-		return mascara2;
-	}
-
-	public void setMascara2(MaskFormatter mascara2) {
-		this.mascara2 = mascara2;
-	}
-
 	public String getFormattedTextFieldRentedDate() {
 		return formattedTextFieldRentedDate.getText();
-	}
-
-	public void setFormattedTextFieldRentedDate(JFormattedTextField formattedTextFieldRentedDate) {
-		this.formattedTextFieldRentedDate = formattedTextFieldRentedDate;
-	}
-
-	public Object getNewButtonRentMovie() {
-		return NewButtonRentMovie;
-	}
-
-	public void setNewButtonRentMovie(JButton newButtonRentMovie) {
-		NewButtonRentMovie = newButtonRentMovie;
-	}
-
-	public JFormattedTextField getFormattedTextFieldTotalValueMovie() {
-		return formattedTextFieldTotalValueMovie;
-	}
-
-	public void setFormattedTextFieldTotalValueMovie(JFormattedTextField formattedTextFieldTotalValueMovie) {
-		this.formattedTextFieldTotalValueMovie = formattedTextFieldTotalValueMovie;
-	}
-
-	public JCheckBox getNewCheckBoxCardMovie() {
-		return NewCheckBoxCardMovie;
-	}
-
-	public void setNewCheckBoxCardMovie(JCheckBox newCheckBoxCardMovie) {
-		NewCheckBoxCardMovie = newCheckBoxCardMovie;
-
 	}
 
 	int initial = 0;
@@ -400,7 +300,6 @@ public class RentMovie extends JFrame implements ActionListener {
 			MembershipCard mCard = (jbdc.getMembershipPoints(customerChoosed));
 			int newPoints = Integer.parseInt(JOptionPane.showInputDialog("Please insert the amount of points"));
 			jbdc.updatePoints(customerChoosed, mCard, newPoints);
-			
 
 			JOptionPane.showMessageDialog(null, "Rented");
 
